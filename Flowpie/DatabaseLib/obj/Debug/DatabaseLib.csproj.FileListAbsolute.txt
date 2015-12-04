@@ -38,3 +38,13 @@ G:\kxd\Flowpie\DatabaseLib\bin\Debug\CommonLib.pdb
 G:\kxd\Flowpie\DatabaseLib\obj\Debug\DatabaseLib.csprojResolveAssemblyReference.cache
 G:\kxd\Flowpie\DatabaseLib\obj\Debug\DatabaseLib.dll
 G:\kxd\Flowpie\DatabaseLib\obj\Debug\DatabaseLib.pdb
+E:\git_home\kxd\Flowpie\DatabaseLib\bin\Debug\DatabaseLib.dll
+E:\git_home\kxd\Flowpie\DatabaseLib\bin\Debug\DatabaseLib.pdb
+E:\git_home\kxd\Flowpie\DatabaseLib\bin\Debug\BaseLib.dll
+E:\git_home\kxd\Flowpie\DatabaseLib\bin\Debug\CommonLib.dll
+E:\git_home\kxd\Flowpie\DatabaseLib\bin\Debug\MySql.Data.dll
+E:\git_home\kxd\Flowpie\DatabaseLib\bin\Debug\BaseLib.pdb
+E:\git_home\kxd\Flowpie\DatabaseLib\bin\Debug\CommonLib.pdb
+E:\git_home\kxd\Flowpie\DatabaseLib\obj\Debug\DatabaseLib.csprojResolveAssemblyReference.cache
+E:\git_home\kxd\Flowpie\DatabaseLib\obj\Debug\DatabaseLib.dll
+E:\git_home\kxd\Flowpie\DatabaseLib\obj\Debug\DatabaseLib.pdb

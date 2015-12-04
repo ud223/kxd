@@ -12,3 +12,17 @@ G:\kxd\Flowpie\KxdLib\bin\Debug\DatabaseLib.pdb
 G:\kxd\Flowpie\KxdLib\obj\Debug\KxdLib.csprojResolveAssemblyReference.cache
 G:\kxd\Flowpie\KxdLib\obj\Debug\KxdLib.dll
 G:\kxd\Flowpie\KxdLib\obj\Debug\KxdLib.pdb
+E:\git_home\kxd\Flowpie\KxdLib\bin\Debug\KxdLib.dll
+E:\git_home\kxd\Flowpie\KxdLib\bin\Debug\KxdLib.pdb
+E:\git_home\kxd\Flowpie\KxdLib\bin\Debug\BaseLib.dll
+E:\git_home\kxd\Flowpie\KxdLib\bin\Debug\CommonLib.dll
+E:\git_home\kxd\Flowpie\KxdLib\bin\Debug\DatabaseLib.dll
+E:\git_home\kxd\Flowpie\KxdLib\bin\Debug\SystemConfigureLib.dll
+E:\git_home\kxd\Flowpie\KxdLib\bin\Debug\MySql.Data.dll
+E:\git_home\kxd\Flowpie\KxdLib\bin\Debug\BaseLib.pdb
+E:\git_home\kxd\Flowpie\KxdLib\bin\Debug\CommonLib.pdb
+E:\git_home\kxd\Flowpie\KxdLib\bin\Debug\DatabaseLib.pdb
+E:\git_home\kxd\Flowpie\KxdLib\bin\Debug\SystemConfigureLib.pdb
+E:\git_home\kxd\Flowpie\KxdLib\obj\Debug\KxdLib.csprojResolveAssemblyReference.cache
+E:\git_home\kxd\Flowpie\KxdLib\obj\Debug\KxdLib.dll
+E:\git_home\kxd\Flowpie\KxdLib\obj\Debug\KxdLib.pdb

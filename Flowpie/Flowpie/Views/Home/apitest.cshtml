@@ -7,6 +7,7 @@
 
 <button onclick="testTake()">测试</button>
 <button onclick="testLogin()">登录</button>
+<button onclick="smstest()">测试短信</button>
 <script type="text/javascript">
     function testTake() {
         var params = {
@@ -19,11 +20,26 @@
 
     function testLogin() {
         var params = {
-            url: 'http://120.24.154.122:8001/api/user/loginCourier',
-            data: { 'loginname': 'lsz', 'password': '123' },
+            url: 'http://120.24.154.122:8001/api/user/getRandomNum',
+            data: { 'mobile': '15927094025' },
             type:'get'
         }
 
         ajaxTo(params);
+    }
+
+    function smstest() {
+        var params = {
+            url: '/api/tools/getRandomNum',
+            data: { 'mobile': '15927094025' },
+            successFun: success,
+            errorFun: false
+        }
+
+        ajaxTo(params);
+    }
+
+    function success(data) {
+        alert(JSON.stringify(data));
     }
 </script>
