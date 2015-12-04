@@ -1,0 +1,190 @@
+﻿@{
+    Layout = "~/Views/Shared/mobile.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+<style>
+    body {
+        padding: 0;
+    }
+
+    body,
+    html,
+    #allmap {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+    }
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=8TN0gC5Rqo6cec2jroKOkNpE&v=2.0"></script>
+<!-- $.waiting()（START） -->
+<div class="rotatedivwrapper">
+    <div class="rotatediv"></div>
+    <div class="msg"></div>
+</div>
+<!-- $.waiting()（END） -->
+
+<a href="/home/myindex" class="topleft_userico iconfont icon-myfill"></a>
+<div id="allmap"></div>
+
+<div class="cancelwaitingbtn" onclick="orderCancel()">
+    <div>取消订单</div>
+    <i class="iconfont icon-iconfontclose"></i>
+</div>
+
+<!--百度API链接请自行注册生成-->
+
+<script>
+    var map = false;
+    var orderid = '@ViewData["data"].ToString()';
+
+    $(document).ready(function () {
+        $.cookie('is_get', 0);
+	    $.waiting('派单中，请稍候 ...');
+
+	    map = createMap(map);
+
+	    var lat = localStorage.getItem('lat');
+	    var lng = localStorage.getItem('lng');
+
+	    var params = {
+	        lat: lat,
+	        lng: lng,
+	        successFun: setPos
+	    }
+
+	    getAddressByCoordinate(params);
+
+	    is_count = true;
+
+	    checkSatet();
+	});
+
+	function setPos(data) {
+	    var addresses = data.result.pois;
+
+	    if (addresses.length > 0) {
+	        $(".people_dot").find('.address').html(addresses[0].name);
+	        $(".people_dot").find('.t2').html(addresses[0].addr);
+
+	        $("#address").val(addresses[0].name);
+	        $("#addressdetail").val(addresses[0].addr);
+	        $("#lat").val(addresses[0].point.y);
+	        $("#lng").val(addresses[0].point.x);
+	    }
+
+	    var list = $('.bdunit.b').find('.itms');
+
+	    list.html('');
+
+	    $.each(addresses, function () {
+	        var node = $("#addr-item").find(".itm").clone();
+
+	        node.find(".t1").html(this.name);
+	        node.find(".t2").html(this.addr);
+
+	        node.find(".t1").attr("lng", this.point.x);
+	        node.find(".t1").attr("lat", this.point.y);
+
+	        node.click(function () {
+	            setNodeClick(this);
+	        });
+
+	        list.append(node);
+	    });
+
+	    nearbyCourier();
+	}
+
+	function nearbyCourier() {
+	    var lat = local_lat;
+	    var lng = local_lng;
+	    var data = { 'local_lat': lat, 'local_lng': lng };
+
+	    $("#lat").val(local_lat);
+	    $("#lng").val(local_lng);
+
+	    var params = {
+	        url: '/api/courier/getCourierOfNearby',
+	        data: data,
+	        type: 'get',
+	        successFun: successGetCourier,
+	        errorFun: errorGetCourier
+	    }
+
+	    ajaxTo(params);
+	}
+
+	function successGetCourier(data) {
+	    if (data.code == "200") {
+	        var courier = data.data;
+
+	        tmp = eval('(' + courier + ')');
+
+	        $.each(tmp, function () {
+	            var point = new BMap.Point(this.lng, this.lat);
+	            // 关联图片
+	            var myIcon = new BMap.Icon("/kxd/img/tp2.png", new BMap.Size(38, 53));
+	            //map.centerAndZoom(point, 15);
+	            var marker = new BMap.Marker(point, {
+	                icon: myIcon
+	            });
+	            // 创建标注
+	            map.addOverlay(marker);
+	        });
+	    }
+	}
+
+	function errorGetCourier() {
+	    var opertion = {
+	        msg: "获取附近快递员失败!",
+	        exitText: "关闭!"
+	    };
+
+	    $.alertbox(opertion);
+	}
+	
+	function orderCancel() {
+	    var orderid = '@ViewData["data"].ToString()';
+
+	    location.href = "/home/ordercancel/" + orderid;
+	}
+
+    var countdown = 600;
+    var is_count = false;
+
+    function checkSatet(val) {
+        if (!is_count)
+            return;
+
+        getOrderState();
+
+        setTimeout(function () { checkSatet(val) }, 5000)
+    }
+
+    function getOrderState() {
+        var data = { 'orderid': orderid };
+
+        var params = {
+            url: '/api/order/getOrderState',
+            data: data,
+            successFun: getState
+        }
+
+        ajaxTo(params);
+    }
+
+    function getState(data) {
+        if (data.code == 200) {
+            if (data.data == "1") {
+                is_count = false;
+
+                $.cookie('is_get', 1);
+
+                location.href = "/home";
+            }
+        }
+    }
+</script>

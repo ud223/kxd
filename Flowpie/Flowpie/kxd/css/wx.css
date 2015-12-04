@@ -1,0 +1,590 @@
+.people_dot {
+	z-index: 5;
+	top: 50%;
+	margin-top: -110px;
+	background: #FFF;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .2);
+	position: fixed;
+	left: 30px;
+	right: 30px;
+	border-radius: 4px;
+	overflow: hidden;
+}
+.people_dot .inner {
+	background: #FFF;
+	box-sizing: border-box;
+	line-height: 20px;
+	padding: 10px 50px 10px 0;
+	margin: 0 0 0 50px;
+	text-align: center;
+}
+.people_dot .inner .t2 {
+	color: #999;
+	font-size: 14px;
+}
+.people_dot .iconfont {
+	color: #aaa;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	font-size: 28px;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	margin-top: -30px;
+	text-align: center;
+	background: #F8F8F8;
+	z-index: 2;
+}
+.people_dot .iconfont:active {
+	color: #0C9;
+}
+.people_dot .inner:active .t1 {
+	color: #0C9;
+}
+.topleft_userico {
+	background: rgba(255, 255, 255, .85);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+	border-radius: 100px;
+	display: block;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	position: fixed;
+	left: 10px;
+	top: 10px;
+	font-size: 32px;
+	z-index: 5;
+	color: #F70;
+}
+.z7topsearchbar {
+	z-index: 7;
+	background: #FFF;
+	width: 100%;
+	position: fixed;
+	box-shadow: 0 1px 8px rgba(0, 0, 0, .18);
+	left: 0;
+	top: 0;
+	padding: 10px;
+	box-sizing: border-box;
+}
+.z7topsearchbar .tt {
+	margin: 0;
+	padding: 10px 0 8px 0;
+	font-size: 14px;
+}
+.z7topsearchbar .searchico {
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	position: absolute;
+	left: 10px;
+	text-align: center;
+	top: 50%;
+	margin-top: -20px;
+	color: #999;
+	z-index: 5;
+}
+.z7topsearchbar .searchinput {
+	border: 1px solid #E2E2E2;
+	margin: 0;
+	box-shadow: none;
+	padding-left: 50px;
+	color: #f60;
+}
+.z6searchcover {
+	z-index: 6;
+	background: rgba(0, 0, 0, .4);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	left: 0;
+	top: 0;
+}
+.z7searchboard {
+	z-index: 7;
+	position: fixed;
+	height: 60%;
+	width: 100%;
+	overflow-y: auto;
+	bottom: 0;
+	left: 0;
+	background: #FFF;
+	box-shadow: 0 1px 8px rgba(0, 0, 0, .18);
+}
+.z7searchboard .bdunit .tt {
+	background: #F0F0F0;
+	padding: 10px;
+	font-size: 10px;
+	color: #999;
+}
+.z7searchboard .bdunit.b {
+	display: none;
+}
+.z7searchboard .bdunit.b .tt {
+	background: #FCFAD4;
+	color: #BB8D14;
+}
+.z7searchboard .itms .itm {
+	border-bottom: 1px solid #E2E2E2;
+	padding: 10px 10px 10px 40px;
+}
+.z7searchboard .itms .itm:active {
+	background: #f8f8f8;
+}
+.z7searchboard .itms .itm .t1 {
+	font-size: 18px;
+	margin-bottom: 2px;
+}
+.z7searchboard .itms .itm .t2 {
+	color: #aaa;
+	font-size: 12px;
+}
+.z7searchboard .itms .itm .iconfont {
+	font-size: 18px;
+	width: 30px;
+	height: 40px;
+	line-height: 40px;
+	position: absolute;
+	left: 5px;
+	top: 50%;
+	margin-top: -20px;
+	color: #ccc;
+	text-align: center;
+}
+.hyblayer {
+	display: none;
+}
+.mapconsolebar {
+	position: fixed;
+	left: 30px;
+	right: 30px;
+	bottom: 30px;
+	height: auto;
+	background: #FFF;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, .12);
+	border-radius: 4px;
+}
+.mapconsolebar .inner {
+	padding: 10px;
+}
+select.sendpacktime {
+	height: 28px;
+	line-height: 28px;
+	padding: 0 15px;
+	margin: 0 0 0 10px;
+}
+.timerbar {
+	border-bottom: 1px solid #F0F0F0;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+.btsbar {
+	display: table;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+.btsbar .ciibt {
+	display: table-cell;
+	width: 50%;
+}
+.btsbar .ciibt .bt {
+	margin-right: 5px;
+	background: #5A6B92;
+	color: #FFF;
+	padding: 20px 10px;
+	text-align: center;
+	border-radius: 2px;
+}
+.btsbar .ciibt .bt .t1 {
+	margin-bottom: 2px;
+	font-size: 18px;
+}
+.btsbar .ciibt .bt .t2 {
+	font-size: 12px;
+	opacity: .6;
+}
+.btsbar .ciibt .bt_bjxd {
+	margin-right: auto;
+	margin-left: 5px;
+}
+.btsbar .ciibt .bt_yjxd {
+	background: #f60;
+	color: #FFF;
+}
+.btsbar .ciibt .bt_yjxd:active {
+	background: #F90;
+}
+.btsbar .ciibt .bt_bjxd:active {
+	background: #5A8Bb2;
+}
+.cancelwaitingbtn {
+	text-align: center;
+	padding-top: 35px;
+	box-sizing: border-box;
+	width: 100px;
+	color: #FFF;
+	height: 100px;
+	background: rgba(0, 0, 0, .6);
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+	border-radius: 200px;
+	z-index: 35;
+	position: fixed;
+	left: 50%;
+	margin-left: -50px;
+	bottom: 50px;
+}
+.cancelwaitingbtn:active {
+	color: #FFD800;
+}
+.autogetpushmsgwp {
+	margin-bottom: 10px;
+	text-align: right;
+}
+.callkdresust {
+	text-align: center;
+	color: #F90;
+	padding: 15px 10px;
+	margin-top: 10px;
+	background: #fbfbfb;
+	border-radius: 2px;
+	border: 1px solid #E2E2E2;
+	z-index: 4;
+}
+.callkdresust:active {
+	background: #FFF;
+	color: #f40;
+}
+.callkdresust.paper {
+	position: absolute;
+	background: #F0F0F0;
+	z-index: 3;
+	left: 0;
+	box-sizing: border-box;
+	width: 100%;
+	bottom: -2px;
+}
+.callkdresust .paytip {
+	display: inline-block;
+	background: #0c9;
+	padding: 3px 6px 2px 6px;
+	border-radius: 20px;
+	color: #FFF;
+	font-size: 10px;
+	float: right;
+	box-shadow: 0 2px 0 rgba(29, 167, 104, 1);
+}
+.sorryboard {
+	background: rgba(40, 40, 40, .7);
+	color: #FFF;
+	width: 200px;
+	position: absolute;
+	left: 50%;
+	margin-left: -100px;
+	top: 160px;
+	text-align: center;
+	border-radius: 5px;
+	box-shadow: 0 1px 5px rgba(0,0,0,.2);
+}
+.sorryboard .go {
+	display:inline-block;
+	padding:6px 15px;
+	background:#F0F0F0;
+	border-bottom:2px solid #ccc;
+	color:#999;
+	border-radius:5px;
+	margin-top:10px;
+}
+.sorryboard .t1 {
+	line-height: 24px;
+}
+.xuanfubtn {
+	position: fixed;bottom:0;left:0;
+}
+.itm.slim .fee {
+	color:#0C9;
+	font-weight:bold;
+	position:absolute;
+	right:80px;
+	height:40px;
+	line-height:20px;
+	top:50%;
+	margin-top:-20px;
+}
+.itm.slim .status {
+	color:#F60;
+}
+.itm.slim .icon-squarecheckfill {
+	position:absolute;
+	width:30px;
+	height:30px;
+	line-height:30px;
+	position: absolute;
+	text-align: center;
+	font-size:24px;
+	right:15px;
+	top:50%;
+	margin-top:-15px;
+	color:#ddd;
+}
+.itm.slim.selected .icon-squarecheckfill {
+	color:#0C9;
+}
+.itm.slim.unuse {
+	background:#f0f0f0 !important;
+	opacity:.7;
+}
+.itm.slim.unuse .fee {
+	display:none;
+}
+.itm.slim.unuse .icon-squarecheckfill {
+	display:none;
+}
+.itm.slim.unuse .status {
+	color:#aaa;
+}
+
+.bheiiew {
+	padding: 50px 0 20px 0;
+	text-align: center;
+	line-height: 32px;
+}
+.bheiiew .ci {
+	color: #31c581;
+}
+.bheiiew .st {
+	color: #31c581;
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+.bheiiew .st .iconfont {
+	font-size: 24px;
+}
+.bheiiew .sst {
+	padding:0 15px 15px;
+	line-height:24px;
+	font-size:14px;
+	color:#5A6B92;
+}
+
+.kdeyntb {
+	display: table;
+	margin-bottom:15px;
+	width: 100%;
+	border-top:1px solid #E2E2E2;
+	padding-top:20px;
+}
+.kdeyntb .td {
+	display:table-cell;
+	vertical-align: top;
+	padding-left:10px;
+}
+.kdeyntb .td:first-child {
+	padding-left:0;
+}
+.kdeyntb .td:last-child {
+	border-left:1px solid #E2E2E2;
+}
+.kdeyntb img {
+	width:60px;
+	height:60px;
+	border-radius:5px;
+	display:inline-block;
+	float:left;
+}
+.kdeyntb .t1 {
+	color:#aaa;
+	font-size:12px;
+	padding-bottom:5px;
+}
+.kdeyntb .t2 {
+	font-size:18px;
+	padding-bottom:4px;
+}
+.kdeyntb .t3 {
+	font-size:12px;
+	color:#aaa;
+}
+.kdeyntb .t4 {
+	line-height: 40px;
+}
+.smllabel {
+	background:#0C9;
+	color:#FFF;
+	font-size:10px;
+	padding:1px 5px;
+	border-radius:2px;
+	display:inline-block;
+	line-height:18px;
+	position:absolute;
+	right:0;
+	bottom:2px;
+}
+/**
+ * Checkbox Five
+ */
+
+.wtcheckbox {
+	display: inline-block;
+	width: 18px;
+	position: relative;
+	top: 2px;
+	margin-right: 5px;
+}
+/**
+ * Create the box for the checkbox
+ */
+
+.wtcheckbox label {
+	cursor: pointer;
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	top: 0;
+	left: 0;
+	background: #eee;
+	border: 1px solid #ddd;
+}
+/**
+ * Display the tick inside the checkbox
+ */
+
+.wtcheckbox label:after {
+	opacity: 0.2;
+	content: '';
+	position: absolute;
+	width: 9px;
+	height: 5px;
+	background: transparent;
+	top: 4px;
+	left: 3px;
+	border: 3px solid #333;
+	border-top: none;
+	border-right: none;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+/**
+ * Create the hover event of the tick
+ */
+
+.wtcheckbox label:hover::after {
+	opacity: 0.5;
+}
+/**
+ * Create the checkbox state for the tick
+ */
+
+.wtcheckbox input[type=checkbox]:checked + label:after {
+	opacity: 1;
+	border-color: #FFF;
+}
+.wtcheckbox input[type=checkbox]:checked + label {
+	background: #03A9f4;
+	border-color: #03A9f4;
+}
+.wtcheckboxlabel {
+	cursor: pointer;
+	font-weight: normal;
+}
+/**
+ * Checkbox Four
+ */
+
+.wtradio {
+	width: 20px;
+	height: 20px;
+	background: #FFF;
+	margin: 0;
+	display: inline-block;
+	border-radius: 100%;
+	position: relative;
+	top: 2px;
+	border: 1px solid #E8E8E8;
+}
+.wtradio input {
+	visibility: hidden;
+}
+/**
+ * Create the checkbox button
+ */
+
+.wtradio label {
+	display: block;
+	width: 12px;
+	height: 12px;
+	border-radius: 100px;
+	-webkit-transition: all .5s ease;
+	-moz-transition: all .5s ease;
+	-o-transition: all .5s ease;
+	-ms-transition: all .5s ease;
+	transition: all .5s ease;
+	cursor: pointer;
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	z-index: 1;
+	background: #aaa;
+}
+/**
+ * Create the checked state
+ */
+
+.wtradio input[type=radio]:checked + label {
+	background: #03A9f4;
+}
+
+
+.rbrowitm {
+	padding:5px 0;
+	height:24px;
+	line-height:24px;
+}
+
+
+.kxdh-listb .itm.status1 {
+	background:none;
+}
+.kxdh-listb .itm.status2 {
+	background:#FFFCCA;
+}
+
+.paytheorderbtn {
+	background:#2ED368;
+	border-radius:8px;
+	box-shadow: 0 1px 15px rgba(0,0,0,.2);
+	padding:20px;
+	position: fixed;
+	top:30%;
+	left:50%;
+	margin-left:-90px;
+	width:180px;
+	box-sizing: border-box;
+	text-align: center;
+	color:#FFF;
+	z-index:11;
+	border:4px solid #FFF;
+}
+.paytheorderbtn:active {
+	background:#34F077;
+}
+.paytheorderbtn .tt {
+	font-size:14px;
+	margin-bottom:5px;
+}
+.paytheorderbtn sup {
+	font-size:14px;
+	top:-18px;
+}
+.paytheorderbtn span {
+	font-size:42px;
+}
+.paytheorderbtn sub {
+	bottom:0;
+}

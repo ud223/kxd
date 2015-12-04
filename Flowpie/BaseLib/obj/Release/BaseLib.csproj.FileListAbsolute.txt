@@ -1,0 +1,15 @@
+F:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\bin\Release\BaseLib.dll
+F:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\bin\Release\BaseLib.pdb
+F:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\obj\Release\BaseLib.dll
+F:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\obj\Release\BaseLib.pdb
+F:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\obj\Release\BaseLib.csprojResolveAssemblyReference.cache
+E:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\bin\Release\BaseLib.dll
+E:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\bin\Release\BaseLib.pdb
+E:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\obj\Release\BaseLib.csprojResolveAssemblyReference.cache
+E:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\obj\Release\BaseLib.dll
+E:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\obj\Release\BaseLib.pdb
+G:\kxd\Flowpie\BaseLib\bin\Release\BaseLib.dll
+G:\kxd\Flowpie\BaseLib\bin\Release\BaseLib.pdb
+G:\kxd\Flowpie\BaseLib\obj\Release\BaseLib.csprojResolveAssemblyReference.cache
+G:\kxd\Flowpie\BaseLib\obj\Release\BaseLib.dll
+G:\kxd\Flowpie\BaseLib\obj\Release\BaseLib.pdb

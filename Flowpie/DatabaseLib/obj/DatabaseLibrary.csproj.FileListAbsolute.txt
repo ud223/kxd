@@ -1,0 +1,30 @@
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\DatabaseLibrary\obj\Debug\ResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\DatabaseLibrary\bin\Debug\DatabaseLibrary.dll
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\DatabaseLibrary\bin\Debug\DatabaseLibrary.pdb
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\DatabaseLibrary\bin\Debug\CommonLibrary.dll
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\DatabaseLibrary\bin\Debug\CommonLibrary.pdb
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\DatabaseLibrary\obj\Debug\DatabaseLibrary.dll
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\DatabaseLibrary\obj\Debug\DatabaseLibrary.pdb
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\DatabaseLibrary\bin\Release\DatabaseLibrary.dll
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\DatabaseLibrary\bin\Release\DatabaseLibrary.pdb
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\DatabaseLibrary\bin\Release\CommonLibrary.dll
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\DatabaseLibrary\bin\Release\CommonLibrary.pdb
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\DatabaseLibrary\obj\Release\ResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\DatabaseLibrary\obj\Release\DatabaseLibrary.dll
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\DatabaseLibrary\obj\Release\DatabaseLibrary.pdb
+F:\MyProject\Frame_Simple\DatabaseLibrary\bin\Debug\DatabaseLibrary.dll
+F:\MyProject\Frame_Simple\DatabaseLibrary\bin\Debug\DatabaseLibrary.pdb
+F:\MyProject\Frame_Simple\DatabaseLibrary\bin\Debug\CommonLibrary.dll
+F:\MyProject\Frame_Simple\DatabaseLibrary\bin\Debug\CommonLibrary.pdb
+F:\MyProject\Frame_Simple\DatabaseLibrary\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\Frame_Simple\DatabaseLibrary\obj\Debug\DatabaseLibrary.dll
+F:\MyProject\Frame_Simple\DatabaseLibrary\obj\Debug\DatabaseLibrary.pdb
+F:\FlySystem\bin\Debug\DatabaseLibrary.dll
+F:\FlySystem\bin\Debug\DatabaseLibrary.pdb
+F:\MyProject\Frame_Simple\FlySystem\bin\Debug\DatabaseLibrary.dll
+F:\MyProject\Frame_Simple\FlySystem\bin\Debug\DatabaseLibrary.pdb
+F:\MyProject\FlySystem\FlySystem\bin\Debug\DatabaseLibrary.dll
+F:\MyProject\FlySystem\FlySystem\bin\Debug\DatabaseLibrary.pdb
+F:\MyProject\FlySystem\DatabaseLibrary\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\FlySystem\DatabaseLibrary\obj\Debug\DatabaseLibrary.dll
+F:\MyProject\FlySystem\DatabaseLibrary\obj\Debug\DatabaseLibrary.pdb

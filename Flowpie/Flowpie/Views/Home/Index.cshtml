@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/mobile.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+正在进入, 请稍后...
+<script type="text/javascript">
+    $('document').ready(function () {
+        $.cookie('user_id', '00001');
+
+        localStorage.setItem('user_id', '00001');
+
+        var user_id = $.cookie('user_id');
+
+        if (!user_id) {
+            user_id = localStorage.getItem('user_id');
+
+            $.cookie('user_id', user_id);
+        }
+
+        location.href = '/home';
+    });
+</script>

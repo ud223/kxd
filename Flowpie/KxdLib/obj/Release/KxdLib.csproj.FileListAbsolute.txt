@@ -1,0 +1,14 @@
+G:\kxd\Flowpie\KxdLib\bin\Release\KxdLib.dll
+G:\kxd\Flowpie\KxdLib\bin\Release\KxdLib.pdb
+G:\kxd\Flowpie\KxdLib\bin\Release\BaseLib.dll
+G:\kxd\Flowpie\KxdLib\bin\Release\CommonLib.dll
+G:\kxd\Flowpie\KxdLib\bin\Release\SystemConfigureLib.dll
+G:\kxd\Flowpie\KxdLib\bin\Release\DatabaseLib.dll
+G:\kxd\Flowpie\KxdLib\bin\Release\MySql.Data.dll
+G:\kxd\Flowpie\KxdLib\bin\Release\BaseLib.pdb
+G:\kxd\Flowpie\KxdLib\bin\Release\CommonLib.pdb
+G:\kxd\Flowpie\KxdLib\bin\Release\SystemConfigureLib.pdb
+G:\kxd\Flowpie\KxdLib\bin\Release\DatabaseLib.pdb
+G:\kxd\Flowpie\KxdLib\obj\Release\KxdLib.csprojResolveAssemblyReference.cache
+G:\kxd\Flowpie\KxdLib\obj\Release\KxdLib.dll
+G:\kxd\Flowpie\KxdLib\obj\Release\KxdLib.pdb

@@ -1,0 +1,143 @@
+﻿@{
+    Layout = "~/Views/Shared/mobile.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+<form id="form" action="/home/courierdelete" method="post">
+    <div class="kxdh-topbk">
+        <a href="/home/mycourier" class="iconfont icon-angleleft"></a>
+        <span>
+            @if (ViewData["data"] != null)
+            {
+                var item = ViewData["data"] as System.Collections.Hashtable;
+
+                @item["name"].ToString();
+            }
+        </span>
+    </div>
+    <div class="kxdh-box">
+        <div class="nciehy">
+            @if (ViewData["data"] != null)
+            {
+                var item = ViewData["data"] as System.Collections.Hashtable;
+
+                if (item["headpic"].ToString() == "")
+                {
+                    <img src="/img/user.jpg" />;
+                }
+                else
+                {
+                    <img src="@item["headpic"].ToString()" />
+                }
+            }
+        </div>
+        <ul class="kxdh-tbul">
+            <li>
+                <div>
+                    <span class="lf t">姓名</span>
+                    <span class="rf v">
+                        @if (ViewData["data"] != null)
+                        {
+                            var item = ViewData["data"] as System.Collections.Hashtable;
+
+                            @item["name"].ToString();
+                        }
+                    </span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span class="lf t">快递公司</span>
+                    <span class="rf v">
+                        @if (ViewData["data"] != null)
+            {
+                var item = ViewData["data"] as System.Collections.Hashtable;
+
+                            @item["companytext"].ToString();
+            }
+                    </span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span class="lf t">电话</span>
+                    <span class="rf v">
+                        @if (ViewData["data"] != null)
+                        {
+                            var item = ViewData["data"] as System.Collections.Hashtable;
+
+                            @item["phone"].ToString();
+                        }
+                    </span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span class="lf t">综合得分</span>
+                    <span class="rf v">
+                        @if (ViewData["data"] != null)
+                        {
+                            var item = ViewData["data"] as System.Collections.Hashtable;
+
+                            @item["score"].ToString();
+                        }分
+                    </span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span class="lf t">派件区域</span>
+                    <span class="rf v font12px">
+                        @if (ViewData["data"] != null)
+                        {
+                            var item = ViewData["data"] as System.Collections.Hashtable;
+
+                            @item["region"].ToString();
+                        }
+                    </span>
+                </div>
+            </li>
+        </ul>
+
+        @*<div class="mycmaiark">
+                如果没有备注， 下方的“备注”改为“暂无备注”
+                <span class="tt">
+                    备注
+                </span>
+                <span>不错的快递员发往江苏的快件优惠比较多</span>
+                <a href="p30_修改备注.html" class="fullbtn normal">修改备注</a>
+            </div>*@
+
+        <div>
+            <input type="hidden" id="courierid" name="courierid" value="@if (ViewData["data"] != null)
+                        {
+                            var item = ViewData["data"] as System.Collections.Hashtable;
+
+                            @item["courierid"].ToString();
+                        }" />
+            <button type="button" class="fullbtn warning">删除</button>
+        </div>
+    </div>
+</form>
+<div class="clear-50"></div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".fullbtn").click(function () {
+            confirm();
+        })
+    })
+
+    function confirm() {
+        var options = {
+            msg: "是否删除该常用快递员!",
+            confirmCallback: toSubmit
+        };
+
+        $.confirm(options);
+    }
+
+    function toSubmit() {
+        $("form").submit();
+    }
+</script>

@@ -1,0 +1,386 @@
+﻿@{
+    Layout = "~/Views/Shared/mobile.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=8TN0gC5Rqo6cec2jroKOkNpE&v=2.0"></script>
+    <style>
+        body {
+            padding: 0;
+        }
+
+        body,
+        html,
+        #allmap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+        }
+    </style>
+
+    <a href="/home/myindex" class="topleft_userico iconfont icon-myfill"></a>
+    <div id="allmap"></div>
+    <div class="people_dot">
+        <i class="iconfont icon-location"></i>
+        <div class="inner">
+            <div class="t1">我在 <b class="address"></b></div>
+            <div class="t2"></div>
+        </div>
+    </div>
+
+    <!-- 搜索出来以后出现的控件 -->
+    <div class="z7topsearchbar hyblayer">
+        <p class="tt">请输入收件地址</p>
+        <div>
+            <i class="iconfont icon-tubiao111 searchico"></i>
+            <input id="seach_address" type="text" class="searchinput" />
+            <button id="seach_btn" style="position:absolute;height:30px;line-height:30px;padding:0 20px;right:10px;top:50%;margin-top:-15px;">搜索</button>
+        </div>
+    </div>
+    <div class="z7searchboard hyblayer">
+        <div class="bdunit a">
+            <div class="tt">以往收货地点</div>
+            <div class="itms">
+            @foreach (var item in ViewData["data"] as List<System.Collections.Hashtable>)
+            {
+                <div class="itm" onclick="setNodeClick(this)">
+                    <div class="t1" lat="@item["lat"].ToString()" lng="@item["lng"].ToString()">@item["fromaddress"].ToString()</div>
+                    <div class="t2">@item["fromaddressdetail"].ToString()</div>
+                    <i class="iconfont icon-locationfill"></i>
+                </div>
+            }
+            </div>
+        </div>
+
+        <div class="bdunit b">
+            <div class="tt">相关地点</div>
+            <div class="itms">
+                
+            </div>
+        </div>
+    </div>
+    <div class="z6searchcover hyblayer"></div>
+
+    <div class="mapconsolebar">
+        <div class="inner">
+            <div class="timerbar">
+                <span class="iconfont icon-countdown" style="color:#aaa;"> 收件时间</span>          
+                    <input type="time" id="runtime" name="runtime" value="" class="sendpacktime" />
+            </div>
+            <div class="btsbar">
+                <div class="ciibt">
+                    <div class="bt bt_yjxd" onclick="toOneOrder()">
+                        <div class="t1">一键下单</div>
+                        <div class="t2">附近的快递员</div>
+                    </div>
+                </div>
+                <div class="ciibt" >
+                    <div class="bt bt_bjxd" onclick="toEasyOrder();">
+                        <div class="t1">便捷下单</div>
+                        <div class="t2">服务过快递员</div>
+                    </div>
+                </div>
+            </div>
+            <div class="callkdresustwp" style="display:none" >
+                <div class="callkdresust">
+                    <div>快递员正赶来  ...<span class="paytip">支付</span></div>
+                </div>
+                @*<div class="callkdresust paper" style="bottom:-2px;z-index: 3;"></div>
+                <div class="callkdresust paper" style="bottom:-4px;z-index: 2;"></div>
+                <div class="callkdresust paper" style="bottom:-6px;z-index: 1;"></div>*@
+            </div>
+        </div>
+        <!-- 提价初始订单数据隐藏域 -->
+        <input type="hidden" id="address" name="address" value="">
+        <input type="hidden" id="addressdetail" name="addressdetail" value="">
+        <input type="hidden" id="lat" name="lat" value="">
+        <input type="hidden" id="lng" name="lng" value="">
+    </div>
+    <div id="addr-item" style="display:none">
+        <div class="itm">
+            <div class="t1"></div>
+            <div class="t2"></div>
+            <i class="iconfont icon-locationfill"></i>
+        </div>
+    </div>
+    <!--百度API链接请自行注册生成-->
+    <script>
+        var map = false;
+
+        $(document).ready(function () {
+		    $('.people_dot .icon-location').click(function () {
+		        var options = {
+		            msg: '即将定位到您当前的地址',
+		            confirmCallback: setLocal
+		        };
+
+		        $.confirm(options);
+			});
+			$('.people_dot .inner').click(function() {
+				$('.hyblayer').show();
+			});
+			$('.z6searchcover').click(function() {
+				$('.hyblayer').hide();
+			});
+			$('.searchinput').focus(function() {
+				$('.bdunit.b').show();
+				$('.bdunit.a').hide();
+				// 监听输入框文字（暂时注释，正式做代码的时候整理逻辑）
+				//					var $this = $(this);
+				//					$this.attr('prevtxt', $this.val());
+				//					var intvid = setInterval(function() {
+				//						var prevtxt = $this.attr('prevtxt');
+				//						var val = $this.val();
+				//						if (prevtxt != val) {
+				//							// 搜索一次
+				//							console.log('搜索文字：' + val);
+				//						}
+				//					}, 2000);
+				//					$('body').data('intvid', intvid);
+			});
+			$('.searchinput').blur(function() {
+				//					var intvid = $('body').data('intvid')
+				//					clearInterval(intvid);
+			});
+
+			initTime('runtime');
+
+            map = createMap(map);
+
+			//map = new BMap.Map("allmap");
+
+			//map.centerAndZoom(new BMap.Point(local_lng, local_lat), 11);
+			//map.enableScrollWheelZoom(true);
+
+			var params = {
+			    lat: local_lat,
+			    lng: local_lng,
+			    successFun: setPos
+			}
+
+			getAddressByCoordinate(params);
+
+
+			$("#seach_btn").click(function () {
+			    seachAddress();
+			})
+
+			var page_state = $.cookie('is_get');
+
+			if (page_state) {
+			    $(".callkdresustwp").show();
+            }
+		});
+
+		function setLocal() {
+		    var params = {
+		        successFun: loadLocal
+		    }
+
+		    getLocal(params);
+		}
+
+		function loadLocal(lat, lng) {
+		    var params = {
+		        lat: lat,
+		        lng: lng,
+		        successFun: setPos
+		    }
+
+		    getAddressByCoordinate(params);
+		}
+
+		function seachAddress() {
+		    var address = $("#seach_address").val();
+
+		    var params = {
+		        address_name: address,
+		        successFun: getAddressByLocal
+		    }
+
+		    getAddressByAddressName(params);
+		}
+
+		function getAddressByLocal(data) {
+		    var params = {
+		        lat: data.result.location.lat,
+		        lng: data.result.location.lng,
+		        successFun: setPos
+		    }
+
+		    getAddressByCoordinate(params);
+		}
+		
+		function setPos(data) {
+		    var addresses = data.result.pois;
+	
+		    if (addresses.length > 0) {
+		        $(".people_dot").find('.address').html(addresses[0].name);
+		        $(".people_dot").find('.t2').html(addresses[0].addr);
+
+		        $("#address").val(addresses[0].name);
+		        $("#addressdetail").val(addresses[0].addr);
+		        $("#lat").val(addresses[0].point.y);
+		        $("#lng").val(addresses[0].point.x);
+		    }
+
+		    var list = $('.bdunit.b').find('.itms');
+
+		    list.html('');
+
+		    $.each(addresses, function () {
+		        var node = $("#addr-item").find(".itm").clone();
+
+		        node.find(".t1").html(this.name);
+		        node.find(".t2").html(this.addr);
+
+		        node.find(".t1").attr("lng", this.point.x);
+		        node.find(".t1").attr("lat", this.point.y);
+
+		        node.click(function () {
+		            setNodeClick(this);
+		        });
+
+		        list.append(node);
+		    });
+
+		    nearbyCourier(local_lat, local_lng);
+		}
+
+		function setNodeClick(node) {
+		    $(".people_dot").find('.address').html($(node).find('.t1').html());
+		    $(".people_dot").find('.t2').html($(node).find('.t2').html());
+		    $("#address").val($(node).find('.t1').html());
+		    $("#addressdetail").val($(node).find('.t2').html());
+		    $("#lat").val($(node).find('.t1').attr('lat'));
+		    $("#lng").val($(node).find('.t1').attr('lng'));
+
+		    $('.hyblayer').hide();
+
+		    theLocation(map, $("#lng").val(), $("#lat").val());
+
+		    nearbyCourier($("#lat").val(), $("#lng").val());
+		}
+
+		function toEasyOrder() {
+		    var address = $('#address').val();
+		    var addressdetail = $("#addressdetail").val();
+		    var time = $('#runtime').val();
+            var lat = $("#lat").val();
+            var lng = $("#lng").val();
+
+            localStorage.setItem('address', address);
+            localStorage.setItem('addressdetail', addressdetail);
+            localStorage.setItem('lat', lat);
+            localStorage.setItem('lng', lng);
+		    localStorage.setItem('time', time);
+
+		    location.href = '/home/easyorder'
+		}
+
+		function toOneOrder() {
+		    var address = $('#address').val();
+		    var addressdetail = $("#addressdetail").val();
+		    var time = $('#runtime').val();
+		    var lat = $("#lat").val();
+		    var lng = $("#lng").val();
+
+		    $.cookie('address', address);
+		    $.cookie('addressdetail', addressdetail);
+		    $.cookie('lat', lat);
+		    $.cookie('lng', lng);
+		    $.cookie('time', time);
+
+		    location.href = '/home/ordertake'
+		}
+
+		function nearbyCourier(lat, lng) {
+		    //var lat = local_lat;
+		    //var lng = local_lng;
+		    var data = { 'local_lat': lat, 'local_lng': lng };
+
+		    $("#lat").val(local_lat);
+		    $("#lng").val(local_lng);
+
+		    var params = {
+		        url: '/api/courier/getCourierOfNearby',
+		        data: data,
+                type: 'get',
+		        successFun: successGetCourier,
+		        errorFun: errorGetCourier
+		    }
+
+		    ajaxTo(params);
+		}
+
+		function successGetCourier(data) {
+		    if (data.code == "200") {
+		        var courier = data.data;
+
+		        tmp = eval('(' + courier + ')');
+
+		        $.each(tmp, function () {
+		            var point = new BMap.Point(this.lng, this.lat);
+		            // 关联图片
+		            var myIcon = new BMap.Icon("/kxd/img/tp2.png", new BMap.Size(38, 53));
+		            //map.centerAndZoom(point, 15);
+		            var marker = new BMap.Marker(point, {
+		                icon: myIcon
+		            });
+		            // 创建标注
+		            map.addOverlay(marker);
+		        });
+		    }
+		}
+
+		function errorGetCourier() {
+		    var opertion = {
+		        msg: "获取附近快递员失败!",
+		        exitText: "关闭!"
+		    };
+
+		    $.alertbox(opertion);
+		}
+        
+        //-------------------陆思浙---------------------------------//
+		function initTime(drplist_id) {
+		    var date = new Date();
+
+		    var hour = date.getHours();
+		    var min = date.getMinutes();
+
+		    if (hour.toString().length == 1)
+		        hour = "0" + hour;
+
+		    if (min.toString().length == 1)
+		        min = "0" + min;
+
+		    var time = hour + ":" + min + ":00.000";
+
+		    $("#" + drplist_id).val(time);
+		}
+
+        //---------------------------------------------------------
+		////'';
+		function testLogin() {
+		    var params = {
+		        url: '/api/courier/getCourierOfNearby',
+		        data: { 'lat': '30.645984', 'lng': '114.309055' },
+		        type: 'get'
+		    }
+
+		    ajaxTo(params);
+		}
+
+		function getexpress() {
+		    var params = {
+		        url: '/api/order/getExpress',
+		        data: { 'orderid': '2015111200003' },
+		        type: 'get'
+		    }
+
+		    ajaxTo(params);
+		}
+    </script>

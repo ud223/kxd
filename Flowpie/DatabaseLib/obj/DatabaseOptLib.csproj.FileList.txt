@@ -1,0 +1,5 @@
+..\FlySystem\bin\Debug\DatabaseOptLib.dll
+..\FlySystem\bin\Debug\DatabaseOptLib.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\DatabaseOptLib.dll
+obj\Debug\DatabaseOptLib.pdb

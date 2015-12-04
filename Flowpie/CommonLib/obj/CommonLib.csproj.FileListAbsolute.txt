@@ -1,0 +1,20 @@
+F:\MyProject\CommonFunctionLib\CommonLibrary\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\CommonFunctionLib\FlySystem\bin\Debug\CommonLib.dll
+F:\MyProject\CommonFunctionLib\FlySystem\bin\Debug\CommonLib.pdb
+F:\MyProject\CommonFunctionLib\CommonLibrary\obj\Debug\CommonLib.dll
+F:\MyProject\CommonFunctionLib\CommonLibrary\obj\Debug\CommonLib.pdb
+C:\Users\KAKA\Documents\Visual Studio 2005\Projects\EventDrivers_Simple\CommonLibrary\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\KAKA\Documents\Visual Studio 2005\Projects\EventDrivers_Simple\CommonLibrary\obj\Debug\CommonLib.dll
+C:\Users\KAKA\Documents\Visual Studio 2005\Projects\EventDrivers_Simple\FlySystem\bin\Debug\CommonLib.dll
+C:\Users\KAKA\Documents\Visual Studio 2005\Projects\EventDrivers_Simple\FlySystem\bin\Debug\CommonLib.pdb
+C:\Users\KAKA\Documents\Visual Studio 2005\Projects\EventDrivers_Simple\CommonLibrary\obj\Debug\CommonLib.pdb
+F:\MyProject\EventDrivers_Simple\FlySystem\bin\Debug\CommonLib.dll
+F:\MyProject\EventDrivers_Simple\FlySystem\bin\Debug\CommonLib.pdb
+F:\MyProject\EventDrivers_Simple\CommonLibrary\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\EventDrivers_Simple\CommonLibrary\obj\Debug\CommonLib.dll
+F:\MyProject\EventDrivers_Simple\CommonLibrary\obj\Debug\CommonLib.pdb
+F:\MyProject\FaithFlatform\FlySystem\bin\Debug\CommonLib.dll
+F:\MyProject\FaithFlatform\FlySystem\bin\Debug\CommonLib.pdb
+F:\MyProject\FaithFlatform\CommonLibrary\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\FaithFlatform\CommonLibrary\obj\Debug\CommonLib.dll
+F:\MyProject\FaithFlatform\CommonLibrary\obj\Debug\CommonLib.pdb

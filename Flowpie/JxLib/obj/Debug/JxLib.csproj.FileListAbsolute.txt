@@ -1,0 +1,16 @@
+G:\2.0\Flowpie\JxLib\bin\Debug\JxLib.dll
+G:\2.0\Flowpie\JxLib\bin\Debug\JxLib.pdb
+G:\2.0\Flowpie\JxLib\bin\Debug\BaseLib.dll
+G:\2.0\Flowpie\JxLib\bin\Debug\SystemConfigureLib.dll
+G:\2.0\Flowpie\JxLib\bin\Debug\DatabaseLib.dll
+G:\2.0\Flowpie\JxLib\bin\Debug\CommonLib.dll
+G:\2.0\Flowpie\JxLib\bin\Debug\MySql.Data.dll
+G:\2.0\Flowpie\JxLib\bin\Debug\BaseLib.pdb
+G:\2.0\Flowpie\JxLib\bin\Debug\SystemConfigureLib.pdb
+G:\2.0\Flowpie\JxLib\bin\Debug\DatabaseLib.pdb
+G:\2.0\Flowpie\JxLib\bin\Debug\CommonLib.pdb
+G:\2.0\Flowpie\JxLib\obj\Debug\JxLib.csprojResolveAssemblyReference.cache
+G:\2.0\Flowpie\JxLib\obj\Debug\JxLib.Properties.Resources.resources
+G:\2.0\Flowpie\JxLib\obj\Debug\JxLib.csproj.GenerateResource.Cache
+G:\2.0\Flowpie\JxLib\obj\Debug\JxLib.dll
+G:\2.0\Flowpie\JxLib\obj\Debug\JxLib.pdb

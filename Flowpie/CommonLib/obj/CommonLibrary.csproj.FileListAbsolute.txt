@@ -1,0 +1,24 @@
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\CommonLibrary\bin\Debug\CommonLibrary.dll
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\CommonLibrary\bin\Debug\CommonLibrary.pdb
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\CommonLibrary\obj\Debug\ResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\CommonLibrary\obj\Debug\CommonLibrary.dll
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\CommonLibrary\obj\Debug\CommonLibrary.pdb
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\CommonLibrary\bin\Release\CommonLibrary.dll
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\CommonLibrary\bin\Release\CommonLibrary.pdb
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\CommonLibrary\obj\Release\ResolveAssemblyReference.cache
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\CommonLibrary\obj\Release\CommonLibrary.dll
+D:\My Documents\Visual Studio 2005\Projects\Frame_Simple\CommonLibrary\obj\Release\CommonLibrary.pdb
+F:\MyProject\Frame_Simple\CommonLibrary\bin\Debug\CommonLibrary.dll
+F:\MyProject\Frame_Simple\CommonLibrary\bin\Debug\CommonLibrary.pdb
+F:\MyProject\Frame_Simple\CommonLibrary\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\Frame_Simple\CommonLibrary\obj\Debug\CommonLibrary.dll
+F:\MyProject\Frame_Simple\CommonLibrary\obj\Debug\CommonLibrary.pdb
+F:\FlySystem\bin\Debug\CommonLibrary.dll
+F:\FlySystem\bin\Debug\CommonLibrary.pdb
+F:\MyProject\Frame_Simple\FlySystem\bin\Debug\CommonLibrary.dll
+F:\MyProject\Frame_Simple\FlySystem\bin\Debug\CommonLibrary.pdb
+F:\MyProject\FlySystem\FlySystem\bin\Debug\CommonLibrary.dll
+F:\MyProject\FlySystem\FlySystem\bin\Debug\CommonLibrary.pdb
+F:\MyProject\FlySystem\CommonLibrary\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\FlySystem\CommonLibrary\obj\Debug\CommonLibrary.dll
+F:\MyProject\FlySystem\CommonLibrary\obj\Debug\CommonLibrary.pdb

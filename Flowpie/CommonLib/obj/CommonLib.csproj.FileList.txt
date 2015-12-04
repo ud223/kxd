@@ -1,0 +1,5 @@
+..\FlySystem\bin\Debug\CommonLib.dll
+..\FlySystem\bin\Debug\CommonLib.pdb
+obj\Debug\ResolveAssemblyReference.cache
+obj\Debug\CommonLib.dll
+obj\Debug\CommonLib.pdb

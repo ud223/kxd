@@ -1,0 +1,14 @@
+G:\kxd\Flowpie\ProjectLib\bin\Release\ProjectLib.dll
+G:\kxd\Flowpie\ProjectLib\bin\Release\ProjectLib.pdb
+G:\kxd\Flowpie\ProjectLib\bin\Release\BaseLib.dll
+G:\kxd\Flowpie\ProjectLib\bin\Release\CacheLib.dll
+G:\kxd\Flowpie\ProjectLib\bin\Release\CommonLib.dll
+G:\kxd\Flowpie\ProjectLib\bin\Release\DatabaseLib.dll
+G:\kxd\Flowpie\ProjectLib\bin\Release\MySql.Data.dll
+G:\kxd\Flowpie\ProjectLib\bin\Release\BaseLib.pdb
+G:\kxd\Flowpie\ProjectLib\bin\Release\CacheLib.pdb
+G:\kxd\Flowpie\ProjectLib\bin\Release\CommonLib.pdb
+G:\kxd\Flowpie\ProjectLib\bin\Release\DatabaseLib.pdb
+G:\kxd\Flowpie\ProjectLib\obj\Release\ProjectLib.csprojResolveAssemblyReference.cache
+G:\kxd\Flowpie\ProjectLib\obj\Release\ProjectLib.dll
+G:\kxd\Flowpie\ProjectLib\obj\Release\ProjectLib.pdb

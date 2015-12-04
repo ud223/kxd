@@ -1,0 +1,5 @@
+J:\2.0\Flowpie\ExceptionLib\bin\Debug\ExceptionLib.dll
+J:\2.0\Flowpie\ExceptionLib\bin\Debug\ExceptionLib.pdb
+J:\2.0\Flowpie\ExceptionLib\obj\Debug\ExceptionLib.csprojResolveAssemblyReference.cache
+J:\2.0\Flowpie\ExceptionLib\obj\Debug\ExceptionLib.dll
+J:\2.0\Flowpie\ExceptionLib\obj\Debug\ExceptionLib.pdb

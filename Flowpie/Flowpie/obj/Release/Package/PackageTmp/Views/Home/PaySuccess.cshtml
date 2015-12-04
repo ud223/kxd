@@ -1,0 +1,80 @@
+﻿@{
+    Layout = "~/Views/Shared/mobile.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+<div>
+    <div class="bheiiew">
+        <div class="st"><i class='iconfont icon-10014'></i> 支付成功</div>
+        <div class="sst">感谢您的支付，快递员会尽快发货。<br />请随时查看<a href="/home/myorder">“订单管理”</a>跟踪包裹的状态</div>
+    </div>
+
+    <!--<div class="kxdh-box">
+        <a href="#" class="fullbtn"><i class="iconfont icon-tubiao212"></i> 将包裹信息分享给朋友</a>
+    </div>
+    -->
+    <div class="kxdh-box ntm">
+        <div class="kdeyntb">
+            <div class="td">
+                <img src="@if (ViewData["data"] != null)
+            {
+                var item = ViewData["data"] as System.Collections.Hashtable;
+
+                if (@item["headpic"].ToString() == "")
+                {
+                    string headpic = "/img/user.jpg";
+
+                    @headpic;
+                }
+                else
+                {
+                    @item["headpic"].ToString();
+                }
+            }" />
+            </div>
+            <div class="td">
+                <div class="t1">
+                    指定快递员
+                </div>
+                <div class="t2">
+                   @if (ViewData["data"] != null)
+                   {
+                       var item = ViewData["data"] as System.Collections.Hashtable;
+
+                        @item["sendcouriername"].ToString();
+                   }
+                </div>
+                <div class="t3">
+                    综合评分（@if (ViewData["data"] != null)
+                    {
+                        var item = ViewData["data"] as System.Collections.Hashtable;
+
+                        @item["score"].ToString();
+                    }）
+                </div>
+            </div>
+            <div class="td">
+                <div class="t4">
+                    @if (ViewData["data"] != null)
+                    {
+                        var item = ViewData["data"] as System.Collections.Hashtable;
+
+                        @item["sendcourierphone"].ToString();
+                    }
+                </div>
+                <span class="smllabel">@if (ViewData["data"] != null)
+                {
+                    var item = ViewData["data"] as System.Collections.Hashtable;
+
+                    @item["companytext"].ToString();
+                }</span>
+            </div>
+        </div>
+
+
+        <div>
+            <a href="/home" class="fullbtn normal">返回首页</a>
+        </div>
+    </div>
+</div>

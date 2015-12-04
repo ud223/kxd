@@ -1,0 +1,54 @@
+Time:    2015/12/3 15:06:46
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2015120300014'
+-----------------------------------------------------------
+
+
+Time:    2015/12/3 15:12:47
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2015120300017'
+-----------------------------------------------------------
+
+
+Time:    2015/12/3 15:17:07
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2015120300018'
+-----------------------------------------------------------
+
+
+Time:    2015/12/3 15:18:29
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2015120300019'
+-----------------------------------------------------------
+
+
+Time:    2015/12/3 15:20:36
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2015120300020'
+-----------------------------------------------------------
+
+
+Time:    2015/12/3 15:21:09
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2015120300021'
+-----------------------------------------------------------
+
+
+Time:    2015/12/3 16:05:31
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2015120300025'
+-----------------------------------------------------------
+
+
+Time:    2015/12/3 16:13:14
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2015120300028'
+-----------------------------------------------------------
+
+
+Time:    2015/12/3 16:46:43
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2015120300030'
+-----------------------------------------------------------
+
+

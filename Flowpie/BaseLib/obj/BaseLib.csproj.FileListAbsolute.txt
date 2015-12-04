@@ -1,0 +1,10 @@
+C:\Users\KAKA\Documents\Visual Studio 2005\Projects\EventDrivers_Simple\BaseLib\bin\Debug\BaseLib.dll
+C:\Users\KAKA\Documents\Visual Studio 2005\Projects\EventDrivers_Simple\BaseLib\bin\Debug\BaseLib.pdb
+C:\Users\KAKA\Documents\Visual Studio 2005\Projects\EventDrivers_Simple\BaseLib\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\KAKA\Documents\Visual Studio 2005\Projects\EventDrivers_Simple\BaseLib\obj\Debug\BaseLib.dll
+C:\Users\KAKA\Documents\Visual Studio 2005\Projects\EventDrivers_Simple\BaseLib\obj\Debug\BaseLib.pdb
+F:\MyProject\FaithFlatform\BaseLib\bin\Debug\BaseLib.dll
+F:\MyProject\FaithFlatform\BaseLib\bin\Debug\BaseLib.pdb
+F:\MyProject\FaithFlatform\BaseLib\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\FaithFlatform\BaseLib\obj\Debug\BaseLib.dll
+F:\MyProject\FaithFlatform\BaseLib\obj\Debug\BaseLib.pdb

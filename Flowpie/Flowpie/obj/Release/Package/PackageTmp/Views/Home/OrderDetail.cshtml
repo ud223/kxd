@@ -1,0 +1,268 @@
+﻿@{
+    Layout = "~/Views/Shared/mobile.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+<div class="kxdh-topbk">
+    <a href="/home/myorder" class="iconfont icon-angleleft"></a>
+    <span>订单详细</span>
+</div>
+<div class="kxdh-box">
+    @if (ViewData["data"] != null)
+    {
+        var item = ViewData["data"] as System.Collections.Hashtable;
+
+        switch (item["state"].ToString())
+        {
+            case "0":
+                {
+                    break;
+                }
+            case "1":
+                {
+                    <div class="kxd_status kxd_status1">已下单，等待取件</div>
+
+                    break;
+                }
+            case "2":
+                {
+                    <div class="kxd_status kxd_status2">等待支付</div>
+
+                    break;
+                }
+            case "3":
+                {
+                    <div class="kxd_status kxd_status3">已支付，揽收成功</div>
+
+                    break;
+                }
+            case "4":
+                {
+                    <div class="kxd_status kxd_status5">全部签收</div>
+
+                    break;
+                }
+            case "5":
+                {
+                    <div class="kxd_status kxd_status1">已评价</div>
+
+                    break;
+                }
+            case "9":
+                {
+                    <div class="kxd_status kxd_status6">取消订单</div>
+
+                    break;
+                }
+        }
+    }
+   
+    
+    @*<div class="kxd_status kxd_status4">部分签收</div>*@
+    @*<div class="kxd_status kxd_status7">问题件</div>*@
+
+    <div class="kdeyntb">
+        <div class="td">
+            <img src="@if (ViewData["data"] != null)
+            {
+                var item = ViewData["data"] as System.Collections.Hashtable;
+
+                if (@item["headpic"].ToString() == "")
+                {
+                    string headpic = "/img/user.jpg";
+
+                    @headpic;
+                }
+                else
+                {
+                    @item["headpic"].ToString();
+                }
+            }" />
+        </div>
+        <div class="td">
+            <div class="t1">
+                指定快递员
+            </div>
+            <div class="t2">
+                @if (ViewData["data"] != null)
+                {
+                    var item = ViewData["data"] as System.Collections.Hashtable;
+
+                    @item["sendcouriername"].ToString();
+                }
+            </div>
+            <div class="t3">
+                综合评分（@if (ViewData["data"] != null)
+                {
+                    var item = ViewData["data"] as System.Collections.Hashtable;
+
+                    @item["score"].ToString();
+                }）
+            </div>
+        </div>
+        <div class="td">
+            <div class="t4">
+                @if (ViewData["data"] != null)
+                {
+                    var item = ViewData["data"] as System.Collections.Hashtable;
+
+                    @item["sendcourierphone"].ToString();
+                }
+            </div>
+            <span class="smllabel">@if (ViewData["data"] != null)
+            {
+                var item = ViewData["data"] as System.Collections.Hashtable;
+
+                @item["companytext"].ToString();
+            }</span>
+        </div>
+    </div>
+
+
+
+    <ul class="kxdh-tbul">
+        <li>
+            <div>
+                <span class="lf t">下单时间</span>
+                <span class="rf v">@if (ViewData["data"] != null)
+            {
+                var item = ViewData["data"] as System.Collections.Hashtable;
+
+                    @item["rundate"].ToString();
+            } @if (ViewData["data"] != null)
+            {
+                var item = ViewData["data"] as System.Collections.Hashtable;
+
+                @item["runtime"].ToString();
+            }</span>
+            </div>
+        </li>
+        <li>
+            <div>
+                <span class="lf t">总费用</span>
+                <span class="rf v">￥@if (ViewData["data"] != null)
+            {
+                var item = ViewData["data"] as System.Collections.Hashtable;
+
+                    @item["amount"].ToString();
+            }元</span>
+            </div>
+        </li>
+    </ul>
+
+    <div class="kxdh-tra">
+        <div class="kxdh-fdtt">
+            <span class="hl"></span>
+            <span class="txt">物流跟踪记录</span>
+        </div>
+        <div>
+            @foreach (var item in ViewData["list"] as List<System.Collections.Hashtable>)
+            {
+                <div class="kxdh-trackitm" value="@item["expressid"].ToString()" code="@item["companycode"].ToString()">
+                    <div class="kxdh-tracktt">
+                        <span>单号 @item["expressid"].ToString() <b>（￥@item["amount"].ToString()元）</b></span>
+                        <i class="iconfont icon-angledown"></i>
+                    </div>
+                    <ul class="kxdh-trackul">
+                    </ul>
+                </div>
+            }
+            @*<div class="kxdh-trackitm open">
+                <div class="kxdh-tracktt">
+                    <span>单号2214637<b>（￥15元）</b></span>
+                    <i class="iconfont icon-angledown"></i>
+                </div>
+                <ul class="kxdh-trackul">
+                    <li>
+                        <i class="hdt iconfont icon-iconfontradioboxfill"></i>
+                        <span>2015年5月15日 15:23 收件</span>
+                    </li>
+                    <li>
+                        <i class="hdt iconfont icon-iconfontradioboxfill"></i>
+                        <span>2015年5月16日 16:23 郴州中转站</span>
+                    </li>
+                    <li>
+                        <i class="hdt iconfont icon-iconfontradioboxfill"></i>
+                        <span>2015年5月17日 17:23 岳阳中转站</span>
+                    </li>
+                    <li>
+                        <i class="hdt iconfont icon-iconfontradioboxfill"></i>
+                        <span>2015年5月18日 18:23 签收成功</span>
+                    </li>
+                </ul>
+            </div>
+            *@
+    </div>
+</div>
+
+@if (ViewData["data"] != null)
+{
+    var item = ViewData["data"] as System.Collections.Hashtable;
+
+    if (item["state"].ToString() == "2")
+    {
+        <div class="paytheorderbtn" onclick="location.href='/home/paysuccess/@item["orderid"].ToString()'">
+            <div class="tt">请支付订单</div>
+            <div class="ct">
+                <sup>￥</sup>
+                <span>@item["amount"].ToString()</span>
+                <sub>元</sub>
+            </div>
+        </div>
+    }
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".kxdh-trackitm").click(function() {
+            if ($(this).hasClass("open")) {
+                $(this).removeClass("open");
+            }
+            else {
+                $(this).addClass("open");
+
+                getDetail(this);
+            }
+        })
+    });
+
+    function getDetail(node) {
+        if ($(this).find(".kxdh-trackul .li").length > 0) {
+            return;
+        }
+
+        var params = {
+            url: 'http://api.kuaidi100.com/api?id=7f0eb2df88c9b87a&com=' + $(node).attr('code') + '&nu=' + $(node).attr('value') + '&show=0&muti=1&order=desc',
+            data: false,
+            type: 'get',
+            dataType: 'JSONP',
+            successFun: loadNode,
+            errorFun: returnError,
+            param: node
+        }
+        console.log(params.url);
+        ajaxApi(params);
+    }
+
+    function loadNode(data, node) {
+        console.log(JSON.stringify(data));
+        var list = $(node).find(".kxdh-trackul");
+        if (data.status == 1) {
+            $.each(data.data, function () {
+                var li = $('<li> <i class="hdt iconfont icon-iconfontradioboxfill"></i> <span>' + this.time + this.context + '</span> </li>');
+
+                list.append(li);
+            });
+        }
+        else {
+            var li = $('<li> <i class="hdt iconfont icon-iconfontradioboxfill"></i> <span>' + data.message + '</span> </li>');
+
+            list.append(li);
+        }
+    }
+
+    function returnError(data, node) {
+        alert(JSON.stringify(data));
+    }
+
+</script>

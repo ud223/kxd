@@ -1,0 +1,14 @@
+G:\kxd\Flowpie\SystemConfigureLib\bin\Release\SystemConfigureLib.dll
+G:\kxd\Flowpie\SystemConfigureLib\bin\Release\SystemConfigureLib.pdb
+G:\kxd\Flowpie\SystemConfigureLib\bin\Release\BaseLib.dll
+G:\kxd\Flowpie\SystemConfigureLib\bin\Release\CommonLib.dll
+G:\kxd\Flowpie\SystemConfigureLib\bin\Release\DatabaseLib.dll
+G:\kxd\Flowpie\SystemConfigureLib\bin\Release\ProjectLib.dll
+G:\kxd\Flowpie\SystemConfigureLib\bin\Release\MySql.Data.dll
+G:\kxd\Flowpie\SystemConfigureLib\bin\Release\BaseLib.pdb
+G:\kxd\Flowpie\SystemConfigureLib\bin\Release\CommonLib.pdb
+G:\kxd\Flowpie\SystemConfigureLib\bin\Release\DatabaseLib.pdb
+G:\kxd\Flowpie\SystemConfigureLib\bin\Release\ProjectLib.pdb
+G:\kxd\Flowpie\SystemConfigureLib\obj\Release\SystemConfigureLib.csprojResolveAssemblyReference.cache
+G:\kxd\Flowpie\SystemConfigureLib\obj\Release\SystemConfigureLib.dll
+G:\kxd\Flowpie\SystemConfigureLib\obj\Release\SystemConfigureLib.pdb

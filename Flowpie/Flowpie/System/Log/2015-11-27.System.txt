@@ -1,0 +1,12 @@
+Time:    2015/11/27 14:52:05
+Action:  抢单
+Message: update app_order set courierid = '2015111300002', sendcouriername='测试二', sendcourierphone='345345345', companyid=1, state = 1, orderTypeid = 2, ModifyAt='2015-11-27 14:51:55' where orderid = '2015112700005'
+-----------------------------------------------------------
+
+
+Time:    2015/11/27 14:52:05
+Action:  更新主订单价格
+Message: update app_order set courierid = '2015111300002', sendcouriername='测试二', sendcourierphone='345345345', companyid=1, state = 1, orderTypeid = 2, ModifyAt='2015-11-27 14:51:55' where orderid = '2015112700005'
+-----------------------------------------------------------
+
+

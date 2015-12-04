@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/mobile.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+
+<button onclick="testTake()">测试</button>
+<button onclick="testLogin()">登录</button>
+<script type="text/javascript">
+    function testTake() {
+        var params = {
+            url: '/api/order/take',
+            data: { 'courierid': '2015111300002', 'name': '测试二', 'phone': '345345345', 'orderid': '2015112700005' }
+        }
+
+        ajaxTo(params);
+    }
+
+    function testLogin() {
+        var params = {
+            url: 'http://120.24.154.122:8001/api/user/loginCourier',
+            data: { 'loginname': 'lsz', 'password': '123' },
+            type:'get'
+        }
+
+        ajaxTo(params);
+    }
+</script>

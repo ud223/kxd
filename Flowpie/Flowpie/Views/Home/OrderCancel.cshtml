@@ -1,0 +1,110 @@
+﻿@{
+    Layout = "~/Views/Shared/mobile.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=8TN0gC5Rqo6cec2jroKOkNpE&v=2.0"></script>
+<div class="kxdh-topbk">
+    <a href="/home" class="iconfont icon-angleleft"></a>
+    <span>取消订单</span>
+</div>
+
+<div class="kxdh-box">
+    <p style="color:#aaa;margin-bottom:15px;">
+        请选择取消订单的原因
+    </p>
+    <div class="rbrowitm">
+        <div class="wtradio">
+            <input type="radio" value="1" id="rad01" name="clients" msg="快递员太慢，等不急" />
+            <label for="rad01"></label>
+        </div>
+        <label class="wtcheckboxlabel" for="rad01">快递员太慢，等不急</label>
+    </div>
+    <div class="rbrowitm">
+        <div class="wtradio">
+            <input type="radio" value="1" id="rad02" name="clients" msg="物品种类限制，发不了货" />
+            <label for="rad02"></label>
+        </div>
+        <label class="wtcheckboxlabel" for="rad02">物品种类限制，发不了货</label>
+    </div>
+    <div class="rbrowitm">
+        <div class="wtradio">
+            <input type="radio" value="1" id="rad03" name="clients" msg="服务态度不好" />
+            <label for="rad03"></label>
+        </div>
+        <label class="wtcheckboxlabel" for="rad03">服务态度不好</label>
+    </div>
+    <div class="rbrowitm">
+        <div class="wtradio">
+            <input type="radio" value="1" id="rad04" name="clients" msg="价格问题" />
+            <label for="rad04"></label>
+        </div>
+        <label class="wtcheckboxlabel" for="rad04">价格问题</label>
+    </div>
+    <div class="rbrowitm">
+        <div class="wtradio">
+            <input type="radio" value="1" id="rad05" name="clients" msg="错误下单" />
+            <label for="rad05"></label>
+        </div>
+        <label class="wtcheckboxlabel" for="rad05">错误下单</label>
+    </div>
+    <div class="rbrowitm">
+        <div class="wtradio">
+            <input type="radio" value="1" id="rad06" name="clients" msg="其他原因" />
+            <label for="rad06"></label>
+        </div>
+        <label class="wtcheckboxlabel" for="rad06">其他原因</label>
+    </div>
+    <div class="clear-15"></div>
+    <a href="javascript:void(0)" onclick="reject()" class="fullbtn">提交</a>
+</div>
+<script type="text/javascript">
+    function reject() {
+        var orderid = '@ViewData["data"].ToString()';
+
+        var msg = $('input[name="clients"]:checked').attr("msg");
+
+        if (!msg) {
+            var opertion = {
+                msg: "请选择取消理由!",
+                exitText: "关闭!"
+            };
+
+            $.alertbox(opertion);
+
+            return;
+        }
+
+        var params = {
+            url: '/api/order/Reject',
+            data: { 'orderid': orderid, 'msg': msg },
+            successFun: successReject,
+            errorFun: errorReject
+        }
+
+        ajaxTo(params);
+    }
+
+    function successReject(data) {
+        if (data.code == "200") {
+            var opertion = {
+                msg: "取消成功!",
+                exitText: "关闭!"
+            };
+
+            $.alertbox(opertion);
+
+            location.href = "/home";
+        }
+    }
+
+    function errorReject() {
+        var opertion = {
+            msg: "取消失败!",
+            exitText: "关闭!"
+        };
+
+        $.alertbox(opertion);
+    }
+</script>

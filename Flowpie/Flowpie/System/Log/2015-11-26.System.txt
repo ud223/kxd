@@ -1,0 +1,54 @@
+Time:    2015/11/26 0:13:58
+Action:  抢单
+Message: update app_order set courierid = '@2015111200007@', sendcouriername='测试二', sendcourierphone='345345345', state = 1 where orderid = '2015112500003'
+-----------------------------------------------------------
+
+
+Time:    2015/11/26 0:13:59
+Action:  更新主订单价格
+Message: update app_order set courierid = 'null', sendcouriername='测试二', sendcourierphone='345345345', state = 1 where orderid = '2015112500003'
+-----------------------------------------------------------
+
+
+Time:    2015/11/26 0:17:54
+Action:  抢单
+Message: update app_order set courierid = '2015111200007', sendcouriername='测试二', sendcourierphone='345345345', state = 1 where orderid = '2015112500003'
+-----------------------------------------------------------
+
+
+Time:    2015/11/26 0:17:56
+Action:  更新主订单价格
+Message: update app_order set courierid = '2015111200007', sendcouriername='测试二', sendcourierphone='345345345', state = 1 where orderid = '2015112500003'
+-----------------------------------------------------------
+
+
+Time:    2015/11/26 0:20:22
+Action:  抢单
+Message: update app_order set courierid = '2015111200007', sendcouriername='测试二', sendcourierphone='345345345', companyid=4, state = 1 where orderid = '2015112500003'
+-----------------------------------------------------------
+
+
+Time:    2015/11/26 0:20:22
+Action:  更新主订单价格
+Message: update app_order set courierid = '2015111200007', sendcouriername='测试二', sendcourierphone='345345345', companyid=4, state = 1 where orderid = '2015112500003'
+-----------------------------------------------------------
+
+
+Time:    2015/11/26 1:21:12
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2015112600003'
+-----------------------------------------------------------
+
+
+Time:    2015/11/26 1:22:07
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2015112600003'
+-----------------------------------------------------------
+
+
+Time:    2015/11/26 1:22:46
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '服务态度不好', state = 9 where orderid = '2015112600003'
+-----------------------------------------------------------
+
+

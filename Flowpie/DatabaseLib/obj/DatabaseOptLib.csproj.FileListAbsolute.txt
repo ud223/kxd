@@ -1,0 +1,15 @@
+F:\MyProject\CommonFunctionLib\DatabaseLibrary\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\CommonFunctionLib\FlySystem\bin\Debug\DatabaseOptLib.dll
+F:\MyProject\CommonFunctionLib\FlySystem\bin\Debug\DatabaseOptLib.pdb
+F:\MyProject\CommonFunctionLib\DatabaseLibrary\obj\Debug\DatabaseOptLib.dll
+F:\MyProject\CommonFunctionLib\DatabaseLibrary\obj\Debug\DatabaseOptLib.pdb
+C:\Users\KAKA\Documents\Visual Studio 2005\Projects\EventDrivers_Simple\DatabaseLibrary\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\KAKA\Documents\Visual Studio 2005\Projects\EventDrivers_Simple\DatabaseLibrary\obj\Debug\DatabaseOptLib.dll
+C:\Users\KAKA\Documents\Visual Studio 2005\Projects\EventDrivers_Simple\DatabaseLibrary\obj\Debug\DatabaseOptLib.pdb
+C:\Users\KAKA\Documents\Visual Studio 2005\Projects\EventDrivers_Simple\FlySystem\bin\Debug\DatabaseOptLib.dll
+C:\Users\KAKA\Documents\Visual Studio 2005\Projects\EventDrivers_Simple\FlySystem\bin\Debug\DatabaseOptLib.pdb
+F:\MyProject\FaithFlatform\DatabaseLib\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\FaithFlatform\DatabaseLib\obj\Debug\DatabaseOptLib.dll
+F:\MyProject\FaithFlatform\DatabaseLib\obj\Debug\DatabaseOptLib.pdb
+F:\MyProject\FaithFlatform\FlySystem\bin\Debug\DatabaseOptLib.dll
+F:\MyProject\FaithFlatform\FlySystem\bin\Debug\DatabaseOptLib.pdb

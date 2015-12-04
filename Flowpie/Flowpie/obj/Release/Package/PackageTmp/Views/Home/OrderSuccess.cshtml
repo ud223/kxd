@@ -1,0 +1,103 @@
+﻿@{
+    Layout = "~/Views/Shared/mobile.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+    <div>
+        <div class="bheiiew">
+            <div class="st"><i class='iconfont icon-10014'></i> 下单成功</div>
+            <div class="sst">快递员即将联系您，<br />也可以主动联系快递员哦！</div>
+        </div>
+
+        <div class="kxdh-box ntm">
+            <div class="kdeyntb">
+                <div class="td">
+                    <img src="~/img/user.jpg" />
+                </div>
+                <div class="td">
+                    <div class="t1">
+                        指定快递员
+                    </div>
+                    <div class="t2">
+                        @if (ViewData["data"] != null)
+                        {
+                            var item = ViewData["data"] as System.Collections.Hashtable;
+
+                            @item["sendcouriername"].ToString()
+                        }
+                    </div>
+                    <div class="t3">
+                        综合评分（5.0）
+                    </div>
+                </div>
+                <div class="td">
+                    <div class="t4">
+                        @if (ViewData["data"] != null)
+                        {
+                            var item = ViewData["data"] as System.Collections.Hashtable;
+
+                            @item["sendcourierphone"].ToString()
+                        }
+                    </div>
+                    <span class="smllabel">@if (ViewData["data"] != null)
+                    {
+                        var item = ViewData["data"] as System.Collections.Hashtable;
+
+                        @item["companytext"].ToString()
+                    }</span>
+                </div>
+            </div>
+            @if (ViewData["iscommon"].ToString() == "0")
+            {
+                <div id="add-courier-btn" courierid=" @if (ViewData["data"] != null)
+                        {
+                            var item = ViewData["data"] as System.Collections.Hashtable;
+
+                            @item["courierid"].ToString()
+                        }" style="margin-bottom:50px;background:rgba(0,0,0,.1);padding:10px;height:24px;line-height:24px;text-align: center;">
+                    <div class="wtcheckbox">
+                        <input type="checkbox" value="1" id="cbk01" name="" />
+                        <label for="cbk01"></label>
+                    </div>
+                    <label class="wtcheckboxlabel" for="cbk01">保存为常用快递员</label>
+                </div>
+            }
+            else
+            {
+                <div style="margin-bottom:50px;background:rgba(0,0,0,.1);padding:10px;height:24px;line-height:24px;text-align: center;">
+                    <div class="wtcheckbox">
+                        <input type="checkbox" value="1" id="cbk01" name="" checked="checked" disabled="disabled" />
+                        <label for="cbk01"></label>
+                    </div>
+                    <label class="wtcheckboxlabel">保存为常用快递员</label>
+                </div>
+            }
+
+            <div>
+                <a href="/home" class="fullbtn">返回</a>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#add-courier-btn").click(function () {
+            addcourier($(this).attr('courierid'));
+        })
+    });
+
+    function addcourier(courierid) {
+        var user_id = $.cookie('user_id');
+
+
+        var data = { 'userid': user_id, 'courierid':courierid };
+
+        var params = {
+            url: '/api/user/addcourier',
+            data: data,
+            type: 'post'
+        }
+
+        ajaxTo(params);
+    }
+</script>

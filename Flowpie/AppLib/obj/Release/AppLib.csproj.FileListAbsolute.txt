@@ -1,0 +1,9 @@
+G:\kxd\Flowpie\AppLib\bin\Release\AppLib.dll
+G:\kxd\Flowpie\AppLib\bin\Release\AppLib.pdb
+G:\kxd\Flowpie\AppLib\bin\Release\GetuiServerApiSDK.dll
+G:\kxd\Flowpie\AppLib\bin\Release\Google.ProtocolBuffers.dll
+G:\kxd\Flowpie\AppLib\bin\Release\log4net.dll
+G:\kxd\Flowpie\AppLib\bin\Release\Newtonsoft.Json.dll
+G:\kxd\Flowpie\AppLib\obj\Release\AppLib.csprojResolveAssemblyReference.cache
+G:\kxd\Flowpie\AppLib\obj\Release\AppLib.dll
+G:\kxd\Flowpie\AppLib\obj\Release\AppLib.pdb

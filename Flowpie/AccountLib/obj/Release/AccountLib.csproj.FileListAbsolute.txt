@@ -1,0 +1,16 @@
+G:\kxd\Flowpie\AccountLib\bin\Release\AccountLib.dll
+G:\kxd\Flowpie\AccountLib\bin\Release\AccountLib.pdb
+G:\kxd\Flowpie\AccountLib\bin\Release\BaseLib.dll
+G:\kxd\Flowpie\AccountLib\bin\Release\CacheLib.dll
+G:\kxd\Flowpie\AccountLib\bin\Release\CommonLib.dll
+G:\kxd\Flowpie\AccountLib\bin\Release\DatabaseLib.dll
+G:\kxd\Flowpie\AccountLib\bin\Release\ProjectLib.dll
+G:\kxd\Flowpie\AccountLib\bin\Release\MySql.Data.dll
+G:\kxd\Flowpie\AccountLib\bin\Release\BaseLib.pdb
+G:\kxd\Flowpie\AccountLib\bin\Release\CacheLib.pdb
+G:\kxd\Flowpie\AccountLib\bin\Release\CommonLib.pdb
+G:\kxd\Flowpie\AccountLib\bin\Release\DatabaseLib.pdb
+G:\kxd\Flowpie\AccountLib\bin\Release\ProjectLib.pdb
+G:\kxd\Flowpie\AccountLib\obj\Release\AccountLib.csprojResolveAssemblyReference.cache
+G:\kxd\Flowpie\AccountLib\obj\Release\AccountLib.dll
+G:\kxd\Flowpie\AccountLib\obj\Release\AccountLib.pdb

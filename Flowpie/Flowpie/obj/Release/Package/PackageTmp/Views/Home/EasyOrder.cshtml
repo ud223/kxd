@@ -1,0 +1,287 @@
+﻿@{
+    Layout = "~/Views/Shared/mobile.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+<form action="/order/save" method="post">
+    <div class="kxdh-topbk">
+        <a href="/home" class="iconfont icon-angleleft"></a>
+        <span>便捷下单</span>
+    </div>
+
+    <div class="clear-15"></div>
+    <div class="kxdh-box ntm">
+        <select id="local" name="local" style="width: 100%;">
+            <option value="0">请选目的地省</option>
+        </select>
+        <input id="weight" name="weight" type="text" placeholder="包裹重量 kg" />
+        <div style="display: table;">
+            <div style="display:table-cell">
+                <input id="long" name="long" type="text" placeholder="长度 cm" />
+            </div>
+            <div style="display:table-cell">
+                <input id="width" name="width" type="text" placeholder="宽度 cm" />
+            </div>
+            <div style="display:table-cell">
+                <input id="height" name="height" type="text" placeholder="高度 cm" />
+            </div>
+        </div>
+        <a id="getprice_btn" class="fullbtn">估算费用</a>
+        <!--
+            点击查询后获取数据后出现
+        -->
+        <div class="clear-15"></div>
+        <ul class="qptoptab" style="font-size:12px;">
+            <li class="choose-btn fj selected">附近的快递员（<span class="fj-count">0</span>）</li>
+            <li class="choose-btn cy">常用快递员（<span class="cy-count">0</span>）</li>
+        </ul>
+        <div id="courier_list" class="kxdh-listb mblist">
+
+        </div>
+        <div id="relation_list" class="kxdh-listb mblist" style="display:none">
+
+        </div>
+    </div>
+
+    <div class="clear-15"></div>
+    <div class="pagerarea" style="padding-bottom:80px;">
+        @*<a href="#" class="itm">1</a>
+        <a href="#" class="itm empty">...</a>
+        <a href="#" class="itm">21</a>
+        <a href="#" class="itm selected">23</a>
+        <a href="#" class="itm">24</a>
+        <a href="#" class="itm empty">...</a>
+        <a href="#" class="itm">44</a>*@
+    </div>
+
+    <div id="courier_item" style="display:none">
+        <div class="itm slim"><!--unuse 状态为不接单的样式 -->
+            <div>
+                <span class="h1 name"> <i class="gold company"></i></span>
+            </div>
+            <div class="h4">
+                <span class="status">接单中</span>
+            </div>
+            <div class="h5 fee">
+                <div>运费</div>
+                <div><span class="amount"></span>元</div>
+            </div>
+            <i class="iconfont icon-squarecheckfill"></i>
+        </div>
+    </div>
+    <input type="hidden" id="courierid" name="courierid">
+    <input type="hidden" id="address" name="address">
+    <input type="hidden" id="addressdetail" name="addressdetail">
+    <input type="hidden" id="runtime" name="runtime">
+    <input type="hidden" id="amount" name="amount">
+    <input type="hidden" id="lat" name="lat">
+    <input type="hidden" id="lng" name="lng">
+    <input type="hidden" id="orderTypeid" name="orderTypeid" value="1">
+    <button type="submit" id="submit_btn" href="javascript:void(0)" class="fullbtn xuanfubtn" style="display:none;">下单</button>
+</form>
+<script type="text/javascript">
+    $(document).ready(function () {
+        getRegion();
+
+		$('.choose-btn').click(function () {
+			$('.choose-btn').removeClass('selected');
+
+			$(this).addClass('selected');
+
+			if ($(this).hasClass('cy')) {
+			    $('#courier_list').hide();
+			    $('#relation_list').show();
+			}
+			else {
+			    $('#relation_list').hide();
+			    $('#courier_list').show();
+			}
+		});
+
+		$('#getprice_btn').click(function () {
+		    getPrice();
+		    getRelation();
+		})
+
+		var address = localStorage.getItem('address');
+		var time = localStorage.getItem('time');
+		var addressdetail = localStorage.getItem('addressdetail');
+		var lat = localStorage.getItem('lat');
+		var lng = localStorage.getItem('lng');
+
+
+		$('#address').val(address);
+		$('#addressdetail').val(addressdetail)
+		$('#runtime').val(time);
+		$('#lat').val(lat);
+		$('#lng').val(lng);
+	});
+
+	function initPriceClick() {
+	    $('.mblist .itm.slim').click(function () {
+	        var obj = $(this).closest('.slim');
+	        if (obj.hasClass('unuse')) {
+	            return;
+	        }
+
+	        obj.siblings('.slim').removeClass('selected');
+	        obj.addClass('selected');
+
+	        $('#courierid').val($(this).attr('courierid'));
+	        $('#amount').val($(this).find('.amount').html());
+
+	        $('.xuanfubtn').show();
+	    });
+	}
+
+	function getRelation() {
+	    var local = $('#local').val();
+	    var weight = $('#weight').val();
+	    var lat = $('#lat').val();
+	    var lng = $('#lng').val();
+
+	    if (!local || !weight) {
+	        var opertion = {
+	            msg: "请输入目的地和发货重量!",
+	            exitText: "关闭!"
+	        };
+
+	        $.alertbox(opertion)
+
+	        return;
+	    }
+
+	    var params = {
+	        url: '/api/User/getRelationCourier',
+	        data: { 'local': local, 'weight': weight, 'lat': lat, 'lng': lng },
+	        type: 'get',
+	        successFun: bangRelation,
+	        errorFun: errorRelationFun
+	    }
+
+	    ajaxTo(params);
+	}
+
+	function bangRelation(data) {
+	    var strdata = JSON.stringify(data.data);
+
+	    strdata = '[' + strdata.substr(1, strdata.length - 2) + ']';
+
+	    var list_data = eval('(' + strdata + ')');
+
+	    var list = $('#relation_list');
+
+	    list.html('');
+
+	    $.each(list_data, function () {
+	        var node = $("#courier_item").find('.itm').clone();
+
+	        node.attr('courierid', this.courierid);
+	        node.find('.name').html(this.name);
+	        node.find('.company').html(this.companytext);
+	        node.find('.amount').html(this.amount);
+
+	        if (this.state != "1") {
+	            node.addClass("unuse");
+	            node.find(".status").html("未接单");
+	        }
+
+	        list.append(node);
+	    })
+
+	    $('.cy-count').html(list_data.length);
+
+	    initPriceClick();
+	}
+
+	function errorRelationFun(data) {
+	    $('#relation_list').html('');
+
+	    var opertion = {
+	        msg: data.message,
+	        exitText: "关闭!"
+	    };
+
+	    $.alertbox(opertion)
+	}
+
+	function getPrice() {
+	    var local = $('#local').val();
+	    var weight = $('#weight').val();
+	    var lat = $('#lat').val();
+	    var lng = $('#lng').val();
+
+	    if (!local || !weight) {
+	        var opertion = {
+	            msg: "请输入目的地和发货重量!",
+	            exitText: "关闭!"
+	        };
+
+	        $.alertbox(opertion)
+
+	        return;
+	    }
+
+	    var params = {
+	        url: '/api/User/getPriceByLocal',
+	        data: { 'local': local, 'weight': weight, 'lat': lat, 'lng': lng },
+	        type: 'get',
+	        successFun: bangPrice,
+	        errorFun: errorFun
+	    }
+
+	    ajaxTo(params);
+	}
+
+	function bangPrice(data) {
+	    var strdata = JSON.stringify(data.data);
+
+	    strdata = '[' + strdata.substr(1, strdata.length - 2) + ']';
+
+	    var list_data = eval('(' + strdata + ')');
+
+	    var list = $('#courier_list');
+
+	    list.html('');
+
+	    $.each(list_data, function () {
+	        var node = $("#courier_item").find('.itm').clone();
+
+	        node.attr('courierid', this.courierid);
+	        node.find('.name').html(this.name);
+	        node.find('.company').html(this.companytext);
+	        node.find('.amount').html(this.amount);
+
+	        if (this.state != "1") {
+	            node.addClass("unuse");
+	            node.find(".status").html("未接单");
+	        }
+
+	        list.append(node);
+	    })
+
+	    $('.fj-count').html(list_data.length);
+
+	    initPriceClick();
+	}
+
+	function errorFun(data) {
+	    $('#courier_list').html('');
+
+	    var opertion = {
+	        msg: data.message,
+	        exitText: "关闭!"
+	    };
+
+	    $.alertbox(opertion)
+	}
+
+	function getRegion() {
+	    var p = ['北京市', '广东省', '山东省', '江苏省', '河南省', '上海市', '河北省', '浙江省', '香港特别行政区', '陕西省', '湖南省', '重庆市', '福建省', '天津市', '云南省', '四川省', '广西壮族自治区', '安徽省', '海南省', '江西省', '湖北省', '山西省', '辽宁省', '台湾省', '黑龙江', '内蒙古自治区', '澳门特别行政区', '贵州省', '甘肃省', '青海省', '新疆维吾尔自治区', '西藏区', '吉林省', '宁夏回族自治区'];
+
+	    for (var i = 0; i < p.length; i++) {
+	        $("#local").append("<option value='"+ p[i] +"'>"+ p[i] +"</option>");
+	    }
+	}
+</script>

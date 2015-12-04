@@ -1,0 +1,16 @@
+J:\2.0\Flowpie\KernelLib\bin\Debug\KernelLib.dll
+J:\2.0\Flowpie\KernelLib\bin\Debug\KernelLib.pdb
+J:\2.0\Flowpie\KernelLib\bin\Debug\CodeLib.dll
+J:\2.0\Flowpie\KernelLib\bin\Debug\BaseLib.dll
+J:\2.0\Flowpie\KernelLib\bin\Debug\DatabaseLib.dll
+J:\2.0\Flowpie\KernelLib\bin\Debug\CacheLib.dll
+J:\2.0\Flowpie\KernelLib\bin\Debug\CommonLib.dll
+J:\2.0\Flowpie\KernelLib\bin\Debug\CodeLib.pdb
+J:\2.0\Flowpie\KernelLib\bin\Debug\BaseLib.pdb
+J:\2.0\Flowpie\KernelLib\bin\Debug\DatabaseLib.pdb
+J:\2.0\Flowpie\KernelLib\bin\Debug\CacheLib.pdb
+J:\2.0\Flowpie\KernelLib\bin\Debug\CommonLib.pdb
+J:\2.0\Flowpie\KernelLib\obj\Debug\KernelLib.csprojResolveAssemblyReference.cache
+J:\2.0\Flowpie\KernelLib\obj\Debug\KernelLib.dll
+J:\2.0\Flowpie\KernelLib\obj\Debug\KernelLib.pdb
+J:\2.0\Flowpie\KernelLib\bin\Debug\MySql.Data.dll

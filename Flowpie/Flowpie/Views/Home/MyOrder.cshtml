@@ -1,0 +1,179 @@
+﻿@{
+    Layout = "~/Views/Shared/mobile.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+<div class="kxdh-topbk">
+    <a href="/home/myindex" class="iconfont icon-angleleft"></a>
+    <span>订单管理</span>
+</div>
+@*<div class="kxdh-box">
+    <div class="kxdh-inqtb1">
+        <div class="td s1">
+            
+                描述：选择了选项“时间段”后， 下方的2个起止时间输入框的disabled才去掉可用
+            
+            <div class="s3" style="margin-top:0;padding-top:2px;margin-bottom:14px;">
+                查询订单
+            </div>
+            <div class="tb">
+                <div class="tr">
+                    <div class="td"><input type="date" class="s2" disabled="disabled" value="2015-10-01" /></div>
+                    <div class="td"><input type="date" class="s2" disabled="disabled" value="2015-10-30" /></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="td s4">
+            <button class="s5">查询</button>
+        </div>
+    </div>
+</div>*@
+
+<div class="kxdh-listb">
+    @foreach (var item in ViewData["data"] as List<System.Collections.Hashtable>)
+    {
+        string stateText = "";
+        string classString = "";
+
+        switch (item["state"].ToString())
+        {
+            case "0":
+                {
+                    stateText = "创建订单";
+                    classString = "status1";
+                    break;
+                }
+            case "1":
+                {
+                    stateText = "已下单，等待取件";
+                    classString = "status1";
+                    break;
+                }
+            case "2":
+                {
+                    stateText = "待付款";
+                    classString = "status2";
+                    break;
+                }
+            case "3":
+                {
+                    stateText = "已付款";
+                    classString = "status3";
+                    break;
+                }
+            case "4":
+                {
+                    stateText = "全部签收";
+                    classString = "status5";
+                    break;
+                }
+            case "5":
+                {
+                    stateText = "已评价";
+                    classString = "status1";
+                    break;
+                }
+            case "9":
+                {
+                    stateText = "取消订单";
+                    classString = "status6";
+                    break;
+                }
+        }
+
+        <a href="/home/orderdetail/@item["orderid"].ToString()" class="itm slim @classString">
+            <div>
+                <span class="h1">@item["fromname"].ToString()</span>
+                <span class="gold">￥@item["amount"].ToString()元</span>
+            </div>
+            <div class="h4">
+                <span>取件时间 @item["rundate"].ToString() @item["runtime"].ToString()</span>
+                <span class="tagb">
+                    @stateText
+                </span>
+            </div>
+        </a>
+    }
+    @*<a href="p20_订单详细.html" class="itm slim status1">/home/orderdetail/@item["orderid"].ToString()
+        <div>
+            <span class="h1">张晓明</span>
+            <span class="gold">￥15元</span>
+        </div>
+        <div class="h4">
+            <span>取件时间 2015年5月3日 15:43</span>
+            <span class="tagb">已下单，等待取件</span>
+        </div>
+    </a>
+    <a href="p20_订单详细.html" class="itm slim status2">
+        <div>
+            <span class="h1">张晓明</span>
+            <span class="gold">￥15元</span>
+        </div>
+        <div class="h4">
+            <span>取件时间 2015年5月3日 15:43</span>
+            <span class="tagb">等待支付</span>
+        </div>
+    </a>
+    <a href="p20_订单详细.html" class="itm slim status3">
+        <div>
+            <span class="h1">张晓明</span>
+            <span class="gold">￥15元</span>
+        </div>
+        <div class="h4">
+            <span>取件时间 2015年5月3日 15:43</span>
+            <span class="tagb">已支付，揽收成功</span>
+        </div>
+    </a>
+    <a href="p20_订单详细.html" class="itm slim status4">
+        <div>
+            <span class="h1">张晓明</span>
+            <span class="gold">￥15元</span>
+        </div>
+        <div class="h4">
+            <span>取件时间 2015年5月3日 15:43</span>
+            <span class="tagb">部分签收</span>
+        </div>
+    </a>
+    <a href="p20_订单详细.html" class="itm slim status5">
+        <div>
+            <span class="h1">张晓明</span>
+            <span class="gold">￥15元</span>
+        </div>
+        <div class="h4">
+            <span>取件时间 2015年5月3日 15:43</span>
+            <span class="tagb">全部签收</span>
+        </div>
+    </a>
+    <a href="p20_订单详细.html" class="itm slim status6">
+        <div>
+            <span class="h1">张晓明</span>
+            <span class="gold">￥15元</span>
+        </div>
+        <div class="h4">
+            <span>取件时间 2015年5月3日 15:43</span>
+            <span class="tagb">取消订单</span>
+        </div>
+    </a>
+    <a href="p20_订单详细.html" class="itm slim status7">
+        <div>
+            <span class="h1">张晓明</span>
+            <span class="gold">￥15元</span>
+        </div>
+        <div class="h4">
+            <span>取件时间 2015年5月3日 15:43</span>
+            <span class="tagb">问题件</span>
+        </div>
+    </a>*@
+</div>
+<div class="clear-15"></div>
+<div class="pagerarea" style="padding-bottom:50px;">
+    @*<a href="#" class="itm">1</a>
+    <a href="#" class="itm empty">...</a>
+    <a href="#" class="itm">21</a>
+    <a href="#" class="itm selected">23</a>
+    <a href="#" class="itm">24</a>
+    <a href="#" class="itm empty">...</a>
+    <a href="#" class="itm">44</a>*@
+</div>

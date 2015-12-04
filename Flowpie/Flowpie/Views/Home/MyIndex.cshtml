@@ -1,0 +1,76 @@
+﻿@{
+    Layout = "~/Views/Shared/mobile.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+<div class="kxdh-topbk">
+    <a href="/home" class="iconfont icon-angleleft"></a>
+    <span>个人中心</span>
+</div>
+
+
+<div class="p10-t02">
+    <img src="@if (ViewData["data"] != null)
+    {
+        var item = ViewData["data"] as System.Collections.Hashtable;
+        var default_image = "/img/user.jpg";
+
+        if (item["headpic"].ToString() == "")
+        {
+            @default_image;
+        }
+        else
+        {
+            @item["headpic"].ToString();
+        }   
+    }" class="usrgmi">
+    <div class="p10-t03"><span>@if (ViewData["data"] != null)
+    {
+        var item = ViewData["data"] as System.Collections.Hashtable;
+
+        @item["name"].ToString();
+    }</span></div>
+</div>
+
+<div class="blackrowgall ntm">
+    <a href="/home/modifyinfo" class="row actbtn">
+        <span class="tt">个人信息维护</span>
+        <div class="holder arr">
+            <i class="iconfont icon-angleright"></i>
+        </div>
+    </a>
+    @*<a href="#" class="row actbtn">
+        <span class="tt">修改登录密码</span>
+        <div class="holder arr">
+            <i class="iconfont icon-angleright"></i>
+        </div>
+    </a>*@
+</div>
+
+<div class="blackrowgall">
+    <a href="/home/myorder" class="row actbtn">
+        <span class="tt">订单管理</span>
+        <div class="holder arr">
+            <i class="iconfont icon-angleright"></i>
+        </div>
+    </a>
+    <a href="/home/expressquery" class="row actbtn">
+        <span class="tt">查询快递</span>
+        <div class="holder arr">
+            <i class="iconfont icon-angleright"></i>
+        </div>
+    </a>
+    @*<a href="#" class="row actbtn">
+        <span class="tt">收发统计</span>
+        <div class="holder arr">
+            <i class="iconfont icon-angleright"></i>
+        </div>
+    </a>*@
+    <a href="/home/mycourier" class="row actbtn">
+        <span class="tt">常用快递员</span>
+        <div class="holder arr">
+            <i class="iconfont icon-angleright"></i>
+        </div>
+    </a>
+</div>

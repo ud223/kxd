@@ -1,0 +1,35 @@
+H:\MyProject\盛国锐\Apex\Apex EIP\DatabaseLib\obj\Debug\ResolveAssemblyReference.cache
+H:\MyProject\盛国锐\Apex\Apex EIP\DatabaseLib\obj\Debug\DatabaseOptLib.dll
+H:\MyProject\盛国锐\Apex\Apex EIP\DatabaseLib\obj\Debug\DatabaseOptLib.pdb
+H:\MyProject\盛国锐\Apex\Apex EIP\FlySystem\bin\Debug\DatabaseOptLib.dll
+H:\MyProject\盛国锐\Apex\Apex EIP\FlySystem\bin\Debug\DatabaseOptLib.pdb
+F:\MyProject\盛国锐\Apex\Apex EIP\FlySystem\bin\Debug\DatabaseOptLib.dll
+F:\MyProject\盛国锐\Apex\Apex EIP\FlySystem\bin\Debug\DatabaseOptLib.pdb
+F:\MyProject\盛国锐\Apex\Apex EIP\DatabaseLib\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\盛国锐\Apex\Apex EIP\DatabaseLib\obj\Debug\DatabaseOptLib.dll
+F:\MyProject\盛国锐\Apex\Apex EIP\DatabaseLib\obj\Debug\DatabaseOptLib.pdb
+F:\MyProject\盛国锐\Apex(V1.0)\Apex EIP\FlySystem\bin\Debug\DatabaseOptLib.dll
+F:\MyProject\盛国锐\Apex(V1.0)\Apex EIP\FlySystem\bin\Debug\DatabaseOptLib.pdb
+F:\MyProject\盛国锐\Apex(V1.0)\Apex EIP\DatabaseLib\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\盛国锐\Apex(V1.0)\Apex EIP\DatabaseLib\obj\Debug\DatabaseOptLib.dll
+F:\MyProject\盛国锐\Apex(V1.0)\Apex EIP\DatabaseLib\obj\Debug\DatabaseOptLib.pdb
+F:\MyProject\Apex\Apex(V1.0)\Apex EIP\FlySystem\bin\Debug\DatabaseOptLib.dll
+F:\MyProject\Apex\Apex(V1.0)\Apex EIP\FlySystem\bin\Debug\DatabaseOptLib.pdb
+F:\MyProject\Apex\Apex(V1.0)\Apex EIP\DatabaseLib\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\Apex\Apex(V1.0)\Apex EIP\DatabaseLib\obj\Debug\DatabaseOptLib.dll
+F:\MyProject\Apex\Apex(V1.0)\Apex EIP\DatabaseLib\obj\Debug\DatabaseOptLib.pdb
+F:\MyProject\Apex\Apex(V1.0)\ApexPudong\FlySystem\bin\Debug\DatabaseOptLib.dll
+F:\MyProject\Apex\Apex(V1.0)\ApexPudong\FlySystem\bin\Debug\DatabaseOptLib.pdb
+F:\MyProject\Apex\Apex(V1.0)\ApexPudong\DatabaseLib\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\Apex\Apex(V1.0)\ApexPudong\DatabaseLib\obj\Debug\DatabaseOptLib.dll
+F:\MyProject\Apex\Apex(V1.0)\ApexPudong\DatabaseLib\obj\Debug\DatabaseOptLib.pdb
+F:\MyProject\Apex\Apex(V2.0)\ApexEIP\FlySystem\bin\Debug\DatabaseOptLib.dll
+F:\MyProject\Apex\Apex(V2.0)\ApexEIP\FlySystem\bin\Debug\DatabaseOptLib.pdb
+F:\MyProject\Apex\Apex(V2.0)\ApexEIP\DatabaseLib\obj\Debug\DatabaseOptLib.dll
+F:\MyProject\Apex\Apex(V2.0)\ApexEIP\DatabaseLib\obj\Debug\DatabaseOptLib.pdb
+F:\MyProject\Apex\Apex(V2.0)\ApexEIP\DatabaseLib\obj\Debug\DatabaseOptLib.csprojResolveAssemblyReference.cache
+E:\MyProject\Apex\Apex(V2.0)\ApexEIP\FlySystem\bin\Debug\DatabaseOptLib.dll
+E:\MyProject\Apex\Apex(V2.0)\ApexEIP\FlySystem\bin\Debug\DatabaseOptLib.pdb
+E:\MyProject\Apex\Apex(V2.0)\ApexEIP\DatabaseLib\obj\Debug\DatabaseOptLib.csprojResolveAssemblyReference.cache
+E:\MyProject\Apex\Apex(V2.0)\ApexEIP\DatabaseLib\obj\Debug\DatabaseOptLib.dll
+E:\MyProject\Apex\Apex(V2.0)\ApexEIP\DatabaseLib\obj\Debug\DatabaseOptLib.pdb

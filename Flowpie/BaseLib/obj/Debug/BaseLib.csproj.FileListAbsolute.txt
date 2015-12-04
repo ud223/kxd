@@ -1,0 +1,55 @@
+H:\MyProject\盛国锐\Apex\Apex EIP\BaseLib\bin\Debug\BaseLib.dll
+H:\MyProject\盛国锐\Apex\Apex EIP\BaseLib\bin\Debug\BaseLib.pdb
+H:\MyProject\盛国锐\Apex\Apex EIP\BaseLib\obj\Debug\ResolveAssemblyReference.cache
+H:\MyProject\盛国锐\Apex\Apex EIP\BaseLib\obj\Debug\BaseLib.dll
+H:\MyProject\盛国锐\Apex\Apex EIP\BaseLib\obj\Debug\BaseLib.pdb
+F:\MyProject\盛国锐\Apex\Apex EIP\BaseLib\bin\Debug\BaseLib.dll
+F:\MyProject\盛国锐\Apex\Apex EIP\BaseLib\bin\Debug\BaseLib.pdb
+F:\MyProject\盛国锐\Apex\Apex EIP\BaseLib\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\盛国锐\Apex\Apex EIP\BaseLib\obj\Debug\BaseLib.dll
+F:\MyProject\盛国锐\Apex\Apex EIP\BaseLib\obj\Debug\BaseLib.pdb
+F:\MyProject\盛国锐\Apex(V1.0)\Apex EIP\BaseLib\bin\Debug\BaseLib.dll
+F:\MyProject\盛国锐\Apex(V1.0)\Apex EIP\BaseLib\bin\Debug\BaseLib.pdb
+F:\MyProject\盛国锐\Apex(V1.0)\Apex EIP\BaseLib\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\盛国锐\Apex(V1.0)\Apex EIP\BaseLib\obj\Debug\BaseLib.dll
+F:\MyProject\盛国锐\Apex(V1.0)\Apex EIP\BaseLib\obj\Debug\BaseLib.pdb
+F:\MyProject\Apex\Apex(V1.0)\Apex EIP\BaseLib\bin\Debug\BaseLib.dll
+F:\MyProject\Apex\Apex(V1.0)\Apex EIP\BaseLib\bin\Debug\BaseLib.pdb
+F:\MyProject\Apex\Apex(V1.0)\Apex EIP\BaseLib\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\Apex\Apex(V1.0)\Apex EIP\BaseLib\obj\Debug\BaseLib.dll
+F:\MyProject\Apex\Apex(V1.0)\Apex EIP\BaseLib\obj\Debug\BaseLib.pdb
+F:\MyProject\Apex\Apex(V1.0)\ApexPudong\BaseLib\bin\Debug\BaseLib.dll
+F:\MyProject\Apex\Apex(V1.0)\ApexPudong\BaseLib\bin\Debug\BaseLib.pdb
+F:\MyProject\Apex\Apex(V1.0)\ApexPudong\BaseLib\obj\Debug\ResolveAssemblyReference.cache
+F:\MyProject\Apex\Apex(V1.0)\ApexPudong\BaseLib\obj\Debug\BaseLib.dll
+F:\MyProject\Apex\Apex(V1.0)\ApexPudong\BaseLib\obj\Debug\BaseLib.pdb
+F:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\bin\Debug\BaseLib.dll
+F:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\bin\Debug\BaseLib.pdb
+F:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\obj\Debug\BaseLib.dll
+F:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\obj\Debug\BaseLib.pdb
+F:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\obj\Debug\BaseLib.csprojResolveAssemblyReference.cache
+E:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\bin\Debug\BaseLib.dll
+E:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\bin\Debug\BaseLib.pdb
+E:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\obj\Debug\BaseLib.dll
+E:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\obj\Debug\BaseLib.pdb
+E:\MyProject\Apex\Apex(V2.0)\ApexEIP\BaseLib\obj\Debug\BaseLib.csprojResolveAssemblyReference.cache
+E:\MyProject\自己\2.0\Flowpie\BaseLib\bin\Debug\BaseLib.dll
+E:\MyProject\自己\2.0\Flowpie\BaseLib\bin\Debug\BaseLib.pdb
+E:\MyProject\自己\2.0\Flowpie\BaseLib\obj\Debug\BaseLib.csprojResolveAssemblyReference.cache
+E:\MyProject\自己\2.0\Flowpie\BaseLib\obj\Debug\BaseLib.dll
+E:\MyProject\自己\2.0\Flowpie\BaseLib\obj\Debug\BaseLib.pdb
+J:\2.0\Flowpie\BaseLib\bin\Debug\BaseLib.dll
+J:\2.0\Flowpie\BaseLib\bin\Debug\BaseLib.pdb
+J:\2.0\Flowpie\BaseLib\obj\Debug\BaseLib.csprojResolveAssemblyReference.cache
+J:\2.0\Flowpie\BaseLib\obj\Debug\BaseLib.dll
+J:\2.0\Flowpie\BaseLib\obj\Debug\BaseLib.pdb
+G:\2.0\Flowpie\BaseLib\bin\Debug\BaseLib.dll
+G:\2.0\Flowpie\BaseLib\bin\Debug\BaseLib.pdb
+G:\2.0\Flowpie\BaseLib\obj\Debug\BaseLib.csprojResolveAssemblyReference.cache
+G:\2.0\Flowpie\BaseLib\obj\Debug\BaseLib.dll
+G:\2.0\Flowpie\BaseLib\obj\Debug\BaseLib.pdb
+G:\kxd\Flowpie\BaseLib\bin\Debug\BaseLib.dll
+G:\kxd\Flowpie\BaseLib\bin\Debug\BaseLib.pdb
+G:\kxd\Flowpie\BaseLib\obj\Debug\BaseLib.dll
+G:\kxd\Flowpie\BaseLib\obj\Debug\BaseLib.pdb
+G:\kxd\Flowpie\BaseLib\obj\Debug\BaseLib.csprojResolveAssemblyReference.cache

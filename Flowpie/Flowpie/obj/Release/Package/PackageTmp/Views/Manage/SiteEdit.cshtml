@@ -1,0 +1,173 @@
+﻿@{
+    Layout = "~/Views/Shared/_Manage.cshtml";
+}
+@{
+    ViewBag.Title = @ViewData["title"].ToString();
+}
+<form action="/manage/site/save" method="post">
+    <div class="main-body-relative relative">
+        <div class="cko-wp">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs mytabs" role="tablist">
+                <li role="presentation" class="active"><a href="#ts-info" aria-controls="ts-info" role="tab" data-toggle="tab">站点信息</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content tab-kiki-ct">
+                <div role="tabpanel" class="tab-pane fade in active" id="ts-info">
+                    <div class="opl-table">
+                        <div class="tt">
+                            <span>@ViewData["title"].ToString()</span>
+                            <button class="downbtn-normal down"></button>
+                        </div>
+                        <div class="ct clearfix">
+                            <div class="inner-table">
+                                <div class="row">
+                                    <div class="cell col1">站点名称</div>
+                                    <div class="cell col2">
+                                        <input type="text" id="sitetext" name="sitetext" value="@if (ViewData["site"] != null) {
+                                            var site = ViewData["site"] as System.Collections.Hashtable;
+
+                                            @site["sitetext"].ToString();
+                                        }" maxlength="25" style="width:100%" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="cell col1"> 联系人</div>
+                                    <div class="cell col2">
+                                        <input type="text" id="contactname" name="contactname" value="@if (ViewData["site"] != null) {
+                                            var site = ViewData["site"] as System.Collections.Hashtable;
+
+                                            @site["contactname"].ToString();
+                                        }" maxlength="25" style="width:100%" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="cell col1"> 联系电话</div>
+                                    <div class="cell col2">
+                                        <input type="text" id="phone" name="phone" value="@if (ViewData["site"] != null) {
+                                            var site = ViewData["site"] as System.Collections.Hashtable;
+
+                                            @site["phone"].ToString();
+                                        }" maxlength="25" style="width:100%" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="cell col1"> 站点地址</div>
+                                    <div class="cell col2">
+                                        <input type="text" id="address" name="address" value="@if (ViewData["site"] != null) {
+                                            var site = ViewData["site"] as System.Collections.Hashtable;
+
+                                            @site["address"].ToString();
+                                        }" maxlength="25" style="width:100%" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="cell col1">所属公司</div>
+                                    <div class="cell col2">
+                                        <div class="input-group">
+                                            <input id="top_menus" name="top_menus" type="text" class="form-control dropdown-text" value="@if (ViewData["site"] != null) {
+                                            var site = ViewData["site"] as System.Collections.Hashtable;
+
+                                            foreach (var company in ViewData["companys"] as List<System.Collections.Hashtable>)
+                                            {
+                                                if (company["companyid"].ToString() == site["companyid"].ToString())
+                                                {
+                                                    @company["companytext"].ToString();
+
+                                                    break;
+                                                }
+                                            }
+                                        }" readonly="readonly" aria-label="...">
+                                            <input id="companyid" name="companyid" type="hidden" value="@if (ViewData["site"] != null) {
+                                            var site = ViewData["site"] as System.Collections.Hashtable;
+
+                                            @site["companyid"].ToString();
+                                        }" class="dropdown-value" />
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">选择公司 <span class="caret"></span></button>
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    @foreach (var company in ViewData["companys"] as List<System.Collections.Hashtable>)
+                                                    {
+                                                        <li><a href="javascript:void(0)" class="dropdown-item" val="@company["companyid"].ToString()">@company["companytext"].ToString()</a></li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="cell col1"> 坐标纬度</div>
+                                    <div class="cell col2">
+                                        <input type="text" id="lat" name="lat" value="@if (ViewData["site"] != null) {
+                                            var site = ViewData["site"] as System.Collections.Hashtable;
+
+                                            @site["lat"].ToString();
+                                        }" maxlength="25" style="width:100%" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="cell col1"> 坐标经度</div>
+                                    <div class="cell col2">
+                                        <input type="text" id="lng" name="lng" value="@if (ViewData["site"] != null) {
+                                            var site = ViewData["site"] as System.Collections.Hashtable;
+
+                                            @site["lng"].ToString();
+                                        }" maxlength="25" style="width:100%" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bt-btn-bar">
+                        <input type="hidden" id="siteid" name="siteid" value="@if (ViewData["site"] != null) {
+                                            var site = ViewData["site"] as System.Collections.Hashtable;
+
+                                            @site["siteid"].ToString();
+                                        }">
+                        <button type="submit" class="btn btn-success glyphicons glyphicons-disk-saved" style="height:40px">保存修改</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- /container -->
+<script type="text/javascript">
+        //<span class=""></span>
+        $(document).ready(function () {
+            $(".nano").nanoScroller();
+            $.readjustWidth();
+            $(window).resize(function () {
+                $.readjustWidth();
+            });
+            $(".fix-tb-ct-b2").scroll(function (e) {
+                var slt = $(".fix-tb-ct-b2").scrollLeft();
+                $(this).closest('.fix-tb').find('.fix-tb-header').css('left', '-' + slt + 'px');
+            });
+            $('.mytabs a').click(function (e) {
+                e.preventDefault()
+                $(this).tab('show')
+            });
+
+
+            //$('#datepicker01').datetimepicker({
+            //    minView: 2,
+            //    startView: 3,
+            //    weekStart: 1,
+            //    format: 'yyyy/mm/dd',
+            //    autoclose: true
+            //});
+            //$('#datepicker02').datetimepicker({
+            //    minView: 2,
+            //    language: 'en',
+            //    format: 'yyyy/mm/dd'
+            //});
+            //$('#datepicker03').datetimepicker({
+            //    minView: 2,
+            //    language: 'en',
+            //    format: 'yyyy/mm/dd',
+            //    todayBtn: 'linked',
+            //    initialDate: new Date('2010/1/1')
+            //});
+        });
+</script>

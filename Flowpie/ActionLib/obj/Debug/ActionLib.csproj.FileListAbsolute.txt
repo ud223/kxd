@@ -1,0 +1,5 @@
+J:\2.0\Flowpie\ActionLib\obj\Debug\ActionLib.csprojResolveAssemblyReference.cache
+J:\2.0\Flowpie\ActionLib\bin\Debug\ActionLib.dll
+J:\2.0\Flowpie\ActionLib\bin\Debug\ActionLib.pdb
+J:\2.0\Flowpie\ActionLib\obj\Debug\ActionLib.dll
+J:\2.0\Flowpie\ActionLib\obj\Debug\ActionLib.pdb

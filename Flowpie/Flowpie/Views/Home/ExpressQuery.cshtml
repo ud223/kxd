@@ -1,0 +1,168 @@
+﻿@{
+    Layout = "~/Views/Shared/mobile.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+<div class="kxdh-topbk">
+    <a href="/home/myindex" class="iconfont icon-angleleft"></a>
+    <span>查询快递</span>
+</div>
+<div class="clear-15"></div>
+<div class="kxdh-box ntm">
+    <select id="company" style="width: 100%;">
+        <option value="0">请选择快递公司</option>
+        @foreach (var item in ViewData["data"] as List<System.Collections.Hashtable>)
+        {
+            <option value='@item["companycode"]'> @item["companytext"]</option>
+        }
+    </select>
+    <input id="express_code" type="text" placeholder="请输入快递单号" />
+
+    <button class="fullbtn normal">查询</button>
+    <!--
+        点击查询后获取数据后出现
+    -->
+    <div class="kxdh-tra">
+        <div class="kxdh-fdtt">
+            <span class="hl"></span>
+            <span class="txt">物流跟踪记录</span>
+        </div>
+        <div >
+            @*<div class="autogetpushmsgwp">
+                <input type="checkbox" id="autogetpushmsg" />
+                <label for="autogetpushmsg">推送消息</label>
+            </div>*@
+            <div id="express_list">
+                <div class="kxdh-trackitm">
+                    <div class="kxdh-tracktt">
+                        <span class="express-code"></span>
+                        <i class="iconfont icon-angledown"></i>
+                    </div>
+                    <div>
+                        <ul class="kxdh-trackul">
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear-50"></div>
+</div>
+@*<i class="hdt iconfont icon-iconfontradioboxfill"></i>
+<span>2015年5月15日 15:23 收件</span>*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".fullbtn").click(function () {
+            getDetail();
+        });
+
+        $(".kxdh-trackitm").click(function () {
+            if ($(this).hasClass("open")) {
+                $(this).removeClass("open");
+            }
+            else {
+                $(this).addClass("open");
+            }
+        })
+    });
+
+    function getDetail() {
+        var company_code = $("#company").val();
+        var express_code = $("#express_code").val();
+        //alert(company_code);
+        //alert(express_code);
+        if (!company_code) {
+            return;
+        }
+
+        if (!express_code) {
+            return;
+        }
+        //return;
+
+        $(".express-code").html("单号" + express_code);
+        var params = {
+            url: 'http://api.kuaidi100.com/api?id=7f0eb2df88c9b87a&com=' + company_code + '&nu=' + express_code + '&show=0&muti=1&order=desc',
+            data: false,
+            type: 'get',
+            dataType: 'JSONP',
+            successFun: loadNode,
+            errorFun: returnError
+        }
+        console.log(params.url);
+        ajaxApi(params);
+    }
+
+    function loadNode(data) {
+        console.log(JSON.stringify(data));
+        var list = $("#express_list").find(".kxdh-trackul");
+
+        list.html("");
+
+        if (data.status == 1) {
+            $.each(data.data, function () {
+                var li = $('<li> <i class="hdt iconfont icon-iconfontradioboxfill"></i> <span>' + this.time + this.context + '</span> </li>');
+
+                list.append(li);
+            });
+        }
+        else if (data.status == 2) {
+            getSpecialExpress();
+        }
+        else {
+            var li = $('<li> <i class="hdt iconfont icon-iconfontradioboxfill"></i> <span>' + data.message + '</span> </li>');
+
+            list.append(li);
+        }
+    }
+
+    function getSpecialExpress() {
+        var company_code = $("#company").val();
+        var express_code = $("#express_code").val();
+        //alert(company_code);
+        //alert(express_code);
+        if (!company_code) {
+            return;
+        }
+
+        if (!express_code) {
+            return;
+        }
+        //return;
+
+        $(".express-code").html("单号" + express_code);
+
+        var data = { 'com': company_code, 'nu': express_code, 'key': '7f0eb2df88c9b87a' };
+
+        var params = {
+            url: '/api/order/getexpressstatus',
+            data: data,
+            type: 'post',
+            dataType: 'json',
+            successFun: loadSpecialExpress,
+            errorFun: returnError
+        }
+        console.log(params.url);
+        ajaxTo(params);
+    }
+
+    function loadSpecialExpress(data) {
+        console.log(data);
+
+        var list = $("#express_list").find(".kxdh-trackul");
+
+        list.html("");
+
+        if (data.code == 200) {
+            var li = $('<li class="iframe" style="overflow-x:scroll;"><iframe id="kuaidi100" name="kuaidi100" src="' + data.data + '" width="600px"  style="left:-100px" height="380" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe></li>');
+            
+            list.append(li);
+        }
+    }
+
+    function returnError(data, node) {
+        alert(JSON.stringify(data));
+    }
+</script>

@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "~/Views/Shared/mobile.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+<div class="kxdh-topbk">
+    <a href="/home/myindex" class="iconfont icon-angleleft"></a>
+    <span>常用快递员</span>
+</div>
+
+@*<a href="#" class="smqradd">
+    <i class="iconfont icon-iconfonterweima"></i> 扫码添加快递员
+</a>*@
+<div class="kxdh-listb">
+@foreach (var item in ViewData["data"] as List<System.Collections.Hashtable>)
+{
+    <a href="/home/courierdetail/@item["courierid"].ToString()" class="itm">
+        @if (item["headpic"].ToString() == "")
+        {
+            <img src="/img/user.jpg" class="usr" />
+        }
+        else
+        {
+            <img src="@item["headpic"].ToString()" class="usr" />
+        }
+        <div>
+            <span class="h1">@item["name"].ToString()<i class="mglab">@item["companytext"].ToString()</i></span>
+            <span class="gold">@item["phone"].ToString()</span>
+        </div>
+        <div class="h4">
+            <span>派件区域：@item["region"].ToString()</span>
+        </div>
+    </a>
+}
+</div>
+<div class="clear-15"></div>
+@*<div class="pagerarea" style="padding-bottom:50px;">
+    <a href="#" class="itm">1</a>
+    <a href="#" class="itm empty">...</a>
+    <a href="#" class="itm">21</a>
+    <a href="#" class="itm selected">23</a>
+    <a href="#" class="itm">24</a>
+    <a href="#" class="itm empty">...</a>
+    <a href="#" class="itm">44</a>
+</div>*@

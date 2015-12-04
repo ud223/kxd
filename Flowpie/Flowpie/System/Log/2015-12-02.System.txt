@@ -1,0 +1,36 @@
+Time:    2015/12/2 10:54:45
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2015120200002'
+-----------------------------------------------------------
+
+
+Time:    2015/12/2 11:06:27
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2015120200003'
+-----------------------------------------------------------
+
+
+Time:    2015/12/2 11:17:04
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2015120200002'
+-----------------------------------------------------------
+
+
+Time:    2015/12/2 14:43:38
+Action:  判断用户或手机是否已注册
+Message: SELECT app_courier.*, companytext FROM app_courier left join app_company on app_courier.companyid = app_company.companyid WHERE phone ='zxc' OR loginname ='zxc' Limit 1
+-----------------------------------------------------------
+
+
+Time:    2015/12/2 14:44:34
+Action:  判断用户或手机是否已注册
+Message: SELECT app_courier.*, companytext FROM app_courier left join app_company on app_courier.companyid = app_company.companyid WHERE phone ='lsz' OR loginname ='lsz' Limit 1
+-----------------------------------------------------------
+
+
+Time:    2015/12/2 14:45:38
+Action:  判断用户或手机是否已注册
+Message: SELECT app_courier.*, companytext FROM app_courier left join app_company on app_courier.companyid = app_company.companyid WHERE phone ='lsz' OR loginname ='lsz' Limit 1
+-----------------------------------------------------------
+
+
