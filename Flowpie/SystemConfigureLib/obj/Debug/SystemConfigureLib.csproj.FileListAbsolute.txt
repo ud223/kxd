@@ -40,17 +40,3 @@ G:\kxd\Flowpie\SystemConfigureLib\bin\Debug\ProjectLib.pdb
 G:\kxd\Flowpie\SystemConfigureLib\obj\Debug\SystemConfigureLib.csprojResolveAssemblyReference.cache
 G:\kxd\Flowpie\SystemConfigureLib\obj\Debug\SystemConfigureLib.dll
 G:\kxd\Flowpie\SystemConfigureLib\obj\Debug\SystemConfigureLib.pdb
-E:\git_home\kxd\Flowpie\SystemConfigureLib\bin\Debug\SystemConfigureLib.dll
-E:\git_home\kxd\Flowpie\SystemConfigureLib\bin\Debug\SystemConfigureLib.pdb
-E:\git_home\kxd\Flowpie\SystemConfigureLib\bin\Debug\BaseLib.dll
-E:\git_home\kxd\Flowpie\SystemConfigureLib\bin\Debug\CommonLib.dll
-E:\git_home\kxd\Flowpie\SystemConfigureLib\bin\Debug\DatabaseLib.dll
-E:\git_home\kxd\Flowpie\SystemConfigureLib\bin\Debug\ProjectLib.dll
-E:\git_home\kxd\Flowpie\SystemConfigureLib\bin\Debug\MySql.Data.dll
-E:\git_home\kxd\Flowpie\SystemConfigureLib\bin\Debug\BaseLib.pdb
-E:\git_home\kxd\Flowpie\SystemConfigureLib\bin\Debug\CommonLib.pdb
-E:\git_home\kxd\Flowpie\SystemConfigureLib\bin\Debug\DatabaseLib.pdb
-E:\git_home\kxd\Flowpie\SystemConfigureLib\bin\Debug\ProjectLib.pdb
-E:\git_home\kxd\Flowpie\SystemConfigureLib\obj\Debug\SystemConfigureLib.csprojResolveAssemblyReference.cache
-E:\git_home\kxd\Flowpie\SystemConfigureLib\obj\Debug\SystemConfigureLib.dll
-E:\git_home\kxd\Flowpie\SystemConfigureLib\obj\Debug\SystemConfigureLib.pdb

@@ -347,6 +347,11 @@ namespace Flowpie.Controllers
             return View();
         }
 
+        public ActionResult ScanQRcode()
+        {
+            return View();
+        }
+
         public ActionResult apitest()
         {
             return View();

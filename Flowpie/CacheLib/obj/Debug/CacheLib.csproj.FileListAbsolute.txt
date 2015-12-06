@@ -71,12 +71,3 @@ G:\kxd\Flowpie\CacheLib\bin\Debug\CommonLib.pdb
 G:\kxd\Flowpie\CacheLib\obj\Debug\CacheLib.csprojResolveAssemblyReference.cache
 G:\kxd\Flowpie\CacheLib\obj\Debug\CacheLib.dll
 G:\kxd\Flowpie\CacheLib\obj\Debug\CacheLib.pdb
-E:\git_home\kxd\Flowpie\CacheLib\bin\Debug\CacheLib.dll
-E:\git_home\kxd\Flowpie\CacheLib\bin\Debug\CacheLib.pdb
-E:\git_home\kxd\Flowpie\CacheLib\bin\Debug\BaseLib.dll
-E:\git_home\kxd\Flowpie\CacheLib\bin\Debug\CommonLib.dll
-E:\git_home\kxd\Flowpie\CacheLib\bin\Debug\BaseLib.pdb
-E:\git_home\kxd\Flowpie\CacheLib\bin\Debug\CommonLib.pdb
-E:\git_home\kxd\Flowpie\CacheLib\obj\Debug\CacheLib.csprojResolveAssemblyReference.cache
-E:\git_home\kxd\Flowpie\CacheLib\obj\Debug\CacheLib.dll
-E:\git_home\kxd\Flowpie\CacheLib\obj\Debug\CacheLib.pdb

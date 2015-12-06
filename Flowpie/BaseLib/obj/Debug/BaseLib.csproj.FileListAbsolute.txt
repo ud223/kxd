@@ -53,8 +53,3 @@ G:\kxd\Flowpie\BaseLib\bin\Debug\BaseLib.pdb
 G:\kxd\Flowpie\BaseLib\obj\Debug\BaseLib.dll
 G:\kxd\Flowpie\BaseLib\obj\Debug\BaseLib.pdb
 G:\kxd\Flowpie\BaseLib\obj\Debug\BaseLib.csprojResolveAssemblyReference.cache
-E:\git_home\kxd\Flowpie\BaseLib\bin\Debug\BaseLib.dll
-E:\git_home\kxd\Flowpie\BaseLib\bin\Debug\BaseLib.pdb
-E:\git_home\kxd\Flowpie\BaseLib\obj\Debug\BaseLib.csprojResolveAssemblyReference.cache
-E:\git_home\kxd\Flowpie\BaseLib\obj\Debug\BaseLib.dll
-E:\git_home\kxd\Flowpie\BaseLib\obj\Debug\BaseLib.pdb

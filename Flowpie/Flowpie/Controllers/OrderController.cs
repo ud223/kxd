@@ -377,5 +377,72 @@ namespace Flowpie.Controllers
 
             return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
         }
+
+        [HttpPost]
+        public string addSendExpress()
+        {
+            KxdLib.CourierController courierController = new KxdLib.CourierController();
+            KxdLib.OrderController orderController = new KxdLib.OrderController();
+            SystemConfigureLib.SerialNumberController serialController = new SystemConfigureLib.SerialNumberController();
+            Models.Result result = new Models.Result();
+            DatabaseLib.Tools tools = new DatabaseLib.Tools();
+
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
+
+            System.Collections.Hashtable data = tools.paramToData(context.Request.Form);
+
+            List<System.Collections.Hashtable> list = orderController.isexistExpress(data["expressid"].ToString());
+
+            if (list == null || list.Count == 0)
+            {
+                string orderid = serialController.getSerialNumber("ord", DateTime.Now.ToString("yyyy-MM-dd"));
+                string orderdetailid = serialController.getSerialNumber("odl", DateTime.Now.ToString("yyyy-MM-dd"));
+
+                string courier_id = data["courierid"].ToString();
+
+                Hashtable courier = courierController.load(courier_id);
+
+                data.Add("orderid", orderid);
+                data.Add("orderdetailid", orderdetailid);
+
+                Hashtable orderData = new Hashtable();
+
+                orderData.Add("orderid", orderid);
+                orderData.Add("courierid", courier["courierid"].ToString());
+                orderData.Add("sendcouriername", courier["name"].ToString());
+                orderData.Add("sendcourierphone", courier["phone"].ToString()); 
+                orderData.Add("companyid", courier["companyid"].ToString());
+                orderData.Add("orderTypeid", "3");
+                //派件订单直接状态为已结算:6
+                orderData.Add("state", "6");
+                orderData.Add("isclose", "1");
+                orderData.Add("CreateAt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                orderData.Add("ModifyAt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+                orderController.add(orderData);
+
+                orderController.addDetail(data);
+
+                orderController.updateAmount(data);
+
+                if (orderController.Result)
+                {
+                    result.code = "200";
+                    result.message = "添加成功!";
+                }
+                else
+                {
+                    result.code = "0";
+                    result.message = orderController.Message.Replace("'", "\"");
+                }
+            }
+            else
+            {
+                result.code = "0";
+                result.message = "该快递单已经添加!";
+            }
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+        }
     }
 }

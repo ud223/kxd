@@ -186,8 +186,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="Controllers\toolsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\WeixinController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -242,6 +242,7 @@
     <Content Include="js\global.js" />
     <Content Include="js\jquery-1.11.1.min.js" />
     <Content Include="js\jquery.cookie.js" />
+    <Content Include="js\jquery.min.js" />
     <Content Include="js\map.js" />
     <Content Include="js\nanoscroller.js" />
     <Content Include="kxd\css\global.css" />
@@ -351,6 +352,7 @@
     <Content Include="Views\Home\OrderCancel.cshtml" />
     <Content Include="Views\Home\apitest.cshtml" />
     <Content Include="Views\Home\ExpressQuery.cshtml" />
+    <Content Include="Views\Home\ScanQRcode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
