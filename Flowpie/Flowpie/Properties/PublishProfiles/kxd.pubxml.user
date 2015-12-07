@@ -10,45 +10,37 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/AccountLib.dll">
-<<<<<<< HEAD
-      <publishTime>12/04/2015 23:18:45</publishTime>
-=======
-      <publishTime>12/05/2015 18:49:59</publishTime>
->>>>>>> 677ccbeebf5d5a94b14f77c453d41374d9ce1f3b
+      <publishTime>12/07/2015 20:23:41</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>07/04/2014 16:24:07</publishTime>
     </File>
     <File Include="bin/AppLib.dll">
-<<<<<<< HEAD
-      <publishTime>12/04/2015 23:18:44</publishTime>
+      <publishTime>12/07/2015 20:13:10</publishTime>
     </File>
     <File Include="bin/BaseLib.dll">
-      <publishTime>12/04/2015 23:18:44</publishTime>
+      <publishTime>12/07/2015 20:13:10</publishTime>
     </File>
     <File Include="bin/CacheLib.dll">
-      <publishTime>12/04/2015 23:18:45</publishTime>
+      <publishTime>12/07/2015 20:23:40</publishTime>
     </File>
     <File Include="bin/CommonLib.dll">
-      <publishTime>12/04/2015 23:18:45</publishTime>
+      <publishTime>12/07/2015 20:13:10</publishTime>
     </File>
     <File Include="bin/DatabaseLib.dll">
-      <publishTime>12/04/2015 23:18:45</publishTime>
-=======
-      <publishTime>12/05/2015 18:49:59</publishTime>
+      <publishTime>12/07/2015 20:13:10</publishTime>
     </File>
     <File Include="bin/BaseLib.dll">
-      <publishTime>12/05/2015 18:49:59</publishTime>
+      <publishTime>12/07/2015 20:13:10</publishTime>
     </File>
     <File Include="bin/CacheLib.dll">
-      <publishTime>12/05/2015 18:49:59</publishTime>
+      <publishTime>12/07/2015 20:23:40</publishTime>
     </File>
     <File Include="bin/CommonLib.dll">
-      <publishTime>12/05/2015 18:49:59</publishTime>
+      <publishTime>12/07/2015 20:13:10</publishTime>
     </File>
     <File Include="bin/DatabaseLib.dll">
-      <publishTime>12/05/2015 18:49:59</publishTime>
->>>>>>> 677ccbeebf5d5a94b14f77c453d41374d9ce1f3b
+      <publishTime>12/07/2015 20:13:10</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>07/04/2014 16:24:09</publishTime>
@@ -57,11 +49,7 @@
       <publishTime>07/04/2014 16:24:09</publishTime>
     </File>
     <File Include="bin/Flowpie.dll">
-<<<<<<< HEAD
-      <publishTime>12/04/2015 23:18:47</publishTime>
-=======
-      <publishTime>12/05/2015 23:45:19</publishTime>
->>>>>>> 677ccbeebf5d5a94b14f77c453d41374d9ce1f3b
+      <publishTime>12/07/2015 23:17:52</publishTime>
     </File>
     <File Include="bin/GetuiServerApiSDK.dll">
       <publishTime>06/19/2015 13:28:34</publishTime>
@@ -70,11 +58,7 @@
       <publishTime>04/29/2015 09:54:26</publishTime>
     </File>
     <File Include="bin/KxdLib.dll">
-<<<<<<< HEAD
-      <publishTime>12/04/2015 23:18:45</publishTime>
-=======
-      <publishTime>12/05/2015 18:50:00</publishTime>
->>>>>>> 677ccbeebf5d5a94b14f77c453d41374d9ce1f3b
+      <publishTime>12/07/2015 23:17:51</publishTime>
     </File>
     <File Include="bin/log4net.dll">
       <publishTime>04/29/2015 09:54:26</publishTime>
@@ -119,7 +103,7 @@
       <publishTime>07/04/2014 16:24:07</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
-      <publishTime>09/19/2014 01:42:02</publishTime>
+      <publishTime>10/19/2015 00:40:12</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
       <publishTime>07/04/2014 16:24:07</publishTime>
@@ -128,11 +112,7 @@
       <publishTime>07/04/2014 16:24:10</publishTime>
     </File>
     <File Include="bin/ProjectLib.dll">
-<<<<<<< HEAD
-      <publishTime>12/04/2015 23:18:45</publishTime>
-=======
-      <publishTime>12/05/2015 18:49:59</publishTime>
->>>>>>> 677ccbeebf5d5a94b14f77c453d41374d9ce1f3b
+      <publishTime>12/07/2015 20:23:40</publishTime>
     </File>
     <File Include="bin/RouteDebugger.dll">
       <publishTime>10/23/2015 19:44:34</publishTime>
@@ -168,11 +148,7 @@
       <publishTime>07/04/2014 16:24:07</publishTime>
     </File>
     <File Include="bin/SystemConfigureLib.dll">
-<<<<<<< HEAD
-      <publishTime>12/04/2015 23:18:45</publishTime>
-=======
-      <publishTime>12/05/2015 18:50:00</publishTime>
->>>>>>> 677ccbeebf5d5a94b14f77c453d41374d9ce1f3b
+      <publishTime>12/07/2015 20:23:40</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>07/04/2014 16:24:07</publishTime>
@@ -541,11 +517,7 @@
       <publishTime>07/04/2014 16:24:09</publishTime>
     </File>
     <File Include="Views/Home/apitest.cshtml">
-<<<<<<< HEAD
-      <publishTime>12/04/2015 21:44:01</publishTime>
-=======
-      <publishTime>12/02/2015 14:51:41</publishTime>
->>>>>>> 677ccbeebf5d5a94b14f77c453d41374d9ce1f3b
+      <publishTime>12/07/2015 23:05:45</publishTime>
     </File>
     <File Include="Views/Home/ChangePassword.cshtml">
       <publishTime>11/18/2015 17:35:16</publishTime>
@@ -560,7 +532,7 @@
       <publishTime>12/02/2015 01:23:43</publishTime>
     </File>
     <File Include="Views/Home/Home.cshtml">
-      <publishTime>12/05/2015 23:45:08</publishTime>
+      <publishTime>12/07/2015 20:13:10</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>11/11/2015 18:03:16</publishTime>
@@ -590,7 +562,7 @@
       <publishTime>11/28/2015 18:53:03</publishTime>
     </File>
     <File Include="Views/Home/OrderTake.cshtml">
-      <publishTime>11/27/2015 14:14:08</publishTime>
+      <publishTime>12/07/2015 20:13:10</publishTime>
     </File>
     <File Include="Views/Home/PaySuccess.cshtml">
       <publishTime>11/19/2015 13:01:32</publishTime>
@@ -674,7 +646,7 @@
       <publishTime>11/06/2014 22:33:13</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/04/2015 23:18:47</publishTime>
+      <publishTime>12/07/2015 20:23:42</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -70,3 +70,17 @@ E:\git_home\kxd\Flowpie\ProjectLib\bin\Debug\DatabaseLib.pdb
 E:\git_home\kxd\Flowpie\ProjectLib\obj\Debug\ProjectLib.csprojResolveAssemblyReference.cache
 E:\git_home\kxd\Flowpie\ProjectLib\obj\Debug\ProjectLib.dll
 E:\git_home\kxd\Flowpie\ProjectLib\obj\Debug\ProjectLib.pdb
+G:\git_home\kxd\Flowpie\ProjectLib\bin\Debug\ProjectLib.dll
+G:\git_home\kxd\Flowpie\ProjectLib\bin\Debug\ProjectLib.pdb
+G:\git_home\kxd\Flowpie\ProjectLib\bin\Debug\BaseLib.dll
+G:\git_home\kxd\Flowpie\ProjectLib\bin\Debug\CacheLib.dll
+G:\git_home\kxd\Flowpie\ProjectLib\bin\Debug\CommonLib.dll
+G:\git_home\kxd\Flowpie\ProjectLib\bin\Debug\DatabaseLib.dll
+G:\git_home\kxd\Flowpie\ProjectLib\bin\Debug\MySql.Data.dll
+G:\git_home\kxd\Flowpie\ProjectLib\bin\Debug\BaseLib.pdb
+G:\git_home\kxd\Flowpie\ProjectLib\bin\Debug\CacheLib.pdb
+G:\git_home\kxd\Flowpie\ProjectLib\bin\Debug\CommonLib.pdb
+G:\git_home\kxd\Flowpie\ProjectLib\bin\Debug\DatabaseLib.pdb
+G:\git_home\kxd\Flowpie\ProjectLib\obj\Debug\ProjectLib.csprojResolveAssemblyReference.cache
+G:\git_home\kxd\Flowpie\ProjectLib\obj\Debug\ProjectLib.dll
+G:\git_home\kxd\Flowpie\ProjectLib\obj\Debug\ProjectLib.pdb

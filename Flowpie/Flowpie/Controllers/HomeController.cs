@@ -92,7 +92,7 @@ namespace Flowpie.Controllers
 
                 AppLib.Android android = new AppLib.Android();
 
-                string msg = "有一个新的订单,请赶快抢单|" + order_id + "|" + address +"|"+ lat + "|"+ lng;
+                string msg = "有一个新的订单,请赶快抢单|" + order_id + "|" + address +"|"+ lat + "|"+ lng +"|1";
 
                 android.pushMsg(msg, msgPush);
 
@@ -137,7 +137,7 @@ namespace Flowpie.Controllers
             string lat = item["lat"].ToString();
             string lng = item["lng"].ToString();
 
-            android.pushMsg("你有一个快递订单,请查看|" + order_id + "|" + address + "|" + lat + "|" + lng, courier["appid"].ToString());
+            android.pushMsg("你有一个快递订单,请查看|" + order_id + "|" + address + "|" + lat + "|" + lng + "|2", courier["appid"].ToString());
 
             ViewData["data"] = item;
 

@@ -7,7 +7,9 @@
 
 <button onclick="testTake()">测试</button>
 <button onclick="testLogin()">登录</button>
-<button onclick="smstest()">测试短信</button>
+<button onclick="sendExpress()">派件</button>
+<button onclick="getSendExpress()">获取派件列表</button>
+<button onclick="getReceiveExpress()">获取收件列表</button>
 <script type="text/javascript">
     function testTake() {
         var params = {
@@ -20,31 +22,40 @@
 
     function testLogin() {
         var params = {
-<<<<<<< HEAD
-            url: 'http://120.24.154.122:8001/api/user/getRandomNum',
-            data: { 'mobile': '15927094025' },
-=======
             url: 'http://120.24.154.122:8001/api/user/loginCourier',
             data: { 'loginname': 'lsz', 'password': '123' },
->>>>>>> 677ccbeebf5d5a94b14f77c453d41374d9ce1f3b
             type:'get'
         }
 
         ajaxTo(params);
     }
 
-    function smstest() {
+    function sendExpress() {
         var params = {
-            url: '/api/tools/getRandomNum',
-            data: { 'mobile': '15927094025' },
-            successFun: success,
-            errorFun: false
+            url: '/api/order/addSendExpress',
+            data: { 'courierid': '2015111300002', 'expresscode': '12345678909876' }
+        }
+
+        ajaxTo(params);
+    }
+    
+    function getSendExpress() {
+        var params = {
+            url: '/api/order/getSendExpress',
+            data: { 'courierid': '2015111300002' },
+            type: 'get'
         }
 
         ajaxTo(params);
     }
 
-    function success(data) {
-        alert(JSON.stringify(data));
+    function getReceiveExpress() {
+        var params = {
+            url: '/api/order/getReceiveExpress',
+            data: { 'courierid': '2015111200007' },
+            type: 'get'
+        }
+
+        ajaxTo(params);
     }
 </script>

@@ -265,6 +265,9 @@
 
 		    nearbyCourier($("#lat").val(), $("#lng").val());
 
+		    localStorage.setItem("lat", $("#lat").val());
+		    localStorage.setItem("lng", $("#lng").val());
+
 		    console.log("点击节点->lat:" + $("#lat").val() + ", lng:" + $("#lng").val());
 		}
 

@@ -130,6 +130,13 @@ namespace KxdLib
             base.add(data);
         }
 
+        public List<Hashtable> getReceiveOrderByCourierId(string courierid)
+        {
+            this.SqlText = "select app_order.orderid, expressid, rundate, runtime, app_order.CreateAt, app_order.ModifyAt from app_orderdetail left join app_order on app_orderdetail.orderid = app_order.orderid where app_order.courierid = '" + courierid + "'  order by app_order.CreateAt desc";
+
+            return base.getAll();
+        }
+
         public List<Hashtable> getSendOrderByCourierId(string courierid)
         {
             this.SqlText = "select * from app_sendorder where courierid = '" + courierid + "'  order by CreateAt desc";

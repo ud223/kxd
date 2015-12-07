@@ -26,3 +26,17 @@ E:\git_home\kxd\Flowpie\KxdLib\bin\Release\SystemConfigureLib.pdb
 E:\git_home\kxd\Flowpie\KxdLib\obj\Release\KxdLib.csprojResolveAssemblyReference.cache
 E:\git_home\kxd\Flowpie\KxdLib\obj\Release\KxdLib.dll
 E:\git_home\kxd\Flowpie\KxdLib\obj\Release\KxdLib.pdb
+G:\git_home\kxd\Flowpie\KxdLib\bin\Release\KxdLib.dll
+G:\git_home\kxd\Flowpie\KxdLib\bin\Release\KxdLib.pdb
+G:\git_home\kxd\Flowpie\KxdLib\bin\Release\BaseLib.dll
+G:\git_home\kxd\Flowpie\KxdLib\bin\Release\CommonLib.dll
+G:\git_home\kxd\Flowpie\KxdLib\bin\Release\DatabaseLib.dll
+G:\git_home\kxd\Flowpie\KxdLib\bin\Release\SystemConfigureLib.dll
+G:\git_home\kxd\Flowpie\KxdLib\bin\Release\MySql.Data.dll
+G:\git_home\kxd\Flowpie\KxdLib\bin\Release\BaseLib.pdb
+G:\git_home\kxd\Flowpie\KxdLib\bin\Release\CommonLib.pdb
+G:\git_home\kxd\Flowpie\KxdLib\bin\Release\DatabaseLib.pdb
+G:\git_home\kxd\Flowpie\KxdLib\bin\Release\SystemConfigureLib.pdb
+G:\git_home\kxd\Flowpie\KxdLib\obj\Release\KxdLib.csprojResolveAssemblyReference.cache
+G:\git_home\kxd\Flowpie\KxdLib\obj\Release\KxdLib.dll
+G:\git_home\kxd\Flowpie\KxdLib\obj\Release\KxdLib.pdb
