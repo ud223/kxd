@@ -42,12 +42,15 @@
 
     $(document).ready(function () {
         $.cookie('is_get', 0);
-	    $.waiting('派单中，请稍候 ...');
+        $.waiting('派单中，请稍候 ...');
+
+        var lat = localStorage.getItem('lat');
+        var lng = localStorage.getItem('lng');
+
+        local_lat = lat;
+        local_lng = lng;
 
 	    map = createMap(map);
-
-	    var lat = localStorage.getItem('lat');
-	    var lng = localStorage.getItem('lng');
 
 	    var params = {
 	        lat: lat,

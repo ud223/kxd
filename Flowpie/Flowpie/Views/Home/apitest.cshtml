@@ -7,7 +7,8 @@
 
 <button onclick="testTake()">测试</button>
 <button onclick="testLogin()">登录</button>
-<button onclick="smstest()">测试短信</button>
+<button onclick="sendExpress()">派件</button>
+<button onclick="getSendExpress()">获取派件列表</button>
 <script type="text/javascript">
     function testTake() {
         var params = {
@@ -20,26 +21,30 @@
 
     function testLogin() {
         var params = {
-            url: 'http://120.24.154.122:8001/api/user/getRandomNum',
-            data: { 'mobile': '15927094025' },
+            url: 'http://120.24.154.122:8001/api/user/loginCourier',
+            data: { 'loginname': 'lsz', 'password': '123' },
             type:'get'
         }
 
         ajaxTo(params);
     }
 
-    function smstest() {
+    function sendExpress() {
         var params = {
-            url: '/api/tools/getRandomNum',
-            data: { 'mobile': '15927094025' },
-            successFun: success,
-            errorFun: false
+            url: '/api/order/addSendExpress',
+            data: { 'courierid': '2015111300002', 'expresscode': '12345678909876' }
         }
 
         ajaxTo(params);
     }
+    
+    function getSendExpress() {
+        var params = {
+            url: '/api/order/getSendExpress',
+            data: { 'courierid': '2015111300002' },
+            type: 'get'
+        }
 
-    function success(data) {
-        alert(JSON.stringify(data));
+        ajaxTo(params);
     }
 </script>

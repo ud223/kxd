@@ -226,6 +226,8 @@
 		        $("#lng").val(addresses[0].point.x);
 		    }
 
+		//    console.log("lat:" + $("#lat").val() + ", lng:" + $("#lng").val());
+
 		    var list = $('.bdunit.b').find('.itms');
 
 		    list.html('');
@@ -256,12 +258,14 @@
 		    $("#addressdetail").val($(node).find('.t2').html());
 		    $("#lat").val($(node).find('.t1').attr('lat'));
 		    $("#lng").val($(node).find('.t1').attr('lng'));
-
+	
 		    $('.hyblayer').hide();
 
 		    theLocation(map, $("#lng").val(), $("#lat").val());
 
 		    nearbyCourier($("#lat").val(), $("#lng").val());
+
+		    console.log("点击节点->lat:" + $("#lat").val() + ", lng:" + $("#lng").val());
 		}
 
 		function toEasyOrder() {
@@ -275,7 +279,9 @@
             localStorage.setItem('addressdetail', addressdetail);
             localStorage.setItem('lat', lat);
             localStorage.setItem('lng', lng);
-		    localStorage.setItem('time', time);
+            localStorage.setItem('time', time);
+
+        //    console.log("lat:" + lat + ", lng:" + lng);
 
 		    location.href = '/home/easyorder'
 		}
@@ -301,8 +307,10 @@
 		    //var lng = local_lng;
 		    var data = { 'local_lat': lat, 'local_lng': lng };
 
-		    $("#lat").val(local_lat);
-		    $("#lng").val(local_lng);
+		    $("#lat").val(lat);
+		    $("#lng").val(lng);
+
+	//	    console.log("lat:" + $("#lat").val() + ", lng:" + $("#lng").val());
 
 		    var params = {
 		        url: '/api/courier/getCourierOfNearby',

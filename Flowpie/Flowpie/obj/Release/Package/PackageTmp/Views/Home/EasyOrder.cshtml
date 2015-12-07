@@ -110,6 +110,7 @@
 		var lat = localStorage.getItem('lat');
 		var lng = localStorage.getItem('lng');
 
+		console.log("lat:" + lat + ", lng:" + lng);
 
 		$('#address').val(address);
 		$('#addressdetail').val(addressdetail)
@@ -222,6 +223,8 @@
 
 	        return;
 	    }
+
+
 
 	    var params = {
 	        url: '/api/User/getPriceByLocal',

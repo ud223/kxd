@@ -18,7 +18,7 @@ namespace Flowpie.Controllers
             HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
 
             Models.Result result = new Models.Result();
-            
+
             System.Collections.Hashtable data = tools.paramToData(context.Request.Params);
             System.Text.StringBuilder strData = new System.Text.StringBuilder();
 
@@ -230,7 +230,7 @@ namespace Flowpie.Controllers
                     result.code = "0";
                     result.message = orderController.Message.Replace("'", "\"");
                 }
-            }           
+            }
 
             return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
         }
@@ -373,6 +373,111 @@ namespace Flowpie.Controllers
                 result.code = "200";
                 result.message = "获取成功!";
                 result.data = result_url;
+            }
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+        }
+
+        [HttpPost]
+        public string addSendExpress()
+        {
+            KxdLib.CourierController courierController = new KxdLib.CourierController();
+            KxdLib.OrderController orderController = new KxdLib.OrderController();
+            SystemConfigureLib.SerialNumberController serialController = new SystemConfigureLib.SerialNumberController();
+            Models.Result result = new Models.Result();
+            DatabaseLib.Tools tools = new DatabaseLib.Tools();
+
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
+
+            System.Collections.Hashtable data = tools.paramToData(context.Request.Form);
+
+            List<System.Collections.Hashtable> list = orderController.isExistSendExpress(data["expresscode"].ToString());
+
+            if (list == null || list.Count == 0)
+            {
+                string sendorder_id = serialController.getSerialNumber("sod", DateTime.Now.ToString("yyyy-MM-dd"));
+
+                string courier_id = data["courierid"].ToString();
+
+                Hashtable courier = courierController.load(courier_id);
+
+                data.Add("sendorderid", sendorder_id);
+                data.Add("couriername", courier["name"].ToString());
+                data.Add("courierphone", courier["phone"].ToString());
+                data.Add("companyid", courier["companyid"].ToString());
+                data.Add("rundate", DateTime.Now.ToString("yyyy-MM-dd"));
+                data.Add("runtime", DateTime.Now.ToString("HH:mm:ss"));
+
+                orderController.addSendExpress(data);
+
+                if (orderController.Result)
+                {
+                    result.code = "200";
+                    result.message = "添加成功!";
+                }
+                else
+                {
+                    result.code = "0";
+                    result.message = orderController.Message.Replace("'", "\"");
+                }
+            }
+            else
+            {
+                result.code = "0";
+                result.message = "添加失败：该快递单已经派送完毕!";
+            }
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+        }
+
+        [HttpGet]
+        public string getSendExpress()
+        {
+            KxdLib.OrderController orderController = new KxdLib.OrderController();
+            DatabaseLib.Tools tools = new DatabaseLib.Tools();
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
+
+            Models.Result result = new Models.Result();
+
+            System.Collections.Hashtable data = tools.paramToData(context.Request.Params);
+            System.Text.StringBuilder strData = new System.Text.StringBuilder();
+
+            List<Hashtable> list = orderController.getSendOrderByCourierId(data["courierid"].ToString());
+
+            int index = 0;
+
+            foreach (Hashtable item in list)
+            {
+                Models.SendOrder send_order = new Models.SendOrder();
+
+                send_order.CreateAt = item["CreateAt"].ToString();
+                send_order.expresscode = item["expresscode"].ToString();
+                send_order.ModifyAt = item["ModifyAt"].ToString();
+                send_order.rundate = item["rundate"].ToString();
+                send_order.runtime = item["runtime"].ToString();
+                send_order.sendorderid = item["sendorderid"].ToString();
+
+                string str_json = Newtonsoft.Json.JsonConvert.SerializeObject(send_order);
+
+                if (index > 0)
+                    strData.Append(",");
+
+                strData.Append(str_json);
+
+                index++;
+            }
+
+            if (list == null)
+            {
+                result.code = "0";
+                result.message = "获取订单列表失败!";
+            }
+            else
+            {
+                result.code = "200";
+                result.message = "获取成功!";
+                result.count = list.Count.ToString();
+                result.data = strData.ToString().Replace("[", "{").Replace("]", "}");
             }
 
             return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");

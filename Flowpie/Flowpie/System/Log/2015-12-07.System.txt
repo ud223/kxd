@@ -1,0 +1,6 @@
+Time:    2015/12/7 16:48:19
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2015120700016'
+-----------------------------------------------------------
+
+

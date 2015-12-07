@@ -32,7 +32,7 @@ namespace KxdLib
 
         public List<Hashtable> getOrderByCourierId(string courierid)
         {
-            this.SqlText = "select app_order.*, app_users.headpic from app_order left join app_users on app_order.userid = app_users.userid where courierid = '" + courierid + "'";
+            this.SqlText = "select app_order.*, app_users.headpic from app_order left join app_users on app_order.userid = app_users.userid where courierid = '" + courierid + "' and state > 0 order by CreateAt desc";
 
             return base.getAll();
         }
@@ -114,6 +114,27 @@ namespace KxdLib
             this.SqlText = "select * from app_orderdetail where expressid = '"+ expressid +"'";
 
             return base.Query(this.SqlText);
+        }
+
+        public List<Hashtable> isExistSendExpress(string expresscode)
+        {
+            this.SqlText = "select * from app_sendorder where expresscode = '" + expresscode + "'";
+
+            return base.Query(this.SqlText);
+        }
+
+        public void addSendExpress(Hashtable data)
+        {
+            this.SqlText = "INSERT INTO app_sendorder(sendorderid, expresscode, courierid, couriername, courierphone, rundate, runtime, companyid, CreateAt, ModifyAt) values('@sendorderid@', '@expresscode@', '@courierid@', '@couriername@', '@courierphone@', '@rundate@', '@runtime@', @companyid@, '@CreateAt@', '@ModifyAt@'); select sendorderid from app_sendorder  ORDER BY CreateAt DESC Limit 1";
+
+            base.add(data);
+        }
+
+        public List<Hashtable> getSendOrderByCourierId(string courierid)
+        {
+            this.SqlText = "select * from app_sendorder where courierid = '" + courierid + "'  order by CreateAt desc";
+
+            return base.getAll();
         }
     }
 }
