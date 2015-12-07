@@ -12,3 +12,17 @@ G:\kxd\Flowpie\ProjectLib\bin\Release\DatabaseLib.pdb
 G:\kxd\Flowpie\ProjectLib\obj\Release\ProjectLib.csprojResolveAssemblyReference.cache
 G:\kxd\Flowpie\ProjectLib\obj\Release\ProjectLib.dll
 G:\kxd\Flowpie\ProjectLib\obj\Release\ProjectLib.pdb
+E:\git_home\kxd\Flowpie\ProjectLib\bin\Release\ProjectLib.dll
+E:\git_home\kxd\Flowpie\ProjectLib\bin\Release\ProjectLib.pdb
+E:\git_home\kxd\Flowpie\ProjectLib\bin\Release\BaseLib.dll
+E:\git_home\kxd\Flowpie\ProjectLib\bin\Release\CacheLib.dll
+E:\git_home\kxd\Flowpie\ProjectLib\bin\Release\CommonLib.dll
+E:\git_home\kxd\Flowpie\ProjectLib\bin\Release\DatabaseLib.dll
+E:\git_home\kxd\Flowpie\ProjectLib\bin\Release\MySql.Data.dll
+E:\git_home\kxd\Flowpie\ProjectLib\bin\Release\BaseLib.pdb
+E:\git_home\kxd\Flowpie\ProjectLib\bin\Release\CacheLib.pdb
+E:\git_home\kxd\Flowpie\ProjectLib\bin\Release\CommonLib.pdb
+E:\git_home\kxd\Flowpie\ProjectLib\bin\Release\DatabaseLib.pdb
+E:\git_home\kxd\Flowpie\ProjectLib\obj\Release\ProjectLib.csprojResolveAssemblyReference.cache
+E:\git_home\kxd\Flowpie\ProjectLib\obj\Release\ProjectLib.dll
+E:\git_home\kxd\Flowpie\ProjectLib\obj\Release\ProjectLib.pdb

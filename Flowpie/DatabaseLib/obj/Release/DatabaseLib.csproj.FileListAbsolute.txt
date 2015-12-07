@@ -8,3 +8,13 @@ G:\kxd\Flowpie\DatabaseLib\bin\Release\CommonLib.pdb
 G:\kxd\Flowpie\DatabaseLib\obj\Release\DatabaseLib.csprojResolveAssemblyReference.cache
 G:\kxd\Flowpie\DatabaseLib\obj\Release\DatabaseLib.dll
 G:\kxd\Flowpie\DatabaseLib\obj\Release\DatabaseLib.pdb
+E:\git_home\kxd\Flowpie\DatabaseLib\bin\Release\DatabaseLib.dll
+E:\git_home\kxd\Flowpie\DatabaseLib\bin\Release\DatabaseLib.pdb
+E:\git_home\kxd\Flowpie\DatabaseLib\bin\Release\BaseLib.dll
+E:\git_home\kxd\Flowpie\DatabaseLib\bin\Release\CommonLib.dll
+E:\git_home\kxd\Flowpie\DatabaseLib\bin\Release\MySql.Data.dll
+E:\git_home\kxd\Flowpie\DatabaseLib\bin\Release\BaseLib.pdb
+E:\git_home\kxd\Flowpie\DatabaseLib\bin\Release\CommonLib.pdb
+E:\git_home\kxd\Flowpie\DatabaseLib\obj\Release\DatabaseLib.csprojResolveAssemblyReference.cache
+E:\git_home\kxd\Flowpie\DatabaseLib\obj\Release\DatabaseLib.dll
+E:\git_home\kxd\Flowpie\DatabaseLib\obj\Release\DatabaseLib.pdb

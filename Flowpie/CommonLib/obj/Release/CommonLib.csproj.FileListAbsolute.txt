@@ -19,3 +19,10 @@ G:\kxd\Flowpie\CommonLib\bin\Release\BaseLib.pdb
 G:\kxd\Flowpie\CommonLib\obj\Release\CommonLib.csprojResolveAssemblyReference.cache
 G:\kxd\Flowpie\CommonLib\obj\Release\CommonLib.dll
 G:\kxd\Flowpie\CommonLib\obj\Release\CommonLib.pdb
+E:\git_home\kxd\Flowpie\CommonLib\bin\Release\CommonLib.dll
+E:\git_home\kxd\Flowpie\CommonLib\bin\Release\CommonLib.pdb
+E:\git_home\kxd\Flowpie\CommonLib\bin\Release\BaseLib.dll
+E:\git_home\kxd\Flowpie\CommonLib\bin\Release\BaseLib.pdb
+E:\git_home\kxd\Flowpie\CommonLib\obj\Release\CommonLib.csprojResolveAssemblyReference.cache
+E:\git_home\kxd\Flowpie\CommonLib\obj\Release\CommonLib.dll
+E:\git_home\kxd\Flowpie\CommonLib\obj\Release\CommonLib.pdb

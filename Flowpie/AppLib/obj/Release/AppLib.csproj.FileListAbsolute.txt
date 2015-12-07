@@ -7,3 +7,8 @@ G:\kxd\Flowpie\AppLib\bin\Release\Newtonsoft.Json.dll
 G:\kxd\Flowpie\AppLib\obj\Release\AppLib.csprojResolveAssemblyReference.cache
 G:\kxd\Flowpie\AppLib\obj\Release\AppLib.dll
 G:\kxd\Flowpie\AppLib\obj\Release\AppLib.pdb
+E:\git_home\kxd\Flowpie\AppLib\bin\Release\AppLib.dll
+E:\git_home\kxd\Flowpie\AppLib\bin\Release\AppLib.pdb
+E:\git_home\kxd\Flowpie\AppLib\obj\Release\AppLib.csprojResolveAssemblyReference.cache
+E:\git_home\kxd\Flowpie\AppLib\obj\Release\AppLib.dll
+E:\git_home\kxd\Flowpie\AppLib\obj\Release\AppLib.pdb
