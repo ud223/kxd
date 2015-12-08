@@ -41,7 +41,7 @@
     var orderid = '@ViewData["data"].ToString()';
 
     $(document).ready(function () {
-        $.cookie('is_get', 0);
+        $.cookie('cur_order_id', orderid);
         $.waiting('派单中，请稍候 ...');
 
         var lat = localStorage.getItem('lat');
