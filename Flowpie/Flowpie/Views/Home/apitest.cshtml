@@ -10,6 +10,8 @@
 <button onclick="sendExpress()">派件</button>
 <button onclick="getSendExpress()">获取派件列表</button>
 <button onclick="getReceiveExpress()">获取收件列表</button>
+<button onclick="getOrderDetail()">获取订单明细</button>
+<button onclick="OrderMove()">订单状态下移</button>
 <script type="text/javascript">
     function testTake() {
         var params = {
@@ -54,6 +56,26 @@
             url: '/api/order/getReceiveExpress',
             data: { 'courierid': '2015111200007' },
             type: 'get'
+        }
+
+        ajaxTo(params);
+    }
+
+    function getOrderDetail() {
+        var params = {
+            url: '/api/order/getorderdetail',
+            data: { 'orderid': '2015120800005' },
+            type: 'get'
+        }
+
+        ajaxTo(params);
+    }
+
+    function OrderMove() {
+        var params = {
+            url: '/api/order/orderMove',
+            data: { 'orderid': '2015121000005' },
+            type: 'post'
         }
 
         ajaxTo(params);

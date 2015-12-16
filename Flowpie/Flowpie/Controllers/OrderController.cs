@@ -35,6 +35,8 @@ namespace Flowpie.Controllers
                 order.name = item["fromname"].ToString();
                 order.orderid = item["orderid"].ToString();
                 order.phone = item["fromtel"].ToString();
+                order.amount = item["amount"].ToString();
+                order.rundate = item["rundate"].ToString();
                 order.runtime = item["runtime"].ToString();
                 order.state = item["state"].ToString();
                 order.lat = item["lat"].ToString();
@@ -61,6 +63,49 @@ namespace Flowpie.Controllers
                 result.message = "获取成功!";
                 result.count = list.Count.ToString();
                 result.data = strData.ToString().Replace("[", "{").Replace("]", "}");
+            }
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+        }
+
+        [HttpGet]
+        public string GetOrderDetail()
+        {
+            KxdLib.OrderController orderController = new KxdLib.OrderController();
+            DatabaseLib.Tools tools = new DatabaseLib.Tools();
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
+
+            Models.Result result = new Models.Result();
+
+            System.Collections.Hashtable data = tools.paramToData(context.Request.Params);
+
+            Hashtable item = orderController.load(data["orderid"].ToString());
+
+            if (item != null)
+            {
+                Models.Order order = new Models.Order();
+
+                order.address = item["fromaddress"].ToString();
+                order.name = item["fromname"].ToString();
+                order.orderid = item["orderid"].ToString();
+                order.phone = item["fromtel"].ToString();
+                order.amount = item["amount"].ToString();
+                order.rundate = item["rundate"].ToString();
+                order.runtime = item["runtime"].ToString();
+                order.state = item["state"].ToString();
+                order.lat = item["lat"].ToString();
+                order.lng = item["lng"].ToString();
+
+                string str_json = Newtonsoft.Json.JsonConvert.SerializeObject(order);
+
+                result.code = "200";
+                result.message = "获取成功!";
+                result.data = Newtonsoft.Json.JsonConvert.SerializeObject(order);
+            }
+            else
+            {
+                result.code = "0";
+                result.message = "获取订单信息失败!";
             }
 
             return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
@@ -331,6 +376,25 @@ namespace Flowpie.Controllers
             HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
 
             System.Collections.Hashtable data = tools.paramToData(context.Request.Form);
+
+            Hashtable order = orderController.load(data["orderid"].ToString());
+            //如果是揽收状态就更新订单包含的快递单总价到订单价格
+            if (order["state"].ToString() == "1")
+            {
+                List<Hashtable> express_list = orderController.getOrderDetailByOrderId(data["orderid"].ToString());
+                double amount = 0.00;
+
+                foreach (Hashtable express in express_list)
+                {
+                    string tmp_amount = CommonLib.Common.Validate.IsNullString(express["amount"], "0");
+
+                    amount = amount + double.Parse(tmp_amount);
+                }
+
+                data.Add("amount", amount.ToString());
+                
+                orderController.updateAmount(data);
+            }
 
             orderController.updateState(data["orderid"].ToString());
 

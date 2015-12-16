@@ -67,7 +67,7 @@ namespace KxdLib
 
         public void updateAmount(Hashtable data)
         {
-            this.SqlText = "update app_order set amount = amount + "+ data["amount"].ToString() + " where orderid = '"+ data["orderid"].ToString() + "'";
+            this.SqlText = "update app_order set amount = "+ data["amount"].ToString() + " where orderid = '"+ data["orderid"].ToString() + "'";
 
             base.Execute(this.SqlText);
         }

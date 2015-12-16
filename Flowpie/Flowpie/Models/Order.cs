@@ -9,6 +9,7 @@ namespace Flowpie.Models
     {
         public string orderid { get; set; }
         public string address { get; set; }
+        public string rundate { get; set; }
         public string runtime { get; set; }
         public string state { get; set; }
         public string name { get; set; }
@@ -16,5 +17,6 @@ namespace Flowpie.Models
         public string headpic { get; set; }
         public string lat { get; set; }
         public string lng { get; set; }
+        public string amount { get; set; }
     }
 }
