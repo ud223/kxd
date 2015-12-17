@@ -1,0 +1,72 @@
+Time:    2015/12/10 8:58:00
+Action:  更新主订单价格
+Message: update app_order set amount = amount + 8 where orderid = '2015120800014'
+-----------------------------------------------------------
+
+
+Time:    2015/12/10 8:58:06
+Action:  更新主订单价格
+Message: update app_order set state = state + 1 where orderid = '2015120800014'
+-----------------------------------------------------------
+
+
+Time:    2015/12/10 9:11:17
+Action:  更新主订单价格
+Message: update app_order set amount = 8 where orderid = '2015120800014'
+-----------------------------------------------------------
+
+
+Time:    2015/12/10 9:11:17
+Action:  更新主订单价格
+Message: update app_order set state = state + 1 where orderid = '2015120800014'
+-----------------------------------------------------------
+
+
+Time:    2015/12/10 10:28:18
+Action:  更新主订单价格
+Message: update app_order set state = state + 1 where orderid = '2015121000003'
+-----------------------------------------------------------
+
+
+Time:    2015/12/10 10:50:24
+Action:  更新主订单价格
+Message: update app_order set state = state + 1 where orderid = '2015121000005'
+-----------------------------------------------------------
+
+
+Time:    2015/12/10 11:55:13
+Action:  更新主订单价格
+Message: update app_order set state = state + 1 where orderid = '2015120800014'
+-----------------------------------------------------------
+
+
+Time:    2015/12/10 12:09:35
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2015121000009'
+-----------------------------------------------------------
+
+
+Time:    2015/12/10 12:10:42
+Action:  更新主订单价格
+Message: update app_order set state = state + 1 where orderid = '2015121000010'
+-----------------------------------------------------------
+
+
+Time:    2015/12/10 12:11:15
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2015121000011'
+-----------------------------------------------------------
+
+
+Time:    2015/12/10 12:11:59
+Action:  更新主订单价格
+Message: update app_order set state = state + 1 where orderid = '2015121000012'
+-----------------------------------------------------------
+
+
+Time:    2015/12/10 12:21:47
+Action:  更新主订单价格
+Message: update app_order set state = state + 1 where orderid = '2015121000008'
+-----------------------------------------------------------
+
+

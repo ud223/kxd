@@ -156,10 +156,17 @@ namespace Flowpie.Controllers
         public ActionResult PaySuccess(string id)
         {
             KxdLib.OrderController orderController = new KxdLib.OrderController();
+            KxdLib.CourierController courierController = new KxdLib.CourierController();
 
             orderController.updateState(id);
 
             System.Collections.Hashtable item = orderController.load(id);
+
+            System.Collections.Hashtable courier = courierController.load(item["courierid"].ToString());
+
+            AppLib.Android android = new AppLib.Android();
+
+            android.pushMsg(item["orderid"].ToString() + "|3", courier["appid"].ToString());
 
             ViewData["data"] = item;
 
@@ -213,7 +220,7 @@ namespace Flowpie.Controllers
             data.Add("fromtel", user["phone"].ToString());
             data.Add("companyid", courier["companyid"].ToString());
             data.Add("rundate", DateTime.Now.ToString("yyyy-MM-dd"));
-            data.Add("state", "1");
+            data.Add("state", "0");
 
             string id = orderController.add(data);
 
