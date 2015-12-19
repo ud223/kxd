@@ -80,7 +80,7 @@ namespace KxdLib
         /// <returns></returns>
         public Hashtable IsExist(Hashtable data)
         {
-            this.SqlText = "SELECT app_courier.*, companytext FROM app_courier left join app_company on app_courier.companyid = app_company.companyid WHERE phone ='" + data["phone"].ToString() +"' OR loginname ='"+ data["loginname"].ToString() +"' Limit 1";
+            this.SqlText = "SELECT app_courier.*, companycode, companytext FROM app_courier left join app_company on app_courier.companyid = app_company.companyid WHERE phone ='" + data["phone"].ToString() +"' OR loginname ='"+ data["loginname"].ToString() +"' Limit 1";
 
             NetLog.WriteTextLog("判断用户或手机是否已注册", this.SqlText, DateTime.Now);
 

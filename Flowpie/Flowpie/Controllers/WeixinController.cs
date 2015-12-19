@@ -367,7 +367,7 @@ namespace Flowpie.Controllers
         }
 
         //获得ACCESS_TOKEN，通过appid和app_secect获得（订阅号）
-        public static string GetAccessToken()
+        public string GetAccessToken()
         {
             WebClient webClient = new WebClient();
             Byte[] bytes = webClient.DownloadData(string.Format("{0}&appid={1}&secret={2}", appUrl, appId, appSecret));

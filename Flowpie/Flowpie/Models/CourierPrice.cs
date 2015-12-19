@@ -17,6 +17,7 @@ namespace Flowpie.Models
         public string firstprice { get; set; }
         public string stepprice { get; set; }
         public string amount { get; set; }
+        public string companycode { get; set; }
         public string companytext { get; set; }
         public string local { get; set; }
         public string state { get; set; }

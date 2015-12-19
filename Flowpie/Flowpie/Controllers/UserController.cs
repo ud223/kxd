@@ -193,6 +193,7 @@ namespace Flowpie.Controllers
                     courier.courierid = item["courierid"].ToString();
                     courier.name = item["name"].ToString();
                     courier.phone = item["phone"].ToString();
+                    courier.companycode = item["companycode"].ToString();
                     courier.companytext = item["companytext"].ToString();
                     courier.headpic = "/img/user.jpg";
 
