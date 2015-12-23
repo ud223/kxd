@@ -632,7 +632,6 @@ G:\git_home\kxd\Flowpie\Flowpie\bin\SystemConfigureLib.dll
 G:\git_home\kxd\Flowpie\Flowpie\bin\WebGrease.dll
 G:\git_home\kxd\Flowpie\Flowpie\bin\GetuiServerApiSDK.dll
 G:\git_home\kxd\Flowpie\Flowpie\bin\Google.ProtocolBuffers.dll
-G:\git_home\kxd\Flowpie\Flowpie\bin\log4net.dll
 G:\git_home\kxd\Flowpie\Flowpie\bin\AccountLib.pdb
 G:\git_home\kxd\Flowpie\Flowpie\bin\AppLib.pdb
 G:\git_home\kxd\Flowpie\Flowpie\bin\BaseLib.pdb
@@ -693,3 +692,7 @@ G:\git_home\kxd\Flowpie\Flowpie\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAcc
 G:\git_home\kxd\Flowpie\Flowpie\obj\Debug\Flowpie.csprojResolveAssemblyReference.cache
 G:\git_home\kxd\Flowpie\Flowpie\obj\Debug\Flowpie.dll
 G:\git_home\kxd\Flowpie\Flowpie\obj\Debug\Flowpie.pdb
+G:\git_home\kxd\Flowpie\Flowpie\bin\WxApiLib.dll
+G:\git_home\kxd\Flowpie\Flowpie\bin\LitJson.dll
+G:\git_home\kxd\Flowpie\Flowpie\bin\WxApiLib.pdb
+G:\git_home\kxd\Flowpie\Flowpie\bin\log4net.dll

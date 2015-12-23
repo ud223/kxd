@@ -346,6 +346,12 @@ namespace CommonLib.Common
             return value2;
         }
 
+        public static string filterEmoji(string str)
+        {
+            string result = Regex.Replace(str, @"\p{Cs}", "");
+            return result;
+        }
+
         #endregion
     }
 }

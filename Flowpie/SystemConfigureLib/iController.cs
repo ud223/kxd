@@ -124,6 +124,8 @@ namespace SystemConfigureLib
 
             strSql = tools.fixSqlText(strSql);
 
+            NetLog.WriteTextLog("注册用户", strSql, DateTime.Now);
+
             dataClient.SqlText = strSql;
 
             DataSet ds = dataClient.Query();

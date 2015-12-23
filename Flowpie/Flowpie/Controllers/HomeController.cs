@@ -4,12 +4,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Newtonsoft.Json;
-
+using System.Net;
+using System.IO;
+using System.Net.Security;
+using System.Security.Authentication;
+using System.Web.Script.Serialization;
+using WxApiLib;
 
 namespace Flowpie.Controllers
 {
     public class HomeController : Controller
     {
+        string app_id = "wx38d79befbac723ff";
+        string app_secret = "acd03afe2dbec2b0e70a9b262d26fb59";
+        string access_token = "";
+
         public ActionResult Index()
         {
             return View();
@@ -18,13 +27,16 @@ namespace Flowpie.Controllers
         public ActionResult Home()
         {
             KxdLib.OrderController orderController = new KxdLib.OrderController();
+            KxdLib.UserController userController = new KxdLib.UserController();
             CacheLib.Cookie cookie = new CacheLib.Cookie();
 
             string user_id = cookie.GetCookie("user_id");
 
+            System.Collections.Hashtable item = userController.load(user_id);
             List<System.Collections.Hashtable> list = orderController.getOrderAddressByUserId(user_id);
 
             ViewData["data"] = list;
+            ViewData["item"] = item;
 
             return View();
         }
@@ -204,23 +216,33 @@ namespace Flowpie.Controllers
             System.Collections.Hashtable data = tools.paramToData(strParam);
 
             string order_id = serialController.getSerialNumber("ord", DateTime.Now.ToString("yyyy-MM-dd"));
-            string user_id = cookie.GetCookie("user_id");
+            string user_id = data["userid"].ToString();// cookie.GetCookie("user_id");
 
             System.Collections.Hashtable user = userController.load(user_id);
             System.Collections.Hashtable courier = courierController.load(data["courierid"].ToString());
 
             data.Add("orderid", order_id);
-            data.Add("userid", user_id);
+            //data.Add("userid", user_id);
+
+           
             data.Add("sendcouriername", courier["name"].ToString());
             data.Add("sendcourierphone", courier["phone"].ToString());
             data.Add("fromaddress", data["address"].ToString());
             data.Add("fromaddressdetail", data["addressdetail"].ToString());
+            data.Add("companyid", courier["companyid"].ToString());
+
+            //return Redirect("/home/ordererror?msg=" + data["courierid"].ToString());
+
             data.Add("fromname", user["name"].ToString());
             data.Add("fromcity", "武汉");
             data.Add("fromtel", user["phone"].ToString());
-            data.Add("companyid", courier["companyid"].ToString());
             data.Add("rundate", DateTime.Now.ToString("yyyy-MM-dd"));
-            data.Add("state", "0");
+
+            if (data["orderTypeid"].ToString() == "1")
+                data.Add("state", "1");
+            else
+                data.Add("state", "2");
+
 
             string id = orderController.add(data);
 
@@ -236,6 +258,10 @@ namespace Flowpie.Controllers
 
         public ActionResult OrderError()
         {
+            string msg = Request.QueryString["msg"];
+
+            ViewData["error"] = msg;
+
             return View();
         }
 
@@ -256,12 +282,17 @@ namespace Flowpie.Controllers
         public ActionResult OrderDetail(string id)
         {
             KxdLib.OrderController orderController = new KxdLib.OrderController();
+            KxdLib.UserController userController = new KxdLib.UserController();
 
             System.Collections.Hashtable item = orderController.load(id);
             List<System.Collections.Hashtable> list = orderController.getOrderDetailByOrderId(id);
 
+            System.Collections.Hashtable user = userController.load(item["userid"].ToString());
+
             ViewData["data"] = item;
             ViewData["list"] = list;
+            ViewData["amount"] = item["amount"].ToString().Replace(".00", "");
+            ViewData["openid"] = user["openid"].ToString();
 
             return View();
         }
@@ -354,6 +385,114 @@ namespace Flowpie.Controllers
             return View();
         }
 
+        public ActionResult RegUser()
+        {
+            string code = this.HttpContext.Request.QueryString["code"];
+            string tmp_web_url = this.HttpContext.Request.QueryString["web_url"];
+
+            //string web_url = System.Web.HttpUtility.UrlDecode(tmp_web_url); //"http://www.playkuaidi.com/home";//
+
+            //if (CommonLib.Common.Validate.IsNullString(web_url) != "")
+            //{
+            //    if (web_url == "http://www.playkuaidi.com/")
+            //    {
+            //        web_url = "/";
+            //    }
+            //    else
+            //    {
+            //        web_url = web_url.Replace("http://www.playkuaidi.com/", "/");
+            //    }
+            //}
+            //else
+            //{
+            //    web_url = "/";
+            //}
+            string web_url = "/";
+            string open_id = this.getOpenId(code);
+
+            Models.Customer customer = this.getUserInfo(open_id);
+
+            string customer_id = this.addCustomer(customer);
+
+            ViewData["data"] = customer_id;
+            ViewData["url"] = web_url;
+
+            return View();
+        }
+
+        private string getOpenId(string code)
+        {
+            string url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=" + this.app_id + "&secret=" + this.app_secret + "&code=" + code + "&grant_type=authorization_code";
+
+            string weixin = this.file_get_contents(url);
+
+            System.Web.Script.Serialization.JavaScriptSerializer j = new System.Web.Script.Serialization.JavaScriptSerializer();
+
+            Models.OpenId openid_info = new Models.OpenId();
+
+            openid_info = j.Deserialize<Models.OpenId>(weixin);
+
+            this.access_token = openid_info.access_token;
+
+            return openid_info.openid;
+        }
+
+        private Models.Customer getUserInfo(string open_id)
+        {
+            string url = "https://api.weixin.qq.com/sns/userinfo?access_token=" + this.access_token + "&openid=" + open_id + "&lang=zh_CN";
+
+            string weixin = this.file_get_contents(url);
+
+            System.Web.Script.Serialization.JavaScriptSerializer j = new System.Web.Script.Serialization.JavaScriptSerializer();
+
+            Models.Customer customer = new Models.Customer();
+
+            customer = j.Deserialize<Models.Customer>(weixin);
+
+            return customer;
+        }
+
+        private string addCustomer(Models.Customer customer)
+        {
+            KxdLib.UserController userController = new KxdLib.UserController();
+
+            System.Collections.Hashtable item = userController.getUserByOpenId(customer.openid);
+
+            if (item != null)
+            {
+                return item["userid"].ToString();
+            }
+
+            System.Collections.Hashtable data = new System.Collections.Hashtable();
+
+            data.Add("nickname", CommonLib.Common.Validate.filterEmoji(customer.nickname));
+            data.Add("openid", customer.openid);
+            data.Add("headpic", customer.headimgurl);
+            data.Add("CreateAt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            data.Add("ModifyAt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
+            string strText = userController.add(data);
+
+            if (userController.Result)
+                return strText;
+            else
+                return null;
+        }
+
+        protected string file_get_contents(string fileName)
+        {
+            HttpWebRequest req = (HttpWebRequest)HttpWebRequest.Create(fileName);///cgi-bin/loginpage?t=wxm2-login&lang=zh_CN 
+            //req.CookieContainer = cookie;
+            req.Method = "GET";
+            req.ProtocolVersion = HttpVersion.Version10;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls;
+            HttpWebResponse res = (HttpWebResponse)req.GetResponse();
+            StreamReader rd = new StreamReader(res.GetResponseStream());
+            string theContent = rd.ReadToEnd();
+
+            return theContent;
+        }
+
         public ActionResult ScanQRcode()
         {
             return View();
@@ -361,6 +500,79 @@ namespace Flowpie.Controllers
 
         public ActionResult apitest()
         {
+            return View();
+        }
+
+        public ActionResult Clear()
+        {
+            return View();
+        }
+
+        public ActionResult OrderPay()
+        {
+            string wxJsApiParam = "";
+            //string editAddress = "";
+
+            WxApiLib.lib.Log.Info(this.GetType().ToString(), "1. page load");
+
+            string openid = Request.QueryString["openid"];
+            string total_fee = Request.QueryString["total_fee"];
+            //检测是否给当前页面传递了相关参数
+            if (string.IsNullOrEmpty(openid) || string.IsNullOrEmpty(total_fee) || total_fee == "0")
+            {
+                Response.Write("<span style='color:#FF0000;font-size:20px'>" + "页面传参出错,请返回重试" + "</span>");
+                WxApiLib.lib.Log.Error(this.GetType().ToString(), "This page have not get params, cannot be inited, exit...");
+
+                return View();
+            }
+            
+            //若传递了相关参数，则调统一下单接口，获得后续相关接口的入口参数
+            JsApiPay jsApiPay = new JsApiPay(Request, Response);
+            jsApiPay.openid = openid;
+            jsApiPay.total_fee = int.Parse(total_fee);
+
+            //JSAPI支付预处理
+            try
+            {
+                WxApiLib.lib.WxPayData unifiedOrderResult = jsApiPay.GetUnifiedOrderResult();
+
+                wxJsApiParam = jsApiPay.GetJsApiParameters();//获取H5调起JS API参数      
+                //editAddress = jsApiPay.GetEditAddressParameters();          
+                    
+                WxApiLib.lib.Log.Debug(this.GetType().ToString(), "wxJsApiParam : " + wxJsApiParam);
+
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                Models.PayInfo payInfo = js.Deserialize<Models.PayInfo>(wxJsApiParam);
+
+
+                ViewData["appId"] = payInfo.appId;
+                ViewData["nonceStr"] = payInfo.nonceStr;
+                ViewData["package"] = payInfo.package;
+                ViewData["paySign"] = payInfo.paySign;
+                ViewData["signType"] = payInfo.signType;
+                ViewData["timeStamp"] = payInfo.timeStamp;
+
+                ViewData["orderid"] = Request.QueryString["orderid"];
+                //ViewData["editAddress"] = editAddress;
+                //在页面上显示订单信息
+                //Response.Write("<span style='color:#00CD00;font-size:20px'>订单详情：</span><br/>");
+                //Response.Write("<span style='color:#00CD00;font-size:20px'>" + unifiedOrderResult.ToPrintStr() + "</span>");
+                //Response.Write("<span style='color:#00CD00;font-size:20px'>" + wxJsApiParam + "</span>");
+
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<span style='color:#FF0000;font-size:20px'>" + "下单失败，请返回重试:" + ex.Message + "</span>");
+            }
+
+            return View();
+        }
+
+        public ActionResult ResultNotify()
+        {
+            ResultNotify resultNotify = new ResultNotify(Request, Response);
+            resultNotify.ProcessNotify();
+
             return View();
         }
     }

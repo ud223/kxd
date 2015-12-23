@@ -22,6 +22,22 @@ namespace KxdLib
             return base.load("");
         }
 
+        public Hashtable getUserByOpenId(string openid)
+        {
+            this.SqlText = "SELECT * FROM app_users WHERE openid = '" + openid + "'";
+
+            return base.load("");
+        }
+
+        public override string add(Hashtable data)
+        {
+            string strSql = "INSERT INTO app_users(openid, nickname, headpic, CreateAt, ModifyAt) VALUES('@openid@', '@nickname@', '@headpic@', '@CreateAt@', '@ModifyAt@'); SELECT userid FROM app_users order by userid desc LIMIT 1";
+
+            this.SqlText = strSql;
+
+            return base.add(data);
+        }
+
         public void saveValue(Hashtable data)
         {
             DatabaseLib.Tools tools = new DatabaseLib.Tools();

@@ -10,37 +10,37 @@
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/AccountLib.dll">
-      <publishTime>12/18/2015 11:33:39</publishTime>
+      <publishTime>12/20/2015 18:17:37</publishTime>
     </File>
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>07/04/2014 16:24:07</publishTime>
     </File>
     <File Include="bin/AppLib.dll">
-      <publishTime>12/17/2015 21:58:15</publishTime>
+      <publishTime>12/21/2015 20:09:41</publishTime>
     </File>
     <File Include="bin/BaseLib.dll">
       <publishTime>12/17/2015 21:58:15</publishTime>
     </File>
     <File Include="bin/CacheLib.dll">
-      <publishTime>12/18/2015 11:33:39</publishTime>
+      <publishTime>12/20/2015 18:17:37</publishTime>
     </File>
     <File Include="bin/CommonLib.dll">
-      <publishTime>12/17/2015 21:58:15</publishTime>
+      <publishTime>12/20/2015 18:17:37</publishTime>
     </File>
     <File Include="bin/DatabaseLib.dll">
-      <publishTime>12/17/2015 21:58:15</publishTime>
+      <publishTime>12/20/2015 18:17:37</publishTime>
     </File>
     <File Include="bin/BaseLib.dll">
       <publishTime>12/17/2015 21:58:15</publishTime>
     </File>
     <File Include="bin/CacheLib.dll">
-      <publishTime>12/18/2015 11:33:39</publishTime>
+      <publishTime>12/20/2015 18:17:37</publishTime>
     </File>
     <File Include="bin/CommonLib.dll">
-      <publishTime>12/17/2015 21:58:15</publishTime>
+      <publishTime>12/20/2015 18:17:37</publishTime>
     </File>
     <File Include="bin/DatabaseLib.dll">
-      <publishTime>12/17/2015 21:58:15</publishTime>
+      <publishTime>12/20/2015 18:17:37</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>07/04/2014 16:24:09</publishTime>
@@ -49,7 +49,7 @@
       <publishTime>07/04/2014 16:24:09</publishTime>
     </File>
     <File Include="bin/Flowpie.dll">
-      <publishTime>12/18/2015 11:33:40</publishTime>
+      <publishTime>12/22/2015 12:25:57</publishTime>
     </File>
     <File Include="bin/GetuiServerApiSDK.dll">
       <publishTime>06/19/2015 13:28:34</publishTime>
@@ -58,7 +58,10 @@
       <publishTime>04/29/2015 09:54:26</publishTime>
     </File>
     <File Include="bin/KxdLib.dll">
-      <publishTime>12/18/2015 11:33:39</publishTime>
+      <publishTime>12/21/2015 21:55:25</publishTime>
+    </File>
+    <File Include="bin/LitJson.dll">
+      <publishTime>05/19/2014 21:40:52</publishTime>
     </File>
     <File Include="bin/log4net.dll">
       <publishTime>04/29/2015 09:54:26</publishTime>
@@ -112,7 +115,7 @@
       <publishTime>07/04/2014 16:24:10</publishTime>
     </File>
     <File Include="bin/ProjectLib.dll">
-      <publishTime>12/18/2015 11:33:39</publishTime>
+      <publishTime>12/20/2015 18:17:37</publishTime>
     </File>
     <File Include="bin/RouteDebugger.dll">
       <publishTime>10/23/2015 19:44:34</publishTime>
@@ -148,10 +151,13 @@
       <publishTime>07/04/2014 16:24:07</publishTime>
     </File>
     <File Include="bin/SystemConfigureLib.dll">
-      <publishTime>12/18/2015 11:33:39</publishTime>
+      <publishTime>12/21/2015 21:55:25</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>07/04/2014 16:24:07</publishTime>
+    </File>
+    <File Include="bin/WxApiLib.dll">
+      <publishTime>12/22/2015 10:16:08</publishTime>
     </File>
     <File Include="bin/zh-Hans/EntityFramework.resources.dll">
       <publishTime>07/04/2014 16:24:11</publishTime>
@@ -337,7 +343,7 @@
       <publishTime>08/05/2015 16:19:25</publishTime>
     </File>
     <File Include="js/ajaxhelper.js">
-      <publishTime>12/09/2015 10:26:16</publishTime>
+      <publishTime>12/21/2015 21:54:56</publishTime>
     </File>
     <File Include="js/bootstrap-datetimepicker.js">
       <publishTime>08/24/2015 15:58:33</publishTime>
@@ -376,7 +382,7 @@
       <publishTime>12/16/2013 03:47:42</publishTime>
     </File>
     <File Include="js/map.js">
-      <publishTime>12/02/2015 00:51:39</publishTime>
+      <publishTime>12/21/2015 15:32:55</publishTime>
     </File>
     <File Include="js/modernizr-2.6.2.js">
       <publishTime>07/04/2014 16:24:07</publishTime>
@@ -389,6 +395,9 @@
     </File>
     <File Include="js/respond.min.js">
       <publishTime>07/04/2014 16:24:08</publishTime>
+    </File>
+    <File Include="js/wx.js">
+      <publishTime>12/21/2015 15:27:24</publishTime>
     </File>
     <File Include="kxd/css/global.css">
       <publishTime>12/02/2015 01:23:36</publishTime>
@@ -454,7 +463,7 @@
       <publishTime>07/04/2014 16:24:04</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>12/05/2015 21:19:17</publishTime>
+      <publishTime>12/19/2015 15:01:11</publishTime>
     </File>
     <File Include="src/com/logosware/event/QRdecoderEvent.as">
       <publishTime>12/16/2013 03:47:42</publishTime>
@@ -517,25 +526,28 @@
       <publishTime>07/04/2014 16:24:09</publishTime>
     </File>
     <File Include="Views/Home/apitest.cshtml">
-      <publishTime>12/10/2015 10:49:47</publishTime>
+      <publishTime>12/21/2015 21:51:24</publishTime>
     </File>
     <File Include="Views/Home/ChangePassword.cshtml">
       <publishTime>11/18/2015 17:35:16</publishTime>
+    </File>
+    <File Include="Views/Home/Clear.cshtml">
+      <publishTime>12/20/2015 23:00:24</publishTime>
     </File>
     <File Include="Views/Home/CourierDetail.cshtml">
       <publishTime>11/19/2015 17:20:20</publishTime>
     </File>
     <File Include="Views/Home/EasyOrder.cshtml">
-      <publishTime>12/05/2015 23:20:10</publishTime>
+      <publishTime>12/21/2015 16:17:14</publishTime>
     </File>
     <File Include="Views/Home/ExpressQuery.cshtml">
       <publishTime>12/02/2015 01:23:43</publishTime>
     </File>
     <File Include="Views/Home/Home.cshtml">
-      <publishTime>12/08/2015 21:51:37</publishTime>
+      <publishTime>12/21/2015 10:10:19</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>11/11/2015 18:03:16</publishTime>
+      <publishTime>12/21/2015 20:48:14</publishTime>
     </File>
     <File Include="Views/Home/ModifyInfo.cshtml">
       <publishTime>11/29/2015 20:56:23</publishTime>
@@ -544,7 +556,7 @@
       <publishTime>11/19/2015 16:51:26</publishTime>
     </File>
     <File Include="Views/Home/MyIndex.cshtml">
-      <publishTime>12/01/2015 10:30:31</publishTime>
+      <publishTime>12/20/2015 23:35:33</publishTime>
     </File>
     <File Include="Views/Home/MyOrder.cshtml">
       <publishTime>11/19/2015 17:21:02</publishTime>
@@ -553,10 +565,13 @@
       <publishTime>11/26/2015 01:22:39</publishTime>
     </File>
     <File Include="Views/Home/OrderDetail.cshtml">
-      <publishTime>11/29/2015 21:41:06</publishTime>
+      <publishTime>12/22/2015 12:24:16</publishTime>
     </File>
     <File Include="Views/Home/OrderError.cshtml">
-      <publishTime>11/25/2015 21:41:58</publishTime>
+      <publishTime>12/21/2015 16:04:17</publishTime>
+    </File>
+    <File Include="Views/Home/OrderPay.cshtml">
+      <publishTime>12/22/2015 12:25:47</publishTime>
     </File>
     <File Include="Views/Home/OrderSuccess.cshtml">
       <publishTime>11/28/2015 18:53:03</publishTime>
@@ -566,6 +581,12 @@
     </File>
     <File Include="Views/Home/PaySuccess.cshtml">
       <publishTime>11/19/2015 13:01:32</publishTime>
+    </File>
+    <File Include="Views/Home/RegUser.cshtml">
+      <publishTime>12/21/2015 01:05:14</publishTime>
+    </File>
+    <File Include="Views/Home/ResultNotify.cshtml">
+      <publishTime>12/21/2015 00:04:07</publishTime>
     </File>
     <File Include="Views/Home/ScanQRcode.cshtml">
       <publishTime>12/05/2015 23:19:49</publishTime>
@@ -628,7 +649,10 @@
       <publishTime>07/04/2014 16:24:09</publishTime>
     </File>
     <File Include="Views/Shared/mobile.cshtml">
-      <publishTime>11/19/2015 17:28:48</publishTime>
+      <publishTime>12/21/2015 21:55:11</publishTime>
+    </File>
+    <File Include="Views/Shared/tools.cshtml">
+      <publishTime>12/20/2015 23:00:09</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
       <publishTime>11/07/2014 16:55:37</publishTime>
@@ -646,7 +670,7 @@
       <publishTime>11/06/2014 22:33:13</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/18/2015 13:14:58</publishTime>
+      <publishTime>12/20/2015 03:34:49</publishTime>
     </File>
   </ItemGroup>
 </Project>

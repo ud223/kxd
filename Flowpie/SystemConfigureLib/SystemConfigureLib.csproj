@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessTypeController.cs" />
+    <Compile Include="App.cs" />
     <Compile Include="DeptController.cs" />
     <Compile Include="iController.cs" />
     <Compile Include="MenuController.cs" />

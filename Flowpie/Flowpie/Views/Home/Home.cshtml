@@ -5,44 +5,44 @@
     ViewBag.Title = ViewData["title"];
 }
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=8TN0gC5Rqo6cec2jroKOkNpE&v=2.0"></script>
-    <style>
-        body {
-            padding: 0;
-        }
+<style>
+    body {
+        padding: 0;
+    }
 
-        body,
-        html,
-        #allmap {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            margin: 0;
-        }
-    </style>
+    body,
+    html,
+    #allmap {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+    }
+</style>
 
-    <a href="/home/myindex" class="topleft_userico iconfont icon-myfill"></a>
-    <div id="allmap"></div>
-    <div class="people_dot">
-        <i class="iconfont icon-location"></i>
-        <div class="inner">
-            <div class="t1">我在 <b class="address"></b></div>
-            <div class="t2"></div>
-        </div>
+<a href="/home/myindex" class="topleft_userico iconfont icon-myfill"></a>
+<div id="allmap"></div>
+<div class="people_dot">
+    <i class="iconfont icon-location"></i>
+    <div class="inner">
+        <div class="t1">我在 <b class="address"></b></div>
+        <div class="t2"></div>
     </div>
+</div>
 
-    <!-- 搜索出来以后出现的控件 -->
-    <div class="z7topsearchbar hyblayer">
-        <p class="tt">请输入收件地址</p>
-        <div>
-            <i class="iconfont icon-tubiao111 searchico"></i>
-            <input id="seach_address" type="text" class="searchinput" />
-            <button id="seach_btn" style="position:absolute;height:30px;line-height:30px;padding:0 20px;right:10px;top:50%;margin-top:-15px;">搜索</button>
-        </div>
+<!-- 搜索出来以后出现的控件 -->
+<div class="z7topsearchbar hyblayer">
+    <p class="tt">请输入收件地址</p>
+    <div>
+        <i class="iconfont icon-tubiao111 searchico"></i>
+        <input id="seach_address" type="text" class="searchinput" />
+        <button id="seach_btn" style="position:absolute;height:30px;line-height:30px;padding:0 20px;right:10px;top:50%;margin-top:-15px;">搜索</button>
     </div>
-    <div class="z7searchboard hyblayer">
-        <div class="bdunit a">
-            <div class="tt">以往收货地点</div>
-            <div class="itms">
+</div>
+<div class="z7searchboard hyblayer">
+    <div class="bdunit a">
+        <div class="tt">以往收货地点</div>
+        <div class="itms">
             @foreach (var item in ViewData["data"] as List<System.Collections.Hashtable>)
             {
                 <div class="itm" onclick="setNodeClick(this)">
@@ -51,59 +51,61 @@
                     <i class="iconfont icon-locationfill"></i>
                 </div>
             }
-            </div>
         </div>
+    </div>
 
-        <div class="bdunit b">
-            <div class="tt">相关地点</div>
-            <div class="itms">
-                
-            </div>
-        </div>
-    </div>
-    <div class="z6searchcover hyblayer"></div>
+    <div class="bdunit b">
+        <div class="tt">相关地点</div>
+        <div class="itms">
 
-    <div class="mapconsolebar">
-        <div class="inner">
-            <div class="timerbar">
-                <span class="iconfont icon-countdown" style="color:#aaa;"> 收件时间</span>          
-                    <input type="time" id="runtime" name="runtime" value="" class="sendpacktime" />
-            </div>
-            <div class="btsbar">
-                <div class="ciibt">
-                    <div class="bt bt_yjxd" onclick="toOneOrder()">
-                        <div class="t1">一键下单</div>
-                        <div class="t2">附近的快递员</div>
-                    </div>
-                </div>
-                <div class="ciibt" >
-                    <div class="bt bt_bjxd" onclick="toEasyOrder();">
-                        <div class="t1">便捷下单</div>
-                        <div class="t2">服务过快递员</div>
-                    </div>
+        </div>
+    </div>
+</div>
+<div class="z6searchcover hyblayer"></div>
+
+<div class="mapconsolebar">
+    <div class="inner">
+        <div class="timerbar">
+            <span class="iconfont icon-countdown" style="color:#aaa;"> 收件时间</span>
+            <input type="time" id="runtime" name="runtime" value="" class="sendpacktime" />
+        </div>
+        <div class="btsbar">
+            <div class="ciibt">
+                <div class="bt bt_yjxd" onclick="toOneOrder()">
+                    <div class="t1">一键下单</div>
+                    <div class="t2">附近的快递员</div>
                 </div>
             </div>
-            <div class="callkdresustwp" style="display:none" >
-                <div class="callkdresust">
-                    <div><a id="enter-order">进入订单</a></div>
+            <div class="ciibt">
+                <div class="bt bt_bjxd" onclick="toEasyOrder();">
+                    <div class="t1">便捷下单</div>
+                    <div class="t2">服务过快递员</div>
                 </div>
             </div>
         </div>
-        <!-- 提价初始订单数据隐藏域 -->
-        <input type="hidden" id="address" name="address" value="">
-        <input type="hidden" id="addressdetail" name="addressdetail" value="">
-        <input type="hidden" id="lat" name="lat" value="">
-        <input type="hidden" id="lng" name="lng" value="">
-    </div>
-    <div id="addr-item" style="display:none">
-        <div class="itm">
-            <div class="t1"></div>
-            <div class="t2"></div>
-            <i class="iconfont icon-locationfill"></i>
+        <div class="callkdresustwp" style="display:none">
+            <div class="callkdresust">
+                <div><a id="enter-order">进入订单</a></div>
+            </div>
         </div>
     </div>
-    <!--百度API链接请自行注册生成-->
-    <script>
+    <!-- 提价初始订单数据隐藏域 -->
+    <input type="hidden" id="name" name="name" value="@(((System.Collections.Hashtable)ViewData["item"])["name"])">
+    <input type="hidden" id="phone" name="phone" value="@(((System.Collections.Hashtable)ViewData["item"])["phone"])">
+    <input type="hidden" id="address" name="address" value="">
+    <input type="hidden" id="addressdetail" name="addressdetail" value="">
+    <input type="hidden" id="lat" name="lat" value="">
+    <input type="hidden" id="lng" name="lng" value="">
+</div>
+<div id="addr-item" style="display:none">
+    <div class="itm">
+        <div class="t1"></div>
+        <div class="t2"></div>
+        <i class="iconfont icon-locationfill"></i>
+    </div>
+</div>
+<!--百度API链接请自行注册生成-->
+<script>
         var map = false;
 
         $(document).ready(function () {
@@ -170,7 +172,9 @@
 			    $(".callkdresustwp").show();
 
 			    $('#enter-order').attr("href", "/home/orderdeta");
-            }
+			}
+
+			setLocal();
 		});
 
 		function setLocal() {
@@ -183,10 +187,12 @@
 
 		function loadLocal(lat, lng) {
 		    var params = {
-		        lat: lat,
-		        lng: lng,
+		        lat: local_lat,
+		        lng: local_lng,
 		        successFun: setPos
 		    }
+
+		    theLocation(map, local_lng, local_lat)
 
 		    getAddressByCoordinate(params);
 		}
@@ -211,10 +217,11 @@
 
 		    getAddressByCoordinate(params);
 		}
-		
+
 		function setPos(data) {
 		    var addresses = data.result.pois;
-	
+		    //alert(JSON.stringify(data));
+		    //alert(1);
 		    if (addresses.length > 0) {
 		        $(".people_dot").find('.address').html(addresses[0].name);
 		        $(".people_dot").find('.t2').html(addresses[0].addr);
@@ -224,7 +231,7 @@
 		        $("#lat").val(addresses[0].point.y);
 		        $("#lng").val(addresses[0].point.x);
 		    }
-
+		    //alert($("#lat").val());
 		//    console.log("lat:" + $("#lat").val() + ", lng:" + $("#lng").val());
 
 		    var list = $('.bdunit.b').find('.itms');
@@ -257,7 +264,7 @@
 		    $("#addressdetail").val($(node).find('.t2').html());
 		    $("#lat").val($(node).find('.t1').attr('lat'));
 		    $("#lng").val($(node).find('.t1').attr('lng'));
-	
+
 		    $('.hyblayer').hide();
 
 		    theLocation(map, $("#lng").val(), $("#lat").val());
@@ -271,11 +278,26 @@
 		}
 
 		function toEasyOrder() {
+		    var name = $("#name").val();
+		    var phone = $("#phone").val();
 		    var address = $('#address').val();
 		    var addressdetail = $("#addressdetail").val();
 		    var time = $('#runtime').val();
             var lat = $("#lat").val();
             var lng = $("#lng").val();
+
+            if (!name || !phone) {
+                var option = {
+                    msg: "请先完善用户的名字和电话才能下单!",
+                    exitText: "关闭!"
+                };
+
+                $.alertbox(option);
+
+                location.href = "/home/modifyinfo";
+
+                return;
+            }
 
             localStorage.setItem('address', address);
             localStorage.setItem('addressdetail', addressdetail);
@@ -283,17 +305,34 @@
             localStorage.setItem('lng', lng);
             localStorage.setItem('time', time);
 
+            
         //    console.log("lat:" + lat + ", lng:" + lng);
 
 		    location.href = '/home/easyorder'
 		}
 
 		function toOneOrder() {
+		    var name = $("#name").val();
+		    var phone = $("#phone").val();
 		    var address = $('#address').val();
 		    var addressdetail = $("#addressdetail").val();
 		    var time = $('#runtime').val();
 		    var lat = $("#lat").val();
 		    var lng = $("#lng").val();
+
+		    if (!name || !phone) {
+		        var opertion = {
+		            msg: "请先完善用户的名字和电话才能下单!",
+		            exitText: "关闭!"
+		        };
+
+		        $.alertbox(opertion);
+
+		        location.href = "/home/modifyinfo";
+
+		        return;
+		    }
+
 
 		    $.cookie('address', address);
 		    $.cookie('addressdetail', addressdetail);
@@ -353,7 +392,7 @@
 
 		    $.alertbox(opertion);
 		}
-        
+
         //-------------------陆思浙---------------------------------//
 		function initTime(drplist_id) {
 		    var date = new Date();
@@ -371,4 +410,4 @@
 
 		    $("#" + drplist_id).val(time);
 		}
-    </script>
+</script>

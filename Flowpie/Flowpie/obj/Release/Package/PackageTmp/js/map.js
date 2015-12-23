@@ -1,5 +1,5 @@
-﻿var local_lat = "30.646458";
-var local_lng = "114.308687";
+﻿var local_lat = "30.646706"; //30.646706 //30.554946
+var local_lng = "114.308615";//114.308615 //114.272827
 
 function getAddressByAddressName(params) {
     var option = {
@@ -49,16 +49,17 @@ function getAddressByCoordinate(params) {
     }
 
     $.extend(option, params);
-
+    if (!option.lat)
+        return;
     var url = "http://api.map.baidu.com/geocoder/v2/?ak=8TN0gC5Rqo6cec2jroKOkNpE&callback=renderReverse&location=" + option.lat + "," + option.lng + "&output=json&pois=1";
-
+    //alert(url);
     $.ajax({
         url: url,
         dataType: option.dataType,
         method: option.type,
         crossDomain: true,
         success: function (response) {
-            //alert(JSON.stringify(response)); return;
+            //  alert(JSON.stringify(response)); //return;
             if (response.status == 0) {
                 if (option.successFun) {
                     option.successFun(response);
@@ -128,7 +129,7 @@ function theLocation(map, lng, lat) {
     });
 
     // 将标注添加到地图中
-    map.addOverlay(marker);              
+    map.addOverlay(marker);
 
     map.panTo(new_point, 2000);
 }
@@ -150,18 +151,18 @@ function showPosition(data) {
         return;
     }
 
-    lng = data.result[0].x;
-    lat = data.result[0].y;
+    local_lng = data.result[0].x;
+    local_lat = data.result[0].y;
 
     if (afterMethod) {
         var params = {
-            lat: lat,
-            lng: lng,
+            lat: local_lat,
+            lng: local_lng,
             successFun: afterMethod
         }
 
         getAddressByCoordinate(params);
-    }  
+    }
 }
 
 function locationSuccess(position) {

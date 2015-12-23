@@ -70,5 +70,34 @@ namespace Flowpie.Controllers
 
             return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
         }
+
+        [HttpGet]
+        public string getLastVersion()
+        {
+            SystemConfigureLib.App app = new SystemConfigureLib.App();
+            DatabaseLib.Tools tools = new DatabaseLib.Tools();
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
+            Models.Result result = new Models.Result();
+
+            System.Collections.Hashtable data = tools.paramToData(context.Request.Params);
+
+            Hashtable item = app.getByVersion(data["currentVersion"].ToString());
+
+            if (item == null)
+            {
+                item = app.getLastVersion();
+
+                result.code = "200";
+                result.message = "获取新版本成功";
+                result.data = item["aur_downurl"].ToString();
+            }
+            else
+            {
+                result.code = "0";
+                result.message = "没有新版本!";
+            }
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+        }
     }
 }

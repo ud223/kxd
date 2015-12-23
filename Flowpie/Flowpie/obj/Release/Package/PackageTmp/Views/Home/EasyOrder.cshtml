@@ -70,19 +70,22 @@
             <i class="iconfont icon-squarecheckfill"></i>
         </div>
     </div>
-    <input type="hidden" id="courierid" name="courierid">
-    <input type="hidden" id="address" name="address">
-    <input type="hidden" id="addressdetail" name="addressdetail">
-    <input type="hidden" id="runtime" name="runtime">
-    <input type="hidden" id="amount" name="amount">
-    <input type="hidden" id="lat" name="lat">
-    <input type="hidden" id="lng" name="lng">
-    <input type="hidden" id="orderTypeid" name="orderTypeid" value="1">
+    <input type="text" id="userid" name="userid">
+    <input type="text" id="courierid" name="courierid">
+    <input type="text" id="address" name="address">
+    <input type="text" id="addressdetail" name="addressdetail">
+    <input type="text" id="runtime" name="runtime">
+    <input type="text" id="amount" name="amount">
+    <input type="text" id="lat" name="lat">
+    <input type="text" id="lng" name="lng">
+    <input type="text" id="orderTypeid" name="orderTypeid" value="1">
     <button type="submit" id="submit_btn" href="javascript:void(0)" class="fullbtn xuanfubtn" style="display:none;">下单</button>
 </form>
 <script type="text/javascript">
     $(document).ready(function () {
         getRegion();
+
+        $("#userid").val($.cookie('user_id'));
 
 		$('.choose-btn').click(function () {
 			$('.choose-btn').removeClass('selected');

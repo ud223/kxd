@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GetuiServerApiSDK">
-      <HintPath>E:\Debug\GetuiServerApiSDK.dll</HintPath>
+      <HintPath>..\Flowpie\bin\GetuiServerApiSDK.dll</HintPath>
     </Reference>
     <Reference Include="Google.ProtocolBuffers">
-      <HintPath>E:\Debug\Google.ProtocolBuffers.dll</HintPath>
+      <HintPath>..\Flowpie\bin\Google.ProtocolBuffers.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>E:\Debug\log4net.dll</HintPath>

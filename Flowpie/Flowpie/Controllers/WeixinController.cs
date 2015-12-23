@@ -393,38 +393,26 @@ namespace Flowpie.Controllers
             // button
             sb.AppendLine("{");
             sb.AppendLine("\"type\":\"view\",");
-            sb.AppendLine("\"name\":\"业务介绍\",");
-            sb.AppendLine("\"url\":\"http://viewer.maka.im/k/SZG5XXO8?DSCKID=c1df4bd8-3bee-48a9-b73f-c3004f253028&DSTIMESTAMP=1448006801088\"");
+            sb.AppendLine("\"name\":\"下订单\",");
+            sb.AppendLine("\"url\":\"http://www.playkuaidi.com\"");
             sb.AppendLine("},");
+
             sb.AppendLine("{");
             sb.AppendLine("\"type\":\"view\",");
-            sb.AppendLine("\"name\":\"我要报名\",");
-            sb.AppendLine("\"url\":\"http://wx.yune-jia.com\"");
+            sb.AppendLine("\"name\":\"查快递\",");
+            sb.AppendLine("\"url\":\"http://www.playkuaidi.com/home/expressquery\"");
             sb.AppendLine("},");
+
             sb.AppendLine("{");
-            sb.AppendLine("\"name\":\"品牌介绍\",");
-            sb.AppendLine("\"sub_button\":[");
-            // sub button
-            sb.AppendLine("{");
-            sb.AppendLine("\"type\":\"view\",");
-            sb.AppendLine("\"name\":\"关于我们\",");
-            sb.AppendLine("\"url\":\"http://wx.yune-jia.com/statics/jx/html/pg05-aboutus.html\"");
-            sb.AppendLine("},");
-            sb.AppendLine("{");
-            sb.AppendLine("\"type\":\"view\",");
-            sb.AppendLine("\"name\":\"微信交流群\",");
-            sb.AppendLine("\"url\":\"http://wx.yune-jia.com/statics/jx/html/pg07-qun.html\"");
+            sb.AppendLine("\"type\":\"click\",");
+            sb.AppendLine("\"name\":\"签到兑运费\",");
+            sb.AppendLine("\"key\":\"V1001_GOOD\"");
             sb.AppendLine("}");
-            sb.AppendLine("]");
-            sb.AppendLine("}");
+
             sb.AppendLine("]");
             sb.AppendLine("}");
 
             string weixin1 = sb.ToString();
-
-
-
-
 
             //string weixin1 = "";
             //weixin1 += "{\n";

@@ -16,8 +16,7 @@ G:\git_home\kxd\Flowpie\AppLib\bin\Debug\AppLib.dll
 G:\git_home\kxd\Flowpie\AppLib\bin\Debug\AppLib.pdb
 G:\git_home\kxd\Flowpie\AppLib\bin\Debug\GetuiServerApiSDK.dll
 G:\git_home\kxd\Flowpie\AppLib\bin\Debug\Google.ProtocolBuffers.dll
-G:\git_home\kxd\Flowpie\AppLib\bin\Debug\log4net.dll
 G:\git_home\kxd\Flowpie\AppLib\bin\Debug\Newtonsoft.Json.dll
-G:\git_home\kxd\Flowpie\AppLib\obj\Debug\AppLib.csprojResolveAssemblyReference.cache
 G:\git_home\kxd\Flowpie\AppLib\obj\Debug\AppLib.dll
 G:\git_home\kxd\Flowpie\AppLib\obj\Debug\AppLib.pdb
+G:\git_home\kxd\Flowpie\AppLib\obj\Debug\AppLib.csprojResolveAssemblyReference.cache

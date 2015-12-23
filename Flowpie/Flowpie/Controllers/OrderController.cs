@@ -478,6 +478,7 @@ namespace Flowpie.Controllers
                 {
                     result.code = "200";
                     result.message = "添加成功!";
+                    result.data = courier_id;
                 }
                 else
                 {

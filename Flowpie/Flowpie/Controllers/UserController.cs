@@ -270,7 +270,7 @@ namespace Flowpie.Controllers
             if (list == null || list.Count == 0)
             {
                 result.code = "0";
-                result.message = "没有获取到派送区域的快递员!";
+                result.message = "没有获取到常用快递员!";
             }
             else
             {

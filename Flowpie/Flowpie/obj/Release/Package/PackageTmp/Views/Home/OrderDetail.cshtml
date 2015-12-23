@@ -195,14 +195,16 @@
             *@
     </div>
 </div>
-
+    @*location.href='/home/paysuccess/@item["orderid"].ToString()'*@
 @if (ViewData["data"] != null)
 {
     var item = ViewData["data"] as System.Collections.Hashtable;
+    var openid = ViewData["openid"].ToString();
+    var amount = ViewData["amount"].ToString();
 
     if (item["state"].ToString() == "2")
     {
-        <div class="paytheorderbtn" onclick="location.href='/home/paysuccess/@item["orderid"].ToString()'">
+        <div class="paytheorderbtn" onclick="location.href = '/home/orderpay?openid=@openid&total_fee=@amount'&orderid=@item["orderid"]">
             <div class="tt">请支付订单</div>
             <div class="ct">
                 <sup>￥</sup>

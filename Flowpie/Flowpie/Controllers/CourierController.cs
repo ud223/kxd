@@ -65,6 +65,99 @@ namespace Flowpie.Controllers
             return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
         }
 
+        [HttpPost]
+        public string AddSmsTemplet()
+        {
+            KxdLib.CourierSmsTemplet courierSmsTempletController = new KxdLib.CourierSmsTemplet();
+            Models.Result result = new Models.Result();
+            DatabaseLib.Tools tools = new DatabaseLib.Tools();
+
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
+
+            System.Collections.Hashtable data = tools.paramToData(context.Request.Params);
+
+            Hashtable item = courierSmsTempletController.loadItem(data);
+
+            if (item == null)
+            {
+                courierSmsTempletController.add(data);
+
+                if (courierSmsTempletController.Result)
+                {
+                    result.code = "200";
+                    result.message = "添加成功!";
+                }
+                else
+                {
+                    result.code = "0";
+                    result.message = courierSmsTempletController.Message.Replace("'", "\"");
+                }
+            }
+            else
+            {
+                result.code = "0";
+                result.message = "已存在!";
+            }
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+        }
+
+        [HttpGet]
+        public string getSmsTemplet()
+        {
+            KxdLib.CourierSmsTemplet courierSmsTempletController = new KxdLib.CourierSmsTemplet();
+            Models.Result result = new Models.Result();
+            DatabaseLib.Tools tools = new DatabaseLib.Tools();
+
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
+
+            System.Collections.Hashtable data = tools.paramToData(context.Request.Params);
+
+            List<System.Collections.Hashtable> list = courierSmsTempletController.getByCourierId(data["courierid"].ToString());
+
+            if (courierSmsTempletController.Result)
+            {
+                if (list == null || list.Count == 0)
+                {
+                    result.code = "0";
+                    result.message = "没有任何模板!";
+                }
+                else
+                {
+                    int index = 0;
+                    System.Text.StringBuilder strData = new System.Text.StringBuilder();
+
+                    foreach (Hashtable item in list)
+                    {
+                        Models.Text text = new Models.Text();
+
+                        text.templet = item["TempletText"].ToString();
+
+                        string str_json = Newtonsoft.Json.JsonConvert.SerializeObject(text);
+
+                        if (index > 0)
+                            strData.Append(",");
+
+                        strData.Append(str_json);
+
+                        index++;
+                    }
+
+                    result.code = "200";
+                    result.message = "获取成功!";
+                    result.count = list.Count.ToString();
+                    result.data = strData.ToString().Replace("[", "{").Replace("]", "}");
+                }
+            }
+            else
+            {
+                result.code = "0";
+                result.message = courierSmsTempletController.Message.Replace("'", "\"");
+            }
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+        }
+
         [HttpGet]
         public string GetPrice()
         {

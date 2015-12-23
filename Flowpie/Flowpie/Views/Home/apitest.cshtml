@@ -12,6 +12,9 @@
 <button onclick="getReceiveExpress()">获取收件列表</button>
 <button onclick="getOrderDetail()">获取订单明细</button>
 <button onclick="OrderMove()">订单状态下移</button>
+<button onclick="TempletAdd()">测试添加短信模板</button>
+<button onclick="Templetget()">获取短信模板</button>
+<button onclick="getVersion()">获取最新版本</button>
 <script type="text/javascript">
     function testTake() {
         var params = {
@@ -24,7 +27,7 @@
 
     function testLogin() {
         var params = {
-            url: 'http://120.24.154.122:8001/api/user/loginCourier',
+            url: '/api/user/loginCourier',
             data: { 'loginname': 'lsz', 'password': '123' },
             type:'get'
         }
@@ -35,7 +38,7 @@
     function sendExpress() {
         var params = {
             url: '/api/order/addSendExpress',
-            data: { 'courierid': '2015111300002', 'expresscode': '12345678909876' }
+            data: { 'courierid': '2015111300002', 'expresscode': '123456789098761' }
         }
 
         ajaxTo(params);
@@ -70,12 +73,42 @@
 
         ajaxTo(params);
     }
-
+    
     function OrderMove() {
         var params = {
             url: '/api/order/orderMove',
             data: { 'orderid': '2015121000005' },
             type: 'post'
+        }
+
+        ajaxTo(params);
+    }
+
+    function TempletAdd() {
+        var params = {
+            url: '/api/courier/AddSmsTemplet',
+            data: { 'courierid': '2015111300002', 'templettext': '楼下' },
+            type: 'post'
+        }
+
+        ajaxTo(params);
+    }
+
+    function Templetget() {
+        var params = {
+            url: '/api/courier/getSmsTemplet',
+            data: { 'courierid': '2015111300002' },
+            type: 'get'
+        }
+
+        ajaxTo(params);
+    }
+
+    function getVersion() {
+        var params = {
+            url: '/api/tools/getLastVersion',
+            data: { 'currentVersion': '1.3.0' },
+            type: 'get'
         }
 
         ajaxTo(params);

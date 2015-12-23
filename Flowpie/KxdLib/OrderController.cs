@@ -123,11 +123,11 @@ namespace KxdLib
             return base.Query(this.SqlText);
         }
 
-        public void addSendExpress(Hashtable data)
+        public string addSendExpress(Hashtable data)
         {
             this.SqlText = "INSERT INTO app_sendorder(sendorderid, expresscode, courierid, couriername, courierphone, rundate, runtime, companyid, CreateAt, ModifyAt) values('@sendorderid@', '@expresscode@', '@courierid@', '@couriername@', '@courierphone@', '@rundate@', '@runtime@', @companyid@, '@CreateAt@', '@ModifyAt@'); select sendorderid from app_sendorder  ORDER BY CreateAt DESC Limit 1";
 
-            base.add(data);
+            return base.add(data);
         }
 
         public List<Hashtable> getReceiveOrderByCourierId(string courierid)

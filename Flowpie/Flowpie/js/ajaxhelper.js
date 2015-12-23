@@ -23,7 +23,7 @@ function ajaxTo(params) {
 
         return;
     }
-    console.log(option.url);
+    console.log(option.data);
     $.ajax({
         data: option.data,
         url: option.url,
