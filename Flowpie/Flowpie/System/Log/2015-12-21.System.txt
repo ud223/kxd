@@ -1,0 +1,6 @@
+Time:    2015/12/21 15:35:35
+Action:  注册用户
+Message: INSERT INTO app_order(orderid, userid, courierid, sendcouriername, sendcourierphone, weight, `long`, width, height, amount, fromname, fromcity, fromtel, orderTypeid, companyid, rundate, runtime, fromaddress, fromaddressdetail, lat, lng, state,  CreateAt, ModifyAt) VALUES('2015122100015', '00001', '2015111300002', 'lsz', '15927094025', '4', NULL, NULL, NULL, 0.00, '陆思浙', '武汉', '15927094025', 1, 1, '2015-12-21', '15:35:00.000', '新地盛世东方', '建设大道延长线与后湖大道交汇处', '30.646991539976', '114.30816341244', 0, '2015-12-21 15:35:34', '2015-12-21 15:35:34'); SELECT orderid FROM app_order ORDER BY orderid DESC Limit 1
+-----------------------------------------------------------
+
+

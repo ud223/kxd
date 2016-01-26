@@ -1,0 +1,90 @@
+﻿@{
+    Layout = "~/Views/Shared/mobile.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+<div class="kxdh-topbk">
+    <a href="/home/myindex" class="iconfont icon-angleleft"></a>
+    <span>收件地址</span>
+</div>
+
+@*<a href="/home/addressedit/0" class="btonpen"><i class="iconfont icon-roundadd"></i> 新增地址</a>*@
+<div class="kxdh-listb">
+    @foreach (var item in ViewData["list"] as List<System.Collections.Hashtable>)
+    {
+        <div class="itm slim">
+            <div>
+                <span class="h1">@item["address"]</span>
+                <span class="gold"></span>
+            </div>
+            <div class="h4">
+                <span>@item["addresstext"]</span>
+            </div>
+            <a href="/home/addressedit/@item["addressid"]" class="iconfont icon-iconfontpinglun ixonpen"></a>
+        </div>
+    }
+
+
+    @*<div class="itm slim">
+        <div>
+            <span class="h1">徐娇</span>
+            <span class="gold">18657758485</span>
+        </div>
+        <div class="h4">
+            <span>金色华府花园5栋3201</span>
+        </div>
+        <a href="p32_新增地址.html" class="iconfont icon-iconfontpinglun ixonpen"></a>
+    </div>
+    <div class="itm slim">
+        <div>
+            <span class="h1">徐娇</span>
+            <span class="gold">18657758485</span>
+        </div>
+        <div class="h4">
+            <span>金色华府花园5栋3201</span>
+        </div>
+        <a href="p32_新增地址.html" class="iconfont icon-iconfontpinglun ixonpen"></a>
+    </div>
+    <div class="itm slim">
+        <div>
+            <span class="h1">徐娇</span>
+            <span class="gold">18657758485</span>
+        </div>
+        <div class="h4">
+            <span>金色华府花园5栋3201</span>
+        </div>
+        <a href="p32_新增地址.html" class="iconfont icon-iconfontpinglun ixonpen"></a>
+    </div>
+    <div class="itm slim">
+        <div>
+            <span class="h1">徐娇</span>
+            <span class="gold">18657758485</span>
+        </div>
+        <div class="h4">
+            <span>金色华府花园5栋3201</span>
+        </div>
+        <a href="p32_新增地址.html" class="iconfont icon-iconfontpinglun ixonpen"></a>
+    </div>
+    <div class="itm slim">
+        <div>
+            <span class="h1">徐娇</span>
+            <span class="gold">18657758485</span>
+        </div>
+        <div class="h4">
+            <span>金色华府花园5栋3201</span>
+        </div>
+        <a href="p32_新增地址.html" class="iconfont icon-iconfontpinglun ixonpen"></a>
+    </div>
+    <div class="itm slim">
+        <div>
+            <span class="h1">徐娇</span>
+            <span class="gold">18657758485</span>
+        </div>
+        <div class="h4">
+            <span>金色华府花园5栋3201</span>
+        </div>
+        <a href="p32_新增地址.html" class="iconfont icon-iconfontpinglun ixonpen"></a>
+    </div>*@
+</div>
+<div class="clear-100"></div>

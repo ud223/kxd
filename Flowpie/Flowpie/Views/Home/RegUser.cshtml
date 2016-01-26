@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "~/Views/Shared/tools.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+@if (ViewData["data"] != null)
+{
+    <script type="text/javascript">
+        var user_id = '@ViewData["data"]';
+
+        localStorage.setItem('user_id', user_id);
+        $.cookie('user_id', user_id, { path: '/home', expires: 1 });
+
+       // location.href = '/';
+    </script>
+}
+@*<span>@ViewData["data"]</span>
+<span>@ViewData["url"]</span>*@
+正在处理中, 请稍后....

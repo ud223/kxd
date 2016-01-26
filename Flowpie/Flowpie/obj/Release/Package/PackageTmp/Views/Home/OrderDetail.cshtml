@@ -89,7 +89,7 @@
                 {
                     var item = ViewData["data"] as System.Collections.Hashtable;
 
-                    @item["sendcouriername"].ToString();
+                    @item["sendcouriername"].ToString().Replace("null", "");
                 }
             </div>
             <div class="t3">
@@ -107,7 +107,7 @@
                 {
                     var item = ViewData["data"] as System.Collections.Hashtable;
 
-                    @item["sendcourierphone"].ToString();
+                    @item["sendcourierphone"].ToString().Replace("null", "");
                 }
             </div>
             <span class="smllabel">@if (ViewData["data"] != null)
@@ -118,8 +118,6 @@
             }</span>
         </div>
     </div>
-
-
 
     <ul class="kxdh-tbul">
         <li>
@@ -134,7 +132,7 @@
             {
                 var item = ViewData["data"] as System.Collections.Hashtable;
 
-                @item["runtime"].ToString();
+                @item["runtime"].ToString().Replace(".000", "");
             }</span>
             </div>
         </li>
@@ -168,34 +166,10 @@
                     </ul>
                 </div>
             }
-            @*<div class="kxdh-trackitm open">
-                <div class="kxdh-tracktt">
-                    <span>单号2214637<b>（￥15元）</b></span>
-                    <i class="iconfont icon-angledown"></i>
-                </div>
-                <ul class="kxdh-trackul">
-                    <li>
-                        <i class="hdt iconfont icon-iconfontradioboxfill"></i>
-                        <span>2015年5月15日 15:23 收件</span>
-                    </li>
-                    <li>
-                        <i class="hdt iconfont icon-iconfontradioboxfill"></i>
-                        <span>2015年5月16日 16:23 郴州中转站</span>
-                    </li>
-                    <li>
-                        <i class="hdt iconfont icon-iconfontradioboxfill"></i>
-                        <span>2015年5月17日 17:23 岳阳中转站</span>
-                    </li>
-                    <li>
-                        <i class="hdt iconfont icon-iconfontradioboxfill"></i>
-                        <span>2015年5月18日 18:23 签收成功</span>
-                    </li>
-                </ul>
-            </div>
-            *@
     </div>
 </div>
-    @*location.href='/home/paysuccess/@item["orderid"].ToString()'*@
+    
+    @*'   /home/paysuccess/@item["orderid"].ToString()        /home/orderpay?openid=@openid&total_fee=@amount&orderid=@item["orderid"]              *@
 @if (ViewData["data"] != null)
 {
     var item = ViewData["data"] as System.Collections.Hashtable;
@@ -204,27 +178,39 @@
 
     if (item["state"].ToString() == "2")
     {
-        <div class="paytheorderbtn" onclick="location.href = '/home/orderpay?openid=@openid&total_fee=@amount'&orderid=@item["orderid"]">
+        <div class="paytheorderbtn" onclick="pay()">
             <div class="tt">请支付订单</div>
             <div class="ct">
                 <sup>￥</sup>
-                <span>@item["amount"].ToString()</span>
+                <span class="amount">@item["amount"].ToString()</span>
                 <sub>元</sub>
             </div>
         </div>
     }
+
+    if (item["state"].ToString() == "0" || item["state"].ToString() == "1" || item["state"].ToString() == "2")
+    {
+        <div>
+            <a href="javascript:void(0)" onclick="orderCancel()" class="fullbtn">取消订单</a>
+        </div>
+    }
 }
 <script type="text/javascript">
-    $(document).ready(function () {
-        $(".kxdh-trackitm").click(function() {
-            if ($(this).hasClass("open")) {
-                $(this).removeClass("open");
-            }
-            else {
-                $(this).addClass("open");
+    var orderid = '@(((System.Collections.Hashtable)ViewData["data"])["orderid"])';
+    var openid = '@ViewData["openid"]';
+    var amount = '@ViewData["amount"]';
 
-                getDetail(this);
-            }
+    $(document).ready(function () {
+        $(".kxdh-trackitm").click(function () {
+            location.href = 'http://m.kuaidi100.com/index_all.html?type=' + $(this).attr('code') + '&postid=' + $(this).attr('value') + '&callbackurl=' + location.href;
+            //if ($(this).hasClass("open")) {
+            //    $(this).removeClass("open");
+            //}
+            //else {
+            //    $(this).addClass("open");
+
+            //    getDetail(this);
+            //}
         })
     });
 
@@ -267,4 +253,55 @@
         alert(JSON.stringify(data));
     }
 
+
+    function orderCancel() {
+        var data = { 'orderid':orderid, 'msg':'用户自行取消' };
+
+        var params = {
+            url: '/api/order/Reject',
+            data: data,
+            successFun: cancelSuccess,
+            errorFun: cancelFail
+        }
+        console.log(params.url);
+        ajaxTo(params);
+    }
+
+    function cancelSuccess(data) {
+        alert(data.message);
+
+        if (data.code == '200') {
+            $.cookie('cur_order_id', '');
+
+            location.href = "/home/myorder";
+        }
+        else {
+
+        }
+    }
+
+    function cancelFail() {
+
+    }
+
+    function pay() {
+        //amount = parseFloat(amount) * 100;
+
+        if (amount == '0' || amount == '0.00') {
+            var opertion = {
+                msg: '支付金额必须大于0元',
+                exitText: "关闭!"
+            };
+
+            $.alertbox(opertion);
+
+            return;
+        }
+
+        //var url = '/home/paysuccess/'+ orderid;
+
+        var url =  '/home/orderpay?openid=' + openid + '&total_fee=' + amount + '&orderid=' + orderid
+
+        location.href = url;
+    }
 </script>

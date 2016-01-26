@@ -18,5 +18,9 @@ namespace Flowpie.Models
         public string lat { get; set; }
         public string lng { get; set; }
         public string amount { get; set; }
+        public string sendcouriername { get; set; }
+        public string sendcourierphone { get; set; }
+
+        public string rejectmessage { get; set; }
     }
 }

@@ -15,6 +15,12 @@
 <button onclick="TempletAdd()">测试添加短信模板</button>
 <button onclick="Templetget()">获取短信模板</button>
 <button onclick="getVersion()">获取最新版本</button>
+<button onclick="getAmount()">获取余额</button>
+<button onclick="submitApplicationCash()">提交申请</button>
+<button onclick="addcourier('22222')">测试加为常用快递员</button>
+<button onclick="setPos()">更新坐标</button>
+<button onclick="setValue()">更新密码</button>
+<button onclick="delExpress()">删除自订单</button>
 <script type="text/javascript">
     function testTake() {
         var params = {
@@ -112,5 +118,80 @@
         }
 
         ajaxTo(params);
+    }
+
+    function getAmount() {
+        var params = {
+            url: 'http://www.playkuaidi.com/api/cashapplication/getcashamount',
+            data: { 'courierid': '2015111200007' },
+            type: 'get',
+            successFun : success
+        }
+
+        ajaxTo(params);
+    }
+
+    function submitApplicationCash() {
+        var params = {
+            url: '/api/cashapplication/submitcash',
+            data: { 'courierid': '2015111300001', 'amount':'98' }
+
+        }
+
+        ajaxTo(params);
+    }
+
+    function success(data) {
+        alert(JSON.stringify(data));
+    }
+
+    function addcourier(courierid) {
+        var user_id = $.cookie('user_id');
+
+        var data = { 'userid': user_id, 'courierid': courierid };
+
+        var params = {
+            url: '/api/user/addcourier',
+            data: data,
+            type: 'post'
+        }
+
+        ajaxApi(params);
+    }
+
+    function setPos() {
+        var data = { 'lat': '123', 'lng': '456', 'courierid': '2015111300002' };
+
+        var params = {
+            url: '/api/Courier/setValue',
+            data: data,
+            type: 'post'
+        }
+
+        ajaxApi(params);
+    }
+
+    function setValue() {
+        var data = { 'oldpwd': '123', 'password': '456', 'courierid': '2015111300002' };
+
+        var params = {
+            url: '/api/Courier/setValue',
+            data: data,
+            type: 'post'
+        }
+
+        ajaxApi(params);
+    }
+
+    function delExpress() {
+        var data = { 'orderdetailid': '2016010700013' };
+
+        var params = {
+            url: '/api/order/ExpressDelete',
+            data: data,
+            type: 'post'
+        }
+
+        ajaxApi(params);
     }
 </script>

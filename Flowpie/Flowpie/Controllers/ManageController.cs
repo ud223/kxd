@@ -755,6 +755,70 @@ namespace Flowpie.Controllers
 
         #endregion;
 
+        #region 提现
+
+        public ActionResult CashApplicationList()
+        {
+            this.init();
+
+            KxdLib.CashApplicationController cashApplicationController = new KxdLib.CashApplicationController();
+
+            List<Hashtable> list = cashApplicationController.getApplication();
+
+            ViewData["list"] = list;
+
+            return View();
+        }
+
+        public ActionResult PromptEdit()
+        {
+            this.init();
+
+            KxdLib.PromptController promptController = new KxdLib.PromptController();
+
+            Hashtable item = promptController.load("");
+
+            if (promptController.Result)
+            {
+                ViewData["promptid"] = item["promptid"].ToString();
+                ViewData["text"] = item["text"].ToString();
+            }
+            else
+            {
+                ViewData["promptid"] = "";
+                ViewData["text"] = "";
+            }
+
+            ViewData["title"] = "提现提示";
+
+            return View();
+        }
+
+        public ActionResult PromptSave()
+        {
+            KxdLib.PromptController promptController = new KxdLib.PromptController();
+            DatabaseLib.Tools tools = new DatabaseLib.Tools();
+
+            string strParam = Request.Form.ToString();
+
+            System.Collections.Hashtable data = tools.paramToData(strParam);
+
+            string promptid = CommonLib.Common.Validate.IsNullString(Request.Params["promptid"]);
+
+            if (promptid == "")
+            {
+                promptController.add(data);
+            }
+            else
+            {
+                promptController.save(data);
+            }
+
+            return Redirect("/manage/promptedit");
+        }
+
+        #endregion
+
         #region 共用方法
 
         /// <summary>

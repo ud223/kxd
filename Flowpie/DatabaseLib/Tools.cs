@@ -88,7 +88,7 @@ namespace DatabaseLib
             return true;
         }
 
-        public string createSqlText(Hashtable data, string key)
+        public string createUpdateSqlText(Hashtable data, string key)
         {
             StringBuilder sql = new StringBuilder();
 

@@ -8,6 +8,7 @@ namespace Flowpie.Models
     public class SendOrder
     {
         public string sendorderid { get; set; }
+        public string sendname { get; set; }
         public string expresscode { get; set; }
         public string rundate { get; set; }
         public string runtime { get; set; }

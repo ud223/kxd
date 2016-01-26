@@ -98,7 +98,7 @@ function createMap(map) {
         $('#p12-ppux').toggle();
     });
 
-    marker.enableDragging(true);
+    //marker.enableDragging(true);
     marker.addEventListener("dragend", function (e) {
         var lat = e.point.lat;
         var lng = e.point.lng;
@@ -120,7 +120,7 @@ function theLocation(map, lng, lat) {
     var marker = new BMap.Marker(new_point, {
         icon: myIcon
     });
-    marker.enableDragging(true);
+    //marker.enableDragging(true);
     marker.addEventListener("dragend", function (e) {
         var lat = e.point.lat;
         var lng = e.point.lng;

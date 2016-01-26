@@ -49,7 +49,7 @@
                             <a role="menuitem" tabindex="-1" href="#"><span class="halflings halflings-open-file"></span> &nbsp; 导出</a>
                         </li>
                         <li>
-                            <a role="menuitem" tabindex="-1" href="#"><span class="filetypes filetypes-xls unvisibility"></span> &nbsp; 导出Excel</a>
+                            <a role="menuitem" tabindex="-1" href="/excel/Courier" target="_blank"><span class="filetypes filetypes-xls unvisibility"></span> &nbsp; 导出Excel</a>
                         </li>
                         <li>
                             <a role="menuitem" tabindex="-1" href="#"><span class="halflings halflings-print"></span> &nbsp; 打印单据</a>
@@ -82,7 +82,12 @@
                         </div>*@
                     <div class="fix-tb-header-cell">
                         <div class="th">
-                            编号
+                            序号
+                        </div>
+                    </div>
+                    <div class="fix-tb-header-cell">
+                        <div class="th">
+                            快递员编号
                         </div>
                     </div>
                     <div class="fix-tb-header-cell">
@@ -92,7 +97,17 @@
                     </div>
                     <div class="fix-tb-header-cell">
                         <div class="th">
+                            身份证
+                        </div>
+                    </div>
+                    <div class="fix-tb-header-cell">
+                        <div class="th">
                             电话
+                        </div>
+                    </div>
+                    <div class="fix-tb-header-cell">
+                        <div class="th">
+                            余额
                         </div>
                     </div>
                     <div class="fix-tb-header-cell">
@@ -109,6 +124,9 @@
             </div>
             <div class="fix-tb-ct-b2">
                 <div class="fix-tb-body">
+                    @{ 
+                        int no = 1;
+                    }
                     @foreach (var item in ViewData["data"] as List<System.Collections.Hashtable>)
                     {
                         <div class="fix-tb-body-row">
@@ -118,13 +136,22 @@
                                     </div>
                                 </div>*@
                             <div class="fix-tb-body-cell">
+                                <div class="td">@no</div>
+                            </div>
+                            <div class="fix-tb-body-cell">
                                 <div class="td">@item["courierid"].ToString()</div>
                             </div>
                             <div class="fix-tb-body-cell wider">
                                 <div class="td">@item["name"].ToString()</div>
                             </div>
+                            <div class="fix-tb-body-cell wider">
+                                <div class="td">@item["code"].ToString()</div>
+                            </div>
                             <div class="fix-tb-body-cell">
                                 <div class="td">@item["phone"].ToString()</div>
+                            </div>
+                            <div class="fix-tb-body-cell">
+                                <div class="td">@item["amount"].ToString()</div>
                             </div>
                             <div class="fix-tb-body-cell">
                                 <div class="td">@item["companytext"].ToString()</div>
@@ -133,6 +160,8 @@
                                 <div class="td">@item["sitetext"].ToString()</div>
                             </div>
                         </div>
+
+                        no++;
                     }
                 </div>
             </div>

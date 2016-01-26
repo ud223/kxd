@@ -43,5 +43,14 @@ namespace CommonLib.Common
 
             return DT;
         }
+
+        public static int compareDate(DateTime time1, DateTime time2)
+        {
+            TimeSpan ts1 = new TimeSpan(time1.Ticks);
+            TimeSpan ts2 = new TimeSpan(time2.Ticks);
+            TimeSpan ts = ts1.Subtract(ts2).Duration();
+
+            return ts.Hours * 60 + ts.Minutes;
+        }
     }
 }

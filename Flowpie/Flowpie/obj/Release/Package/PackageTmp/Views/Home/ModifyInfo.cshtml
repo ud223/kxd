@@ -28,6 +28,13 @@
         <input type="text" placeholder="短信验证码" />
         <button class="kxd-getvalidc">获取验证码</button>
     </div>
+    @*<span>常用地址</span>*@
+    @*<input id="address" name="address" type="text" placeholder="常用地址" value="@if (ViewData["data"] != null)
+    {
+        var item = ViewData["data"] as System.Collections.Hashtable;
+
+        @item["address"].ToString();
+    }" />*@
     <div class="clear-30"></div>
 
     <button class="fullbtn mb10">保存</button>
@@ -44,6 +51,7 @@
         var user_id = $.cookie('user_id');
         var name = $("#name").val();
         var phone = $("#phone").val();
+        var address = $("#address").val();
 
         if (!name || !phone) {
             var options = {
@@ -58,7 +66,7 @@
 
         var params = {
             url: "/api/user/savevalue",
-            data: { 'userid': user_id, 'name': name, 'phone': phone },
+            data: { 'userid': user_id, 'name': name, 'phone': phone, 'address': address },
             successFun: success,
             errorFun: false
         }

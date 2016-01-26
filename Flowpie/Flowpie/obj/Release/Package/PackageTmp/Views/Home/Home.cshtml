@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = ViewData["title"];
 }
+<link rel="stylesheet" href="/css/wx.css" />
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=8TN0gC5Rqo6cec2jroKOkNpE&v=2.0"></script>
 <style>
     body {
@@ -23,12 +24,12 @@
 <a href="/home/myindex" class="topleft_userico iconfont icon-myfill"></a>
 <div id="allmap"></div>
 <div class="people_dot">
-    <i class="iconfont icon-location"></i>
+    <i class="iconfont icon-location" style="display:none"></i>
     <div class="inner">
         <div class="t1">我在 <b class="address"></b></div>
         <div class="t2"></div>
     </div>
-</div>
+</div> 
 
 <!-- 搜索出来以后出现的控件 -->
 <div class="z7topsearchbar hyblayer">
@@ -43,11 +44,11 @@
     <div class="bdunit a">
         <div class="tt">以往收货地点</div>
         <div class="itms">
-            @foreach (var item in ViewData["data"] as List<System.Collections.Hashtable>)
+            @foreach (var item in ViewData["address"] as List<System.Collections.Hashtable>)
             {
-                <div class="itm" onclick="setNodeClick(this)">
-                    <div class="t1" lat="@item["lat"].ToString()" lng="@item["lng"].ToString()">@item["fromaddress"].ToString()</div>
-                    <div class="t2">@item["fromaddressdetail"].ToString()</div>
+                <div class="itm" onclick="setNodeClick(this, true)">
+                    <div class="t1" lat="@item["lat"].ToString()" lng="@item["lng"].ToString()">@item["address"].ToString()</div>
+                    <div class="t2">@item["addresstext"].ToString()</div>
                     <i class="iconfont icon-locationfill"></i>
                 </div>
             }
@@ -68,16 +69,17 @@
         <div class="timerbar">
             <span class="iconfont icon-countdown" style="color:#aaa;"> 收件时间</span>
             <input type="time" id="runtime" name="runtime" value="" class="sendpacktime" />
+            <input type="text" placeholder="收件地址" class="inputdaddr" style="display:none" id="show_addressdetail" value="" />@*@(((System.Collections.Hashtable)ViewData["item"])["address"])*@
         </div>
         <div class="btsbar">
             <div class="ciibt">
-                <div class="bt bt_yjxd" onclick="toOneOrder()">
+                <div class="bt bt_yjxd" onclick="createOneOrder()">
                     <div class="t1">一键下单</div>
                     <div class="t2">附近的快递员</div>
                 </div>
             </div>
             <div class="ciibt">
-                <div class="bt bt_bjxd" onclick="toEasyOrder();">
+                <div class="bt bt_bjxd" onclick="createEasyOrder();">
                     <div class="t1">便捷下单</div>
                     <div class="t2">服务过快递员</div>
                 </div>
@@ -104,195 +106,234 @@
         <i class="iconfont icon-locationfill"></i>
     </div>
 </div>
-<!--百度API链接请自行注册生成-->
-<script>
+<div class="chstcomp">
+    <div class="ctt">
+        <span>详细地址门牌号</span>
+        <span class="cls" onclick="$('.chstcomp').hide();">&times;</span>
+    </div>
+    <div class="fi_t1">
+        <input type="text" class="fi_t2"  />
+    </div>
+    <div>
+        <div class="itmr">
+            <button class="fullbtn normal submit-address">确认</button>
+        </div>
+    </div>
+</div>
+
+    <!--百度API链接请自行注册生成-->
+    <script>
         var map = false;
+        var opt = 0;
 
         $(document).ready(function () {
-		    $('.people_dot .icon-location').click(function () {
-		        var options = {
-		            msg: '即将定位到您当前的地址',
-		            confirmCallback: setLocal
-		        };
+            $.cookie('is_take', '0', { path: '/home', expires: 1 });
 
-		        $.confirm(options);
-			});
-			$('.people_dot .inner').click(function() {
-				$('.hyblayer').show();
-			});
-			$('.z6searchcover').click(function() {
-				$('.hyblayer').hide();
-			});
-			$('.searchinput').focus(function() {
-				$('.bdunit.b').show();
-				$('.bdunit.a').hide();
-				// 监听输入框文字（暂时注释，正式做代码的时候整理逻辑）
-				//					var $this = $(this);
-				//					$this.attr('prevtxt', $this.val());
-				//					var intvid = setInterval(function() {
-				//						var prevtxt = $this.attr('prevtxt');
-				//						var val = $this.val();
-				//						if (prevtxt != val) {
-				//							// 搜索一次
-				//							console.log('搜索文字：' + val);
-				//						}
-				//					}, 2000);
-				//					$('body').data('intvid', intvid);
-			});
-			$('.searchinput').blur(function() {
-				//					var intvid = $('body').data('intvid')
-				//					clearInterval(intvid);
-			});
+            $('.people_dot .icon-location').click(function () {
+                var options = {
+                    msg: '即将定位到您当前的地址',
+                    confirmCallback: setLocal
+                };
 
-			initTime('runtime');
+                $.confirm(options);
+            });
+            $('.people_dot .inner').click(function () {
+                $('.hyblayer').show();
+            });
+            $('.z6searchcover').click(function () {
+                $('.hyblayer').hide();
+            });
+            $('.searchinput').focus(function () {
+                $('.bdunit.b').show();
+                $('.bdunit.a').hide();
+            });
+            $('.searchinput').blur(function () {
+
+            });
+
+            $('.chstcomp .itmr .iconfont').click(function () {
+                var container = $(this).parent().closest('.itmr');
+                container.siblings('.selected').removeClass('selected');
+                container.addClass('selected');
+
+                $('.fi_t2').val(container.find('span').html());
+            });
+            //--------------------------记录详细地址门牌号------------------------------------
+            $('.submit-address').click(function () {
+                $('#addressdetail').val($('.fi_t2').val());
+
+                //if (opt == 1) 
+                //    toOneOrder();
+                //else
+                //    toEasyOrder();
+                saveAddress();
+            })
+
+            initTime('runtime');
 
             map = createMap(map);
 
-			//map = new BMap.Map("allmap");
+            //map = new BMap.Map("allmap");
 
-			//map.centerAndZoom(new BMap.Point(local_lng, local_lat), 11);
-			//map.enableScrollWheelZoom(true);
+            //map.centerAndZoom(new BMap.Point(local_lng, local_lat), 11);
+            //map.enableScrollWheelZoom(true);
 
-			var params = {
-			    lat: local_lat,
-			    lng: local_lng,
-			    successFun: setPos
-			}
+            var params = {
+                lat: local_lat,
+                lng: local_lng,
+                successFun: setPos
+            }
 
-			getAddressByCoordinate(params);
+            getAddressByCoordinate(params);
 
 
-			$("#seach_btn").click(function () {
-			    seachAddress();
-			})
+            $("#seach_btn").click(function () {
+                seachAddress();
+            })
 
-			var cur_order_id = $.cookie('cur_order_id');
+            var cur_order_id = $.cookie('cur_order_id');
 
-			if (cur_order_id) {
-			    $(".callkdresustwp").show();
+            if (cur_order_id) {
+                $(".callkdresustwp").show();
 
-			    $('#enter-order').attr("href", "/home/orderdeta");
-			}
+                $('#enter-order').attr("href", "/home/orderdetail?id=" + cur_order_id);
+            }
 
-			setLocal();
-		});
+            setLocal();
 
-		function setLocal() {
-		    var params = {
-		        successFun: loadLocal
-		    }
+            is_count = true;
 
-		    getLocal(params);
-		}
+            checkSatet();
+        });
 
-		function loadLocal(lat, lng) {
-		    var params = {
-		        lat: local_lat,
-		        lng: local_lng,
-		        successFun: setPos
-		    }
 
-		 //   theLocation(map, local_lng, local_lat)
 
-		    getAddressByCoordinate(params);
-		}
+        function setLocal() {
+            var params = {
+                successFun: loadLocal
+            }
 
-		function seachAddress() {
-		    var address = $("#seach_address").val();
+            getLocal(params);
+        }
 
-		    var params = {
-		        address_name: address,
-		        successFun: getAddressByLocal
-		    }
+        function loadLocal(lat, lng) {
+            var params = {
+                lat: local_lat,
+                lng: local_lng,
+                successFun: setPos
+            }
 
-		    getAddressByAddressName(params);
-		}
+            theLocation(map, local_lng, local_lat)
 
-		function getAddressByLocal(data) {
-		    var params = {
-		        lat: data.result.location.lat,
-		        lng: data.result.location.lng,
-		        successFun: setPos
-		    }
+            getAddressByCoordinate(params);
+        }
 
-		    getAddressByCoordinate(params);
-		}
+        function seachAddress() {
+            var address = $("#seach_address").val();
 
-		function setPos(data) {
-		    var addresses = data.result.pois;
-		    //alert(JSON.stringify(data));
-		    //alert(1);
-		    if (addresses.length > 0) {
-		        $(".people_dot").find('.address').html(addresses[0].name);
-		        $(".people_dot").find('.t2').html(addresses[0].addr);
+            var params = {
+                address_name: address,
+                successFun: getAddressByLocal
+            }
 
-		        $("#address").val(addresses[0].name);
-		        $("#addressdetail").val(addresses[0].addr);
-		        $("#lat").val(addresses[0].point.y);
-		        $("#lng").val(addresses[0].point.x);
-		    }
-		    //alert($("#lat").val());
-		//    console.log("lat:" + $("#lat").val() + ", lng:" + $("#lng").val());
+            getAddressByAddressName(params);
+        }
 
-		    var list = $('.bdunit.b').find('.itms');
+        function getAddressByLocal(data) {
+            var params = {
+                lat: data.result.location.lat,
+                lng: data.result.location.lng,
+                successFun: setPos
+            }
 
-		    list.html('');
+            getAddressByCoordinate(params);
+        }
 
-		    $.each(addresses, function () {
-		        var node = $("#addr-item").find(".itm").clone();
+        function setPos(data) {
+            var addresses = data.result.pois;
+            //alert(JSON.stringify(data));
+            //alert(1);
+            if (addresses.length > 0) {
+                $(".people_dot").find('.address').html(addresses[0].name);
+                $(".people_dot").find('.t2').html(addresses[0].addr);
 
-		        node.find(".t1").html(this.name);
-		        node.find(".t2").html(this.addr);
+                $("#address").val(addresses[0].name);
+                //$("#addressdetail").val(addresses[0].addr);
+                $("#lat").val(addresses[0].point.y);
+                $("#lng").val(addresses[0].point.x);
+            }
 
-		        node.find(".t1").attr("lng", this.point.x);
-		        node.find(".t1").attr("lat", this.point.y);
+            var list = $('.bdunit.b').find('.itms');
 
-		        node.click(function () {
-		            setNodeClick(this);
-		        });
+            list.html('');
 
-		        list.append(node);
-		    });
+            $.each(addresses, function () {
+                var node = $("#addr-item").find(".itm").clone();
 
-		    nearbyCourier(local_lat, local_lng);
-		}
+                node.find(".t1").html(this.name);
+                node.find(".t2").html(this.addr);
 
-		function setNodeClick(node) {
-		    $(".people_dot").find('.address').html($(node).find('.t1').html());
-		    $(".people_dot").find('.t2').html($(node).find('.t2').html());
-		    $("#address").val($(node).find('.t1').html());
-		    $("#addressdetail").val($(node).find('.t2').html());
-		    $("#lat").val($(node).find('.t1').attr('lat'));
-		    $("#lng").val($(node).find('.t1').attr('lng'));
+                node.find(".t1").attr("lng", this.point.x);
+                node.find(".t1").attr("lat", this.point.y);
 
-		    $('.hyblayer').hide();
+                node.click(function () {
+                    setNodeClick(this);
+                });
 
-		    theLocation(map, $("#lng").val(), $("#lat").val());
+                list.append(node);
+            });
 
-		    nearbyCourier($("#lat").val(), $("#lng").val());
+            nearbyCourier(local_lat, local_lng);
+        }
 
-		    localStorage.setItem("lat", $("#lat").val());
-		    localStorage.setItem("lng", $("#lng").val());
+        function setNodeClick(node, oldAddress) {
+            $(".people_dot").find('.address').html($(node).find('.t1').html());
+            $(".people_dot").find('.t2').html($(node).find('.t2').html());
+            $("#address").val($(node).find('.t1').html());
 
-		    console.log("点击节点->lat:" + $("#lat").val() + ", lng:" + $("#lng").val());
-		}
+            if (oldAddress) {
+                $("#addressdetail").val($(node).find('.t2').html());
+                $('.fi_t2').val($(node).find('.t2').html())
+            }              
 
-		function toEasyOrder() {
-		    var name = $("#name").val();
-		    var phone = $("#phone").val();
-		    var address = $('#address').val();
-		    var addressdetail = $("#addressdetail").val();
-		    var time = $('#runtime').val();
+            $("#lat").val($(node).find('.t1').attr('lat'));
+            $("#lng").val($(node).find('.t1').attr('lng'));
+
+            $('.hyblayer').hide();
+
+            theLocation(map, $("#lng").val(), $("#lat").val());
+
+            nearbyCourier($("#lat").val(), $("#lng").val());
+
+            localStorage.setItem("lat", $("#lat").val());
+            localStorage.setItem("lng", $("#lng").val());
+
+            console.log("点击节点->lat:" + $("#lat").val() + ", lng:" + $("#lng").val());
+        }
+
+        function toModifyInfo() {
+            location.href = "/home/modifyinfo";
+        }
+
+        function toEasyOrder() {
+            var name = $("#name").val();
+            var phone = $("#phone").val();
+            var address = $('#address').val();
+            var addressdetail = $("#addressdetail").val();
+            var time = $('#runtime').val();
             var lat = $("#lat").val();
             var lng = $("#lng").val();
 
             if (!name || !phone) {
-                var opertion = {
+                var option = {
                     msg: "请先完善用户的名字和电话才能下单!",
-                    exitText: "关闭!"
+                    exitText: "关闭!",
+                    exitCallback: toModifyInfo
                 };
 
-                $.alertbox(opertion);
+                $.alertbox(option);
+
+                
 
                 return;
             }
@@ -303,107 +344,284 @@
             localStorage.setItem('lng', lng);
             localStorage.setItem('time', time);
 
-            
-        //    console.log("lat:" + lat + ", lng:" + lng);
+            $.cookie('cur_order_id', '', { path: '/home', expires: 1 });
+            //    console.log("lat:" + lat + ", lng:" + lng);
 
-		    location.href = '/home/easyorder'
-		}
+            location.href = '/home/easyorder'
+        }
 
-		function toOneOrder() {
-		    var name = $("#name").val();
-		    var phone = $("#phone").val();
-		    var address = $('#address').val();
-		    var addressdetail = $("#addressdetail").val();
-		    var time = $('#runtime').val();
-		    var lat = $("#lat").val();
-		    var lng = $("#lng").val();
+        function toOneOrder() {
+            var name = $("#name").val();
+            var phone = $("#phone").val();
+            var address = $('#address').val();
+            var addressdetail = $("#addressdetail").val();
+            var time = $('#runtime').val();
+            var lat = $("#lat").val();
+            var lng = $("#lng").val();
 
-		    if (!name || !phone) {
-		        var opertion = {
-		            msg: "请先完善用户的名字和电话才能下单!",
-		            exitText: "关闭!"
-		        };
+            if (!name || !phone) {
+                var option = {
+                    msg: "请先完善用户的名字和电话才能下单!",
+                    exitText: "关闭!",
+                    exitCallback: toModifyInfo
+                };
 
-		        $.alertbox(opertion);
+                $.alertbox(option);
 
-		        return;
-		    }
+                return;
+            }
 
+            $.cookie('address', address);
+            $.cookie('addressdetail', addressdetail);
+            $.cookie('lat', lat);
+            $.cookie('lng', lng);
+            $.cookie('time', time);
 
-		    $.cookie('address', address);
-		    $.cookie('addressdetail', addressdetail);
-		    $.cookie('lat', lat);
-		    $.cookie('lng', lng);
-		    $.cookie('time', time);
+            localStorage.setItem('address', address);
+            localStorage.setItem('addressdetail', addressdetail);
+            localStorage.setItem('lat', lat);
+            localStorage.setItem('lng', lng);
+            localStorage.setItem('time', time);
 
-		    location.href = '/home/ordertake'
-		}
+            $.cookie('cur_order_id', '', { path: '/home', expires: 1 });
+            $.cookie('is_take', '1', { path: '/home', expires: 1 });
 
-		function nearbyCourier(lat, lng) {
-		    //var lat = local_lat;
-		    //var lng = local_lng;
-		    var data = { 'local_lat': lat, 'local_lng': lng };
+            location.href = '/home/ordertake'
+        }
 
-		    $("#lat").val(lat);
-		    $("#lng").val(lng);
+        function nearbyCourier(lat, lng) {
+            //var lat = local_lat;
+            //var lng = local_lng;
+            var data = { 'local_lat': lat, 'local_lng': lng };
 
-	//	    console.log("lat:" + $("#lat").val() + ", lng:" + $("#lng").val());
+            $("#lat").val(lat);
+            $("#lng").val(lng);
 
-		    var params = {
-		        url: '/api/courier/getCourierOfNearby',
-		        data: data,
+            //	    console.log("lat:" + $("#lat").val() + ", lng:" + $("#lng").val());
+
+            var params = {
+                url: '/api/courier/getCourierOfNearby',
+                data: data,
                 type: 'get',
-		        successFun: successGetCourier,
-		        errorFun: errorGetCourier
-		    }
+                successFun: successGetCourier,
+                errorFun: errorGetCourier
+            }
 
-		    ajaxTo(params);
-		}
+            ajaxTo(params);
+        }
 
-		function successGetCourier(data) {
-		    if (data.code == "200") {
-		        var courier = data.data;
+        function successGetCourier(data) {
+            if (data.code == "200") {
+                var courier = data.data;
 
-		        tmp = eval('(' + courier + ')');
+                tmp = eval('(' + courier + ')');
 
-		        $.each(tmp, function () {
-		            var point = new BMap.Point(this.lng, this.lat);
-		            // 关联图片
-		            var myIcon = new BMap.Icon("/kxd/img/tp2.png", new BMap.Size(38, 53));
-		            //map.centerAndZoom(point, 15);
-		            var marker = new BMap.Marker(point, {
-		                icon: myIcon
-		            });
-		            // 创建标注
-		            map.addOverlay(marker);
-		        });
-		    }
-		}
+                $.each(tmp, function () {
+                    var point = new BMap.Point(this.lng, this.lat);
+                    // 关联图片
+                    var myIcon = new BMap.Icon("/kxd/img/tp2.png", new BMap.Size(38, 53));
+                    //map.centerAndZoom(point, 15);
+                    var marker = new BMap.Marker(point, {
+                        icon: myIcon
+                    });
+                    // 创建标注
+                    map.addOverlay(marker);
+                });
+            }
+        }
 
-		function errorGetCourier() {
-		    var opertion = {
-		        msg: "获取附近快递员失败!",
-		        exitText: "关闭!"
-		    };
+        function errorGetCourier() {
+            var opertion = {
+                msg: "获取附近快递员失败!",
+                exitText: "关闭!"
+            };
 
-		    $.alertbox(opertion);
-		}
+            $.alertbox(opertion);
+        }
 
         //-------------------陆思浙---------------------------------//
-		function initTime(drplist_id) {
-		    var date = new Date();
+        function initTime(drplist_id) {
+            var date = new Date();
 
-		    var hour = date.getHours();
-		    var min = date.getMinutes();
+            var hour = date.getHours();
+            var min = date.getMinutes();
 
-		    if (hour.toString().length == 1)
-		        hour = "0" + hour;
+            if (hour.toString().length == 1)
+                hour = "0" + hour;
 
-		    if (min.toString().length == 1)
-		        min = "0" + min;
+            if (min.toString().length == 1)
+                min = "0" + min;
 
-		    var time = hour + ":" + min + ":00.000";
+            var time = hour + ":" + min + ":00.000";
 
-		    $("#" + drplist_id).val(time);
-		}
-</script>
+            $("#" + drplist_id).val(time);
+        }
+
+        var countdown = 600;
+        var is_count = false;
+
+        function checkSatet(val) {
+            if (!is_count)
+                return;
+
+            var cur_order_id = $.cookie('cur_order_id');
+
+            console.log(cur_order_id);
+
+            if (!cur_order_id) {
+                is_count = false;
+
+                return;
+            }
+
+            getOrderState(cur_order_id);
+
+            setTimeout(function () { checkSatet(val) }, 5000)
+        }
+
+        function getOrderState(orderid) {
+            var data = { 'orderid': orderid };
+
+            var params = {
+                url: '/api/order/GetOrderDetail', //'/api/order/getOrderState',
+                data: data,
+                successFun: getState,
+                type: 'get'
+            }
+
+            ajaxTo(params);
+        }
+
+        function getState(data) {
+            tmp = eval('(' + data.data + ')');
+
+            if (data.code == 200) {
+                var cur_order_id = $.cookie('cur_order_id');
+
+                if (tmp.state != "1") {
+                    $(".callkdresustwp").hide();
+                }
+
+                if (tmp.state == "1") {
+                    var is_alert = $.cookie('is_alert');
+
+                    if (is_alert == "1") {
+                        var opertion = {
+                            msg: '快递员' + tmp.sendcouriername + "已接单正在赶来, 他的联系电话是" + tmp.sendcourierphone,
+                            exitText: "关闭!"
+                        };
+
+                        $.alertbox(opertion);
+
+                        $.cookie('is_alert', '0', { path: '/home', expires: 1 });
+                    }
+                }
+
+                if (tmp.state == "2") {
+                    $.cookie('is_get', 1);
+
+                    is_count = false;
+
+                    $.cookie('cur_order_id', '', { path: '/home', expires: 1 });
+
+                    location.href = "/home/orderdetail?id=" + cur_order_id;
+
+                    $.cookie('is_alert', '0', { path: '/home', expires: 1 });
+                }
+
+                if (tmp.state == "9") {
+                    $.cookie('is_get', 1);
+
+                    is_count = false;
+
+                    $.cookie('cur_order_id', '', { path: '/home', expires: 1 });
+
+                    if (data.message) {
+                        if (tmp.sendcouriername != 'null' && tmp.rejectmessage != 'null') {
+                            var opertion = {
+                                msg: '快递员' + tmp.sendcouriername + '拒绝收件, 原因:' + tmp.rejectmessage,
+                                exitText: "关闭!"
+                            };
+
+                            $.alertbox(opertion);
+                        }
+                    }
+
+                    $.cookie('is_alert', '0', { path: '/home', expires: 1 });
+                }
+            }
+        }
+
+        function createOneOrder() {
+            if ($('#addressdetail').val() == "") {
+                $('.chstcomp').show();
+
+                opt = 1;
+            }
+            else {
+                toOneOrder();
+            }
+
+            //$('.chstcomp').show();
+
+            //opt = 1;
+        }
+
+        function createEasyOrder() {
+            if ($('#addressdetail').val() == "") {
+                $('.chstcomp').show();
+
+                opt = 2;
+            }
+            else {
+                toEasyOrder();
+            }
+
+
+            //$('.chstcomp').show();
+
+            //opt = 2;
+        }
+
+        function successsaveAddress(data) {
+            //var opertion = {
+            //    msg: data.message,
+            //    exitText: "关闭!"
+            //};
+
+            //$.alertbox(opertion);
+
+            if (opt == 1) 
+                toOneOrder();
+            else
+                toEasyOrder();
+        }
+
+        function errorsaveAddress() {
+            var opertion = {
+                msg: "保存失败 请重试!",
+                exitText: "关闭!"
+            };
+
+            $.alertbox(opertion);
+        }
+
+        function saveAddress() {
+            var userid = $.cookie('user_id');
+            var address = $('#address').val();
+            var addresstext = $('#addressdetail').val();
+            var lat = $('#lat').val();
+            var lng = $('#lng').val();
+
+            var data = { 'userid': userid, 'address': address, 'addresstext': addresstext, 'lat': lat, 'lng': lng };
+
+            var params = {
+                url: '/api/user/AddAddress',
+                data: data,
+                successFun: successsaveAddress,
+                errorFun: errorsaveAddress
+            }
+
+            ajaxTo(params);
+        }
+    </script>

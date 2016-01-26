@@ -42,7 +42,7 @@ namespace KxdLib
         {
             DatabaseLib.Tools tools = new DatabaseLib.Tools();
 
-            string sql = tools.createSqlText(data, "userid, CreateAt");
+            string sql = tools.createUpdateSqlText(data, "userid, CreateAt");
 
             this.SqlText = "update app_users set " + sql + " where userid = '" + data["userid"].ToString() + "'";
 
@@ -51,9 +51,16 @@ namespace KxdLib
 
         public string addCourier(Hashtable data)
         {
-            this.SqlText = "insert into app_relationcourier(relationcourierid, userid, courierid, CreateAt, ModifyAt) values('@relationcourierid@', '@userid@', '@courierid@', '@CreateAt@', '@ModifyAt@'); select relationcourierid from app_relationcourier limit CreateAt desc";
+            this.SqlText = "insert into app_relationcourier(relationcourierid, userid, courierid, CreateAt, ModifyAt) values('@relationcourierid@', '@userid@', '@courierid@', '@CreateAt@', '@ModifyAt@'); select relationcourierid from app_relationcourier  order by CreateAt desc limit 1";
 
-            return this.add(data);
+            return base.add(data);
+        }
+
+        public void delCourier(Hashtable data)
+        {
+            this.SqlText = "delete from app_relationcourier where userid = '"+ data["userid"].ToString() +"' and courierid = '"+ data["courierid"].ToString() +"'";
+
+            this.Execute(this.SqlText);
         }
 
         public List<Hashtable> getCommonCourier(string userid, string courierid)
@@ -75,6 +82,41 @@ namespace KxdLib
             this.SqlText = "delete from app_relationcourier where userid = '" + userid + "' and courierid = '" + courierid + "'";
 
             base.delete("");
+        }
+
+        public List<Hashtable> getAddressByUserID(string userid)
+        {
+            this.SqlText = "select * from app_address where userid = " + userid;
+
+            return base.Query(this.SqlText);
+        }
+
+        public Hashtable getAddressByID(string addressid)
+        {
+            this.SqlText = "select * from app_address where addressid = " + addressid;
+
+            return base.load("");
+        }
+
+        public string addAddress(Hashtable data)
+        {
+            this.SqlText = "insert into app_address(userid, address, addresstext, lat, lng) values(@userid@, '@address@', '@addresstext@', '@lat@', '@lng@'); select addressid from app_address  order by addressid desc limit 1";
+
+            return base.add(data);
+        }
+
+        public void saveAddress(Hashtable data)
+        {
+            this.SqlText = "update app_address set addresstext='@addresstext@' where addressid = @addressid@";
+
+            base.save(data);
+        }
+
+        public List<Hashtable> getAddressByAddress(string address)
+        {
+            this.SqlText = "select * from app_address  where address = '" + address + "'";
+
+            return base.Query(this.SqlText);
         }
     }
 }

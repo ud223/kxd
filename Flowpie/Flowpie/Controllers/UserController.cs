@@ -136,6 +136,7 @@ namespace Flowpie.Controllers
                 {
                     result.code = "200";
                     result.message = "添加成功!";
+                    result.data = courierid;
                 }
                 else
                 {
@@ -195,7 +196,11 @@ namespace Flowpie.Controllers
                     courier.phone = item["phone"].ToString();
                     courier.companycode = item["companycode"].ToString();
                     courier.companytext = item["companytext"].ToString();
-                    courier.headpic = "/img/user.jpg";
+
+                    if (item["headpic"].ToString() == "")
+                        courier.headpic = "/img/user.jpg";
+                    else
+                        courier.headpic = item["headpic"].ToString();
 
                     result.data = Newtonsoft.Json.JsonConvert.SerializeObject(courier);
                 }
@@ -231,6 +236,9 @@ namespace Flowpie.Controllers
                 courierPrice.courierid = item["courierid"].ToString();
                 courierPrice.name = item["name"].ToString();
                 courierPrice.phone = item["phone"].ToString();
+
+                data["weight"] = CommonLib.Common.Validate.IsNullString(data["weight"].ToString(), "0");
+
                 courierPrice.weight = item["weight"].ToString();
                 courierPrice.firstprice = item["firstprice"].ToString();
                 courierPrice.stepprice = item["stepprice"].ToString();
@@ -238,6 +246,25 @@ namespace Flowpie.Controllers
                 courierPrice.lat = item["lat"].ToString();
                 courierPrice.lng = item["lng"].ToString();
                 courierPrice.state = item["state"].ToString();
+
+                if (courierPrice.state == "1")
+                {
+                    string tmp_time = item["lastat"].ToString();
+
+                    if (tmp_time == "")
+                    {
+                        courierPrice.state = "0";
+                    }
+                    else
+                    {
+                        DateTime last_time = DateTime.Parse(tmp_time);
+
+                        int tick = CommonLib.Common.DateTimeController.compareDate(DateTime.Now, last_time);
+
+                        if (tick > 5)
+                            courierPrice.state = "0";
+                    }
+                }
 
                 int weight = Int32.Parse(data["weight"].ToString());
                 int first_weight = Int32.Parse(courierPrice.weight);
@@ -313,6 +340,9 @@ namespace Flowpie.Controllers
                 courierPrice.courierid = item["courierid"].ToString();
                 courierPrice.name = item["name"].ToString();
                 courierPrice.phone = item["phone"].ToString();
+
+                CommonLib.Common.Validate.IsNullString(item["weight"].ToString(), "0");
+
                 courierPrice.weight = item["weight"].ToString();
                 courierPrice.firstprice = item["firstprice"].ToString();
                 courierPrice.stepprice = item["stepprice"].ToString();
@@ -320,6 +350,27 @@ namespace Flowpie.Controllers
                 courierPrice.lat = item["lat"].ToString();
                 courierPrice.lng = item["lng"].ToString();
                 courierPrice.state = item["state"].ToString();
+
+                if (courierPrice.state == "1")
+                {
+                    string tmp_time = item["lastat"].ToString();
+
+                    if (tmp_time == "")
+                    {
+                        courierPrice.state = "0";
+                    }
+                    else
+                    {
+                        DateTime last_time = DateTime.Parse(tmp_time);
+
+                        int tick = CommonLib.Common.DateTimeController.compareDate(DateTime.Now, last_time);
+
+                        if (tick > 5)
+                            courierPrice.state = "0";
+                    }
+                }
+
+                data["weight"] = CommonLib.Common.Validate.IsNullString(data["weight"].ToString(), "0");
 
                 int weight = Int32.Parse(data["weight"].ToString());
                 int first_weight = Int32.Parse(courierPrice.weight);
@@ -395,6 +446,7 @@ namespace Flowpie.Controllers
         [HttpPost]
         public string addCourier()
         {
+            NetLog.WriteTextLog("addCourier", "新增常用快递", DateTime.Now);
             KxdLib.UserController userController = new KxdLib.UserController();
             SystemConfigureLib.SerialNumberController serialController = new SystemConfigureLib.SerialNumberController();
             Models.Result result = new Models.Result();
@@ -407,13 +459,42 @@ namespace Flowpie.Controllers
             string serialid = serialController.getSerialNumber("uci", DateTime.Now.ToString("yyyy-MM-dd"));
 
             data.Add("relationcourierid", serialid);
-
+            NetLog.WriteTextLog("addCourier", "开始新增", DateTime.Now);
             userController.addCourier(data);
 
             if (userController.Result)
             {
                 result.code = "200";
                 result.message = "添加成功!";
+            }
+            else
+            {
+                result.code = "0";
+                result.message = userController.Message.Replace("'", "\"");
+                NetLog.WriteTextLog("addCourier", "异常:"+ result.message, DateTime.Now);
+            }
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+        }
+
+
+        [HttpPost]
+        public string delCourier()
+        {
+            KxdLib.UserController userController = new KxdLib.UserController();
+            Models.Result result = new Models.Result();
+            DatabaseLib.Tools tools = new DatabaseLib.Tools();
+
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
+
+            System.Collections.Hashtable data = tools.paramToData(context.Request.Form);
+
+            userController.delCourier(data);
+
+            if (userController.Result)
+            {
+                result.code = "200";
+                result.message = "删除成功!";
             }
             else
             {
@@ -435,9 +516,111 @@ namespace Flowpie.Controllers
             double range = CommonLib.Common.Pos.getDistance(lat, lng, lat1, lng1);
 
             if (range < 3)
+            {
+                //string tmp_time = item["lastat"].ToString();
+
+                //if (tmp_time == "")
+                //    return false;
+
+                //DateTime last_time = DateTime.Parse(tmp_time);
+
+                //int tick = CommonLib.Common.DateTimeController.compareDate(DateTime.Now, last_time);
+
+                //if (tick > 5)
+                //    return false;
+
                 return true;
+            }
 
             return false;
+        }
+
+        [HttpPost]
+        public string Sign()
+        {
+            KxdLib.ScoreController scoreController = new KxdLib.ScoreController();
+            SystemConfigureLib.SerialNumberController serialController = new SystemConfigureLib.SerialNumberController();
+            Models.Result result = new Models.Result();
+            DatabaseLib.Tools tools = new DatabaseLib.Tools();
+
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
+
+            System.Collections.Hashtable data = tools.paramToData(context.Request.Form);
+
+            Hashtable item = scoreController.load(data["userid"].ToString());
+
+            if (item == null)
+            {
+                scoreController.add(data);
+            }
+            else
+            {
+                string date = item["ModifyAt"].ToString();
+
+                if (DateTime.Parse(date).ToString("yyyy-MM-dd") == DateTime.Now.ToString("yyyy-MM-dd"))
+                {
+                    result.code = "200";
+                    result.message = "今天已经签过了, 请明天再来!";
+
+                    return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+                }
+
+                scoreController.save(data);
+            }
+
+            if (scoreController.Result)
+            {
+                result.code = "200";
+                result.message = "签到成功!";
+            }
+            else
+            {
+                result.code = "0";
+                result.message = scoreController.Message.Replace("'", "\"");
+            }
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+        }
+
+        [HttpPost]
+        public string AddAddress()
+        {
+            KxdLib.UserController userController = new KxdLib.UserController();
+            SystemConfigureLib.SerialNumberController serialController = new SystemConfigureLib.SerialNumberController();
+            Models.Result result = new Models.Result();
+            DatabaseLib.Tools tools = new DatabaseLib.Tools();
+
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
+
+            System.Collections.Hashtable data = tools.paramToData(context.Request.Form);
+
+            List<Hashtable> list = userController.getAddressByAddress(data["address"].ToString());
+
+            if (list == null || list.Count == 0)
+            {
+                userController.addAddress(data);
+            }
+            else
+            {
+                Hashtable itm = list[0];
+
+                data.Add("addressid", itm["addressid"].ToString());
+
+                userController.saveAddress(data);
+            }
+
+            if (userController.Result)
+            {
+                result.code = "200";
+                result.message = "保存成功!";
+            }
+            else
+            {
+                result.code = "0";
+                result.message = userController.Message.Replace("'", "\"");
+            }
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
         }
     }
 }

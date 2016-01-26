@@ -11,6 +11,56 @@ namespace Flowpie.Controllers
 {
     public class CourierController : ApiController
     {
+        [HttpGet]
+        public string getCourier()
+        {
+            KxdLib.CourierController courierController = new KxdLib.CourierController();
+            Models.Result result = new Models.Result();
+            DatabaseLib.Tools tools = new DatabaseLib.Tools();
+
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
+
+            System.Collections.Hashtable data = tools.paramToData(context.Request.Params);
+
+            Hashtable item = courierController.load(data["courierid"].ToString());
+
+            if (courierController.Result)
+            {
+                if (item != null)
+                {
+                    Models.Courier courier = new Models.Courier();
+
+                    courier.courierid = item["courierid"].ToString();
+                    courier.certificatecode = item["certificatecode"].ToString();
+                    courier.code = item["code"].ToString();
+                    courier.companyid = item["companyid"].ToString();
+                    courier.headpic = item["headpic"].ToString();
+                    courier.loginname = item["loginname"].ToString();
+                    courier.name = item["name"].ToString();
+                    courier.phone = item["phone"].ToString();
+                    courier.score = item["score"].ToString();
+                    courier.siteid = item["siteid"].ToString();
+                    courier.region = item["region"].ToString();
+
+                    result.code = "200";
+                    result.message = "获取成功!";
+                    result.data = Newtonsoft.Json.JsonConvert.SerializeObject(courier);
+                }
+                else
+                {
+                    result.code = "0";
+                    result.message = "没有找到当前快递员!";
+                }
+            }
+            else
+            {
+                result.code = "0";
+                result.message = courierController.Message.Replace("'", "\"");
+            }
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+        }
+
         [HttpPost]
         public string setValue()
         {
@@ -22,12 +72,54 @@ namespace Flowpie.Controllers
 
             System.Collections.Hashtable data = tools.paramToData(context.Request.Form);
 
+            if (data.ContainsKey("appid"))
+            {
+                //Hashtable courier = courierController.load(data["courierid"].ToString());
+
+                //if (courier["appid"].ToString() != data["appid"].ToString())
+                //{
+                //    result.code = "0";
+                //    result.message = "当前账号已被别人登录!";
+
+                //    return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+                //}
+
+                courierController.initAppId(data["appid"].ToString());
+            }
+                
+            //用户密码处理逻辑
+            if (data.ContainsKey("password"))
+            {
+                int nResult = validatePass(data);
+
+                if (nResult == 3)
+                {
+                    result.code = "0";
+                    result.message = "原密码错误!";
+
+                    return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+                }
+                else if (nResult == 2)
+                {
+                    result.code = "0";
+                    result.message = "更新密码失败!";
+
+                    return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+                }
+
+                data["password"] = CommonLib.Common.Function.toMD5String(data["password"].ToString());
+                data.Remove("oldpwd");
+            }
+            //增加用户更新左边时的最后时间
+            if (data.ContainsKey("lat"))
+                data.Add("lastat", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+
             courierController.saveValue(data);
 
             if (courierController.Result)
             {
                 result.code = "200";
-                result.message = "添加成功!";
+                result.message = "修改成功!";
             }
             else
             {
@@ -36,6 +128,29 @@ namespace Flowpie.Controllers
             }
 
             return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+        }
+
+        private int validatePass(Hashtable data)
+        {
+            KxdLib.CourierController courierController = new KxdLib.CourierController();
+
+            Hashtable item = courierController.load(data["courierid"].ToString());
+
+            if (item == null)
+            {
+                return 2;
+            }
+            else
+            {
+                string tmp_oldpwd = CommonLib.Common.Function.toMD5String(data["oldpwd"].ToString());
+
+                if (item["password"].ToString() != tmp_oldpwd)
+                {
+                    return 3;
+                }
+            }
+
+            return 1;
         }
 
         [HttpPost]
@@ -55,6 +170,62 @@ namespace Flowpie.Controllers
             {
                 result.code = "200";
                 result.message = "添加成功!";
+            }
+            else
+            {
+                result.code = "0";
+                result.message = courierController.Message.Replace("'", "\"");
+            }
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+        }
+
+        public string getPriceConfig()
+        {
+            KxdLib.CourierController courierController = new KxdLib.CourierController();
+
+            Models.Result result = new Models.Result();
+            DatabaseLib.Tools tools = new DatabaseLib.Tools();
+
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
+
+            System.Collections.Hashtable data = tools.paramToData(context.Request.Params);
+
+            List<Hashtable> list = courierController.getPriceCofnigByCouridID(data["courierid"].ToString());
+
+            if (courierController.Result)
+            {
+                if (list.Count > 0)
+                {
+                    int index = 0;
+                    System.Text.StringBuilder strData = new System.Text.StringBuilder();
+
+                    foreach (Hashtable item in list)
+                    {
+                        Models.PriceConfig config = new Models.PriceConfig();
+
+                        config.local = item["local"].ToString();
+
+                        string str_json = Newtonsoft.Json.JsonConvert.SerializeObject(config);
+
+                        if (index > 0)
+                            strData.Append(",");
+
+                        strData.Append(str_json);
+
+                        index++;
+                    }
+
+                    result.code = "200";
+                    result.message = "获取成功!";
+                    result.count = list.Count.ToString();
+                    result.data = strData.ToString().Replace("[", "{").Replace("]", "}");
+                }
+                else
+                {
+                    result.code = "0";
+                    result.message = "没有任何价格配置信息!";
+                }
             }
             else
             {
@@ -218,6 +389,34 @@ namespace Flowpie.Controllers
             return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
         }
 
+        [HttpGet]
+        public string GetState()
+        {
+            KxdLib.CourierController courierController = new KxdLib.CourierController();
+            Models.Result result = new Models.Result();
+            DatabaseLib.Tools tools = new DatabaseLib.Tools();
+
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
+
+            System.Collections.Hashtable data = tools.paramToData(context.Request.Params);
+
+            System.Collections.Hashtable item = courierController.load(data["courierid"].ToString());
+
+            if (courierController.Result)
+            {
+                result.code = "200";
+                result.message = "获取成功!";
+                result.data = item["state"].ToString();
+            }
+            else
+            {
+                result.code = "0";
+                result.message = courierController.Message.Replace("'", "\"");
+            }
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+        }
+
         [HttpPost]
         public string StateChange()
         {
@@ -276,7 +475,21 @@ namespace Flowpie.Controllers
             double range = CommonLib.Common.Pos.getDistance(lat, lng, lat1, lng1);
 
             if (range < 3)
+            {
+                string tmp_time = item["lastat"].ToString();
+
+                if (tmp_time == "")
+                    return false;
+
+                DateTime last_time = DateTime.Parse(tmp_time);
+
+                int tick = CommonLib.Common.DateTimeController.compareDate(DateTime.Now, last_time);
+
+                if (tick > 5)
+                    return false;
+
                 return true;
+            }
 
             return false;
         }
@@ -335,6 +548,63 @@ namespace Flowpie.Controllers
                 result.message = "获取成功!";
                 result.count = list.Count.ToString();
                 result.data =  "[" + strData.ToString().Replace("[", "{").Replace("]", "}") + "]";             
+            }
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+        }
+
+        [HttpGet]
+        public string getPrompt()
+        {
+            KxdLib.OrderController orderController = new KxdLib.OrderController();
+            Models.Result result = new Models.Result();
+            System.Text.StringBuilder strData = new System.Text.StringBuilder();
+            DatabaseLib.Tools tools = new DatabaseLib.Tools();
+
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
+
+            System.Collections.Hashtable data = tools.paramToData(context.Request.Params);
+
+            Hashtable item = orderController.getNotOptOrder(data["courierid"].ToString());
+
+            if (item == null)
+            {
+                result.code = "0";
+                result.message = "没有需要处理的订单!";
+            }
+            else
+            {
+                result.code = "200";
+                result.message = "有还未处理的订单!";
+                result.data = item["orderid"].ToString();
+            }
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+        }
+
+
+        [HttpPost]
+        public string Logout()
+        {
+            KxdLib.CourierController courierController = new KxdLib.CourierController();
+            Models.Result result = new Models.Result();
+            DatabaseLib.Tools tools = new DatabaseLib.Tools();
+
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
+
+            System.Collections.Hashtable data = tools.paramToData(context.Request.Params);
+
+            courierController.Logout(data["courierid"].ToString());
+
+            if (courierController.Result)
+            {
+                result.code = "200";
+                result.message = "注销成功!";
+            }
+            else
+            {
+                result.code = "0";
+                result.message = "注销失败:"+ courierController.Message;
             }
 
             return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");

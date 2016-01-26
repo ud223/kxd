@@ -1,0 +1,71 @@
+﻿@{
+    Layout = "~/Views/Shared/mobile.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+<div class="kxdh-topbk">
+    <a href="/home/myaddress" class="iconfont icon-angleleft"></a>
+    <span>新增收件地址</span>
+</div>
+
+<div class="kxdh-box">
+    @*<input type="text" id="name" name="name"  placeholder="联系人" value="@ViewData["name"]" />
+    <div>
+    <input type="tel" id="phone" name="phone"  placeholder="手机号码" value="@ViewData["phone"]" />
+    </div>*@
+    <input type="text" id="address" name="address" readonly="readonly" placeholder="收货地址" value="@ViewData["address"]" />
+    <div class="clear-10"></div>
+    <input type="text" id="addresstext" name="addresstext"  placeholder="收货详细地址" value="@ViewData["addresstext"]" />
+    <div class="clear-10"></div>
+    <input type="hidden" id="addressid" name="addressid" value="@ViewData["addressid"]" />
+    <button class="fullbtn mb10">保存</button>
+    <div class="clear-50"></div>
+</div>
+<script type="text/javascript">
+    var lat = '@ViewData["lat"]';
+    var lng = '@ViewData["lng"]';
+
+    $(document).ready(function () {
+        $('.fullbtn').click(function () {
+            save();
+        })
+    })
+
+    function success(data) {
+        var opertion = {
+            msg: data.message,
+            exitText: "关闭!"
+        };
+
+        $.alertbox(opertion);
+    }
+
+    function error() {
+        var opertion = {
+            msg: "保存失败 请重试!",
+            exitText: "关闭!"
+        };
+
+        $.alertbox(opertion);
+    }
+
+    function save() {
+        var userid = $.cookie('user_id');
+        var address = $('#address').val();
+        var lat = $('#lat').val();
+        var lng = $('#lng').val();
+        var addresstext = $('#addresstext').val();
+
+        var data = { 'userid': userid, 'address': address, 'lat': lat, 'lng': lng, 'addresstext': addresstext };
+
+        var params = {
+            url: '/api/user/AddAddress',
+            data: data,
+            successFun: success,
+            errorFun: error
+        }
+
+        ajaxTo(params);
+    }
+</script>

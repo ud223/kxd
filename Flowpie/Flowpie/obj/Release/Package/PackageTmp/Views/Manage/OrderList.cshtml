@@ -1,15 +1,16 @@
 ﻿
+
 @{
     Layout = "~/Views/Shared/_Manage.cshtml";
 }
 @{
-    ViewBag.Title = "管理员管理";
+    ViewBag.Title = "订单列表";
 }
 <div class="main-body-relative fix">
     <div class="fix-wxp">
         <div class="fix-wxp-toolbar clearfix">
             <div class="fix-wxp-toolbar-wp">
-                <span class="fix-wxp-toolbar-txt">客户列表</span>
+                <span class="fix-wxp-toolbar-txt">订单列表</span>
             </div>
             <div class="fix-wxp-toolbar-blist">
                 @*<div class="fix-query-input">
@@ -50,7 +51,7 @@
                             <a role="menuitem" tabindex="-1" href="#"><span class="halflings halflings-open-file"></span> &nbsp; 导出</a>
                         </li>
                         <li>
-                            <a role="menuitem" tabindex="-1" href="#"><span class="filetypes filetypes-xls unvisibility"></span> &nbsp; 导出Excel</a>
+                            <a role="menuitem" tabindex="-1" href="/excel/Order" target="_blank"><span class="filetypes filetypes-xls unvisibility"></span> &nbsp; 导出Excel</a>
                         </li>
                         <li>
                             <a role="menuitem" tabindex="-1" href="#"><span class="halflings halflings-print"></span> &nbsp; 打印单据</a>
@@ -183,7 +184,7 @@
                                         }
                                     case "3":
                                         {
-                                            <text>已评价</text>;
+                                            <text>已支付</text>;
                                             break;
                                         }
                                     case "4":

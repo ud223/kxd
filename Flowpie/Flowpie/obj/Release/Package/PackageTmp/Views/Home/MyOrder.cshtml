@@ -85,11 +85,11 @@
 
         <a href="/home/orderdetail/@item["orderid"].ToString()" class="itm slim @classString">
             <div>
-                <span class="h1">@item["fromname"].ToString()</span>
+                <span class="h1">@item["sendcouriername"].ToString().Replace("null", "")</span>
                 <span class="gold">￥@item["amount"].ToString()元</span>
             </div>
             <div class="h4">
-                <span>取件时间 @item["rundate"].ToString() @item["runtime"].ToString()</span>
+                <span>取件时间 @item["rundate"].ToString() @item["runtime"].ToString().Replace(".000", "")</span>
                 <span class="tagb">
                     @stateText
                 </span>

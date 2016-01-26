@@ -507,7 +507,6 @@ E:\git_home\kxd\Flowpie\Flowpie\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
 E:\git_home\kxd\Flowpie\Flowpie\bin\Microsoft.Owin.Security.OAuth.dll
 E:\git_home\kxd\Flowpie\Flowpie\bin\Microsoft.Owin.Security.Twitter.dll
 E:\git_home\kxd\Flowpie\Flowpie\bin\Microsoft.Web.Infrastructure.dll
-E:\git_home\kxd\Flowpie\Flowpie\bin\MySql.Data.dll
 E:\git_home\kxd\Flowpie\Flowpie\bin\Newtonsoft.Json.dll
 E:\git_home\kxd\Flowpie\Flowpie\bin\Owin.dll
 E:\git_home\kxd\Flowpie\Flowpie\bin\ProjectLib.dll
@@ -695,4 +694,8 @@ G:\git_home\kxd\Flowpie\Flowpie\obj\Debug\Flowpie.pdb
 G:\git_home\kxd\Flowpie\Flowpie\bin\WxApiLib.dll
 G:\git_home\kxd\Flowpie\Flowpie\bin\LitJson.dll
 G:\git_home\kxd\Flowpie\Flowpie\bin\WxApiLib.pdb
+E:\git_home\kxd\Flowpie\Flowpie\bin\WxApiLib.dll
+E:\git_home\kxd\Flowpie\Flowpie\bin\LitJson.dll
+E:\git_home\kxd\Flowpie\Flowpie\bin\WxApiLib.pdb
+E:\git_home\kxd\Flowpie\Flowpie\bin\MySql.Data.dll
 G:\git_home\kxd\Flowpie\Flowpie\bin\log4net.dll

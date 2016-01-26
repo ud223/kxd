@@ -394,13 +394,13 @@ namespace Flowpie.Controllers
             sb.AppendLine("{");
             sb.AppendLine("\"type\":\"view\",");
             sb.AppendLine("\"name\":\"下订单\",");
-            sb.AppendLine("\"url\":\"http://www.playkuaidi.com\"");
+            sb.AppendLine("\"url\":\"http://wx.playkuaidi.com\"");
             sb.AppendLine("},");
 
             sb.AppendLine("{");
             sb.AppendLine("\"type\":\"view\",");
             sb.AppendLine("\"name\":\"查快递\",");
-            sb.AppendLine("\"url\":\"http://www.playkuaidi.com/home/expressquery\"");
+            sb.AppendLine("\"url\":\"http://wx.playkuaidi.com/home/expressquery\"");
             sb.AppendLine("},");
 
             sb.AppendLine("{");

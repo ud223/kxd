@@ -1,0 +1,24 @@
+Time:    2016/1/5 0:18:39
+Action:  注册用户
+Message: INSERT INTO sy_menus(MenuText, Url, Level, ParentID, `Index`, CreateAt, ModifyAt) VALUES('提现内容提示', '/manage/promptedit', 2, 22, 5, '2016-01-05 00:18:39', '2016-01-05 00:18:39'); SELECT MenuID FROM sy_menus ORDER BY MenuID DESC LIMIT 0, 1
+-----------------------------------------------------------
+
+
+Time:    2016/1/5 15:01:04
+Action:  更新主订单价格
+Message: update app_courier set ModifyAt='2016-01-05 15:00:09' , password='25CF8B51C773F3F8DC8B4BE867A9A2'  where courierid = '2015111300002'
+-----------------------------------------------------------
+
+
+Time:    2016/1/5 15:05:46
+Action:  更新主订单价格
+Message: update app_courier set ModifyAt='2016-01-05 15:05:17' , password='25CF8B51C773F3F8DC8B4BE867A9A2'  where courierid = '2015111300002'
+-----------------------------------------------------------
+
+
+Time:    2016/1/5 15:20:05
+Action:  更新主订单价格
+Message: update app_courier set lastat='2016-01-05 15:20:01' , ModifyAt='2016-01-05 15:19:54' , lng='456' , lat='123'  where courierid = '2015111300002'
+-----------------------------------------------------------
+
+

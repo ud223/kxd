@@ -1,0 +1,17 @@
+﻿<xml>
+  <appid><![CDATA[wx78b3b4daaed7f512]]></appid>
+  <attach><![CDATA[支付课时费]]></attach>
+  <body><![CDATA[课时费]]></body>
+  <goods_tag><![CDATA[]]></goods_tag>
+  <mch_id><![CDATA[1291713801]]></mch_id>
+  <nonce_str><![CDATA[57386d6b8e464b62b116a7e40c2ba1bc]]></nonce_str>
+  <notify_url><![CDATA[http://wx.yune-jia.com/home/ResultNotify]]></notify_url>
+  <openid><![CDATA[oyyOBuLZWo4ZhPRtNw0YbXJzDFxw]]></openid>
+  <out_trade_no><![CDATA[129171380120160115010554644]]></out_trade_no>
+  <sign><![CDATA[2694993B11EE335C0524316500F4E921]]></sign>
+  <spbill_create_ip><![CDATA[8.8.8.8]]></spbill_create_ip>
+  <time_expire><![CDATA[20160115011554]]></time_expire>
+  <time_start><![CDATA[20160115010554]]></time_start>
+  <total_fee>300</total_fee>
+  <trade_type><![CDATA[JSAPI]]></trade_type>
+</xml>

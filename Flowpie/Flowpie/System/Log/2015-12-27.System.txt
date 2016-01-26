@@ -1,0 +1,24 @@
+Time:    2015/12/27 20:35:08
+Action:  注册用户
+Message: INSERT INTO app_order(orderid, userid, courierid, sendcouriername, sendcourierphone, weight, `long`, width, height, amount, fromname, fromcity, fromtel, orderTypeid, companyid, rundate, runtime, fromaddress, fromaddressdetail, lat, lng, state,  CreateAt, ModifyAt) VALUES('2015122700001', '00001', '2015122200001', '郭秋棚', '18696120588', '3', NULL, NULL, NULL, 6.00, '陆思浙', '武汉', '15927094025', 1, 1, '2015-12-27', '20:34:00.000', '新地盛世东方', 'aaaa', '30.646706', '114.308615', 1, '2015-12-27 20:35:08', '2015-12-27 20:35:08'); SELECT orderid FROM app_order ORDER BY orderid DESC Limit 1
+-----------------------------------------------------------
+
+
+Time:    2015/12/27 21:21:25
+Action:  注册用户
+Message: INSERT INTO sy_menus(MenuText, Url, Level, ParentID, `Index`, CreateAt, ModifyAt) VALUES('提现申请列表', '/manage/CashApplicationList', 2, 22, 4, '2015-12-27 21:21:25', '2015-12-27 21:21:25'); SELECT MenuID FROM sy_menus ORDER BY MenuID DESC LIMIT 0, 1
+-----------------------------------------------------------
+
+
+Time:    2015/12/27 21:46:25
+Action:  注册用户
+Message: INSERT INTO app_order(orderid, userid, courierid, sendcouriername, sendcourierphone, weight, `long`, width, height, amount, fromname, fromcity, fromtel, orderTypeid, companyid, rundate, runtime, fromaddress, fromaddressdetail, lat, lng, state,  CreateAt, ModifyAt) VALUES('2015122700002', '00001', 'null', 'null', 'null', '0', null, 0, 0, null, '陆思浙', '武汉', '15927094025', null, null, '2015-12-27', '21:45:00.000', '新地盛世东方', 'aaaa', '30.646706', '114.308615', 0, '2015-12-27 21:46:25', '2015-12-27 21:46:25'); SELECT orderid FROM app_order ORDER BY orderid DESC Limit 1
+-----------------------------------------------------------
+
+
+Time:    2015/12/27 22:06:03
+Action:  注册用户
+Message: insert into app_cashapplication(cashapplicationid, courierid, amount, CreateAt, ModifyAt) values('2015122700001', '2015111300001', 98, '2015-12-27 22:06:00', '2015-12-27 22:06:00'); select cashapplicationid from app_cashapplication order by CreateAt desc limit 1
+-----------------------------------------------------------
+
+

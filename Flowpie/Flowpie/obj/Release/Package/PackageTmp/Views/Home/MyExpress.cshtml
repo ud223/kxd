@@ -1,0 +1,144 @@
+﻿@{
+    Layout = "~/Views/Shared/mobile.cshtml";
+}
+@{
+    ViewBag.Title = ViewData["title"];
+}
+<div class="kxdh-topbk">
+    <a href="/home/myindex" class="iconfont icon-angleleft"></a>
+    <span>取派件统计</span>
+</div>
+<div class="kxdh-box">
+    <div class="kxdh-inqtb1">
+        <div class="td s1">
+            <!--
+
+                描述：选择了选项“时间段”后， 下方的2个起止时间输入框的disabled才去掉可用
+
+            -->
+            <div class="s3" style="margin-top:0;margin-bottom:5px;">
+                <select id="fitle-date" class="s7 nbm">
+                    <option selected="selected">最近7天</option>
+                    <option>最近1月</option>
+                    <option>最近3月</option>
+                    <option>最近1年</option>
+                    @*<option>时间段</option>*@
+                </select>
+            </div>
+            @*<div class="tb">
+                <div class="tr">
+                    <div class="td"><input type="date" class="s2" disabled="disabled" value="2015-10-01" /></div>
+                    <div class="td"><input type="date" class="s2" disabled="disabled" value="2015-10-30" /></div>
+                </div>
+            </div>*@
+
+        </div>
+        <div class="td s4">
+            <button class="s5">查询</button>
+        </div>
+    </div>
+</div>
+
+<ul class="qptoptab">
+    <li class="selected">取件（<span class="receive-head-num">143</span>）</li>
+    <li>派件（<span class="send-head-num">32</span>）</li>
+</ul>
+<div class="kxdh-listb">
+   
+    @*<div class="itm slim">
+        <div>
+            <span class="h1">张晓明</span>
+            <span class="h2">物品：衣物，食品</span>
+        </div>
+        <div class="h4">
+            <span>取件时间 2015年5月3日 15:43</span>
+        </div>
+        <div class="h5">
+            单号#3994050
+        </div>
+    </div>
+    <div class="itm slim">
+        <div>
+            <span class="h1">张晓明</span>
+            <span class="h2">物品：衣物，食品</span>
+        </div>
+        <div class="h4">
+            <span>取件时间 2015年5月3日 15:43</span>
+        </div>
+        <div class="h5">
+            单号#3994050
+        </div>
+    </div>
+    <div class="itm slim">
+        <div>
+            <span class="h1">张晓明</span>
+            <span class="h2">物品：衣物，食品</span>
+        </div>
+        <div class="h4">
+            <span>取件时间 2015年5月3日 15:43</span>
+        </div>
+        <div class="h5">
+            单号#3994050
+        </div>
+    </div>
+    <div class="itm slim">
+        <div>
+            <span class="h1">张晓明</span>
+            <span class="h2">物品：衣物，食品</span>
+        </div>
+        <div class="h4">
+            <span>取件时间 2015年5月3日 15:43</span>
+        </div>
+        <div class="h5">
+            单号#3994050
+        </div>
+    </div>
+    <div class="itm slim">
+        <div>
+            <span class="h1">张晓明</span>
+            <span class="h2">物品：衣物，食品</span>
+        </div>
+        <div class="h4">
+            <span>取件时间 2015年5月3日 15:43</span>
+        </div>
+        <div class="h5">
+            单号#3994050
+        </div>
+    </div>*@
+</div>
+<div class="pagerarea" style="padding-bottom:50px;">
+    <a href="#" class="itm">1</a>
+    <a href="#" class="itm empty">...</a>
+    <a href="#" class="itm">21</a>
+    <a href="#" class="itm selected">23</a>
+    <a href="#" class="itm">24</a>
+    <a href="#" class="itm empty">...</a>
+    <a href="#" class="itm">44</a>
+</div>
+<div id="div-item" style="display:none">
+    <div class="itm slim">
+        <div>
+            <span class="h1">张晓明</span>
+            <span class="h2">物品：衣物，食品</span>
+        </div>
+        <div class="h4">
+            <span>取件时间 2015年5月3日 15:43</span>
+        </div>
+        <div class="h5">
+            单号#3994050
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+
+    function loadReceive() {
+
+    }
+
+    function loadSend() {
+
+    }
+</script>

@@ -33,7 +33,15 @@
     <div>取消订单</div>
     <i class="iconfont icon-iconfontclose"></i>
 </div>
-
+<div class="paytheorderbtn" style="z-index:35">
+    已经推送<span>@ViewData["push_count"]</span>个快递员
+    @*<div class="tt">请支付订单</div>
+    <div class="ct">
+        <sup>￥</sup>
+        <span>@item["amount"].ToString()</span>
+        <sub>元</sub>
+    </div>*@
+</div>
 <!--百度API链接请自行注册生成-->
 
 <script>
@@ -41,7 +49,27 @@
     var orderid = '@ViewData["data"].ToString()';
 
     $(document).ready(function () {
-        $.cookie('cur_order_id', orderid);
+        var is_take = $.cookie('is_take');
+
+        if (is_take == '0') {
+            alert("订单已推送 请不要连续一键下单!")
+
+            location.href = '/home';
+
+            return;
+        }
+
+        var cur_order_id = $.cookie('cur_order_id');
+
+        if (cur_order_id) {
+            alert("订单已推送 请不要连续一键下单!")
+
+            location.href = '/home';
+
+            return;
+        }
+
+        $.cookie('cur_order_id', orderid, { path: '/home', expires: 1 });
         $.waiting('派单中，请稍候 ...');
 
         var lat = localStorage.getItem('lat');
@@ -171,23 +199,38 @@
         var data = { 'orderid': orderid };
 
         var params = {
-            url: '/api/order/getOrderState',
+            url: '/api/order/GetOrderDetail',
             data: data,
-            successFun: getState
+            successFun: getState,
+            type: 'get'
         }
 
         ajaxTo(params);
     }
 
     function getState(data) {
+        //alert(JSON.stringify(data));
+        tmp = eval('(' + data.data + ')');
+
         if (data.code == 200) {
-            if (data.data == "1") {
+            if (tmp.state != "0") {
                 is_count = false;
 
                 $.cookie('is_get', 1);
 
-                location.href = "/home";
+                var opertion = {
+                    msg: "快递员" + tmp.sendcouriername + "已接单正在赶来, 他的联系电话是" + tmp.sendcourierphone,
+                    exitbtn: true,
+                    exitText: "关闭!",
+                    exitCallback: toHome
+                };
+
+                $.alertbox(opertion);
             }
         }
+    }
+
+    function toHome() {
+        location.href = "/home";
     }
 </script>

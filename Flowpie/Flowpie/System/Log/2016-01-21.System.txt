@@ -1,0 +1,66 @@
+Time:    2016/1/21 22:23:45
+Action:  更新主订单价格
+Message: update app_users set ModifyAt='2016-01-21 22:23:45' , phone='123123123' , name='陆思浙'  where userid = '1'
+-----------------------------------------------------------
+
+
+Time:    2016/1/21 22:24:12
+Action:  更新主订单价格
+Message: update app_users set ModifyAt='2016-01-21 22:24:12' , phone='123123123' , name='陆思浙'  where userid = '1'
+-----------------------------------------------------------
+
+
+Time:    2016/1/21 22:45:32
+Action:  更新主订单价格
+Message: update app_users set ModifyAt='2016-01-21 22:45:32' , phone='123324345' , name='陆思浙'  where userid = '1'
+-----------------------------------------------------------
+
+
+Time:    2016/1/21 22:45:37
+Action:  更新主订单价格
+Message: update app_users set ModifyAt='2016-01-21 22:45:37' , phone='123324345' , name='陆思浙'  where userid = '1'
+-----------------------------------------------------------
+
+
+Time:    2016/1/21 22:46:27
+Action:  注册用户
+Message: INSERT INTO app_order(orderid, userid, courierid, sendcouriername, sendcourierphone, weight, `long`, width, height, amount, pay_amount, fromname, fromcity, fromtel, orderTypeid, companyid, rundate, runtime, fromaddress, fromaddressdetail, lat, lng, state,  CreateAt, ModifyAt) VALUES('2016012100001', '1', '2015111200007', '测试二', '18627811823', null, NULL, NULL, NULL, 0, 0.00, '陆思浙', '武汉', '123324345', 1, 4, '2016-01-21', '22:45:00.000', '新地盛世东方', 'aaaa', '30.646706', '114.308615', 0, '2016-01-21 22:46:27', '2016-01-21 22:46:27'); SELECT orderid FROM app_order ORDER BY orderid DESC Limit 1
+-----------------------------------------------------------
+
+
+Time:    2016/1/21 22:47:14
+Action:  更新主订单价格
+Message: update app_order set state = state + 1 where orderid = '2016012100001'
+-----------------------------------------------------------
+
+
+Time:    2016/1/21 22:47:15
+Action:  更新主订单价格
+Message: update app_courier set amount=amount + 10.00 where courierid = '2015111200007'
+-----------------------------------------------------------
+
+
+Time:    2016/1/21 22:47:36
+Action:  更新主订单价格
+Message: update app_order set CourierAmountPre = 0.00, CourierAmountAft = 10.00 where orderid = '2016012100001'
+-----------------------------------------------------------
+
+
+Time:    2016/1/21 22:49:22
+Action:  更新主订单价格
+Message: update app_order set state = state + 1 where orderid = '2016012100001'
+-----------------------------------------------------------
+
+
+Time:    2016/1/21 22:49:22
+Action:  更新主订单价格
+Message: update app_courier set amount=amount + 10.00 where courierid = '2015111200007'
+-----------------------------------------------------------
+
+
+Time:    2016/1/21 22:49:24
+Action:  更新主订单价格
+Message: update app_order set CourierAmountPre = 10.00, CourierAmountAft = 20.00 where orderid = '2016012100001'
+-----------------------------------------------------------
+
+

@@ -20,3 +20,6 @@ G:\git_home\kxd\Flowpie\AppLib\obj\Release\AppLib.dll
 G:\git_home\kxd\Flowpie\AppLib\obj\Release\AppLib.pdb
 G:\git_home\kxd\Flowpie\AppLib\bin\Release\GetuiServerApiSDK.dll
 G:\git_home\kxd\Flowpie\AppLib\bin\Release\Google.ProtocolBuffers.dll
+E:\git_home\kxd\Flowpie\AppLib\bin\Release\GetuiServerApiSDK.dll
+E:\git_home\kxd\Flowpie\AppLib\bin\Release\Google.ProtocolBuffers.dll
+G:\git_home\kxd\Flowpie\AppLib\bin\Release\log4net.dll

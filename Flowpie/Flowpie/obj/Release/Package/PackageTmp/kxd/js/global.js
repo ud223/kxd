@@ -117,7 +117,8 @@ $.extend({
 			.css('text-align', $popupsettings.textAlign);
 
 		popupFrame.show();
-		var clsbtn = $('<span>').addClass('P_closebtn').html("<i class='iconfont icon-iconfontclose'></i>");
+		var clsbtn = '';//$('<span>').addClass('P_closebtn').html("<i class='iconfont icon-iconfontclose'></i>");
+
 		$($popupsettings.containerBoxSelector).append(popupFrame.append($(content).append(clsbtn)));
 		var mt = "-" + $(content).outerHeight() / 2 + "px";
 		$(content).css('margin-top', mt);
@@ -131,18 +132,19 @@ $.extend({
 			});
 		}
 
-		clsbtn.tap(function() {
-			$.popupclose();
-		});
+		////clsbtn.tap(function() {
+		////	$.popupclose();
+		////});
 
-		if ($popupsettings.closebtn) {
-			clsbtn.show();
-		}
+		//if ($popupsettings.closebtn) {
+		//	clsbtn.show();
+		//}
 	},
 	alertbox: function(options) {
 		var _settings = {
 			textAlign: 'center',
 			exitbtn: true,
+            closebtn: true,
 			exitCallback: false,
 			exitText: '知道了'
 		};
@@ -167,6 +169,7 @@ $.extend({
 					$popupsettings.exitCallback();
 				}
 			});
+
 			wp.append(okdesubtn);
 		}
 

@@ -9,6 +9,8 @@ using System.Net;
 using System.Collections;
 using System.IO;
 using System.Text;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Flowpie.Controllers
 {
@@ -95,6 +97,73 @@ namespace Flowpie.Controllers
             {
                 result.code = "0";
                 result.message = "没有新版本!";
+            }
+
+            return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");
+        }
+
+        [HttpPost]
+        public string UploadPic()
+        {
+            DatabaseLib.Tools tools = new DatabaseLib.Tools();
+            HttpContextBase context = (HttpContextBase)Request.Properties["MS_HttpContext"];
+            KxdLib.CourierController courierController = new KxdLib.CourierController();
+
+            Models.Result result = new Models.Result();
+            string headpic = "";
+
+            System.Collections.Hashtable data = tools.paramToData(context.Request.Params);
+
+            string courierid = data["courierid"].ToString();
+            string inputStr = data["imgs"].ToString();
+
+            try
+            {
+                NetLog.WriteTextLog("uploadPic", inputStr, DateTime.Now);
+
+                //inputStr = inputStr.Replace("\\n", "\n");
+                inputStr = inputStr.IndexOf("data:image/jpeg;base64,") > -1 ? inputStr.Replace("data:image/jpeg;base64,", "") : inputStr;
+                inputStr = inputStr.Replace("data:image/png;base64,", "");
+
+                byte[] arr = Convert.FromBase64String(inputStr);
+
+                MemoryStream ms = new MemoryStream(arr);
+                Bitmap bmp = new Bitmap(ms);
+
+
+                Bitmap bmp2 = new Bitmap(bmp.Width, bmp.Height, PixelFormat.Format16bppRgb555);
+
+                Graphics g = Graphics.FromImage(bmp2);
+
+                g.DrawImage(bmp, new Rectangle(0, 0, bmp.Width, bmp.Height));
+
+                g.Dispose();
+
+                bmp.Dispose();
+
+                ms.Close();
+
+                string path = AppDomain.CurrentDomain.BaseDirectory + "photo/";
+                string filename = DateTime.Now.ToString("yyyyMMddhhmmssfff") + ".jpg";
+
+                headpic = "/photo/" + filename;
+
+                bmp2.Save(Path.Combine(path, filename));
+
+                bmp2.Dispose();
+
+                courierController.updateHeadPic(courierid, headpic);
+
+                result.code = "200";
+                result.message = "上传成功!";
+                result.data = headpic;
+            }
+            catch (Exception ex)
+            {
+                NetLog.WriteTextLog("uploadPic:error", ex.Message, DateTime.Now);
+
+                result.code = "0";
+                result.message = ex.Message;
             }
 
             return Newtonsoft.Json.JsonConvert.SerializeObject(result).Replace("\"", "'");

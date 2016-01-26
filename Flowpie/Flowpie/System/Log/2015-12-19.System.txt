@@ -1,0 +1,6 @@
+Time:    2015/12/19 16:44:09
+Action:  判断用户或手机是否已注册
+Message: SELECT app_courier.*, companycode, companytext FROM app_courier left join app_company on app_courier.companyid = app_company.companyid WHERE phone ='lsz' OR loginname ='lsz' Limit 1
+-----------------------------------------------------------
+
+

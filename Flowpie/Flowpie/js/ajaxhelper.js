@@ -45,7 +45,7 @@ function ajaxTo(params) {
             }
         },
         error: function () {
-            alert("数据访问错误, 请重新尝试!");
+            //alert("数据访问错误, 请重新尝试!");
         }
     });
 }
@@ -79,7 +79,7 @@ function ajaxApi(params) {
             option.successFun(data, option.param);
         },
         error: function () {
-            alert("数据访问错误, 请重新尝试!");
+            //alert("数据访问错误, 请重新尝试!");
         }
     });
 }

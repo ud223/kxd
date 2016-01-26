@@ -4,58 +4,99 @@
 @{
     ViewBag.Title = ViewData["title"];
 }
+<link rel="stylesheet" href="/css/wx.css" />
 <div class="kxdh-topbk">
     <a href="/home/myindex" class="iconfont icon-angleleft"></a>
     <span>查询快递</span>
 </div>
 <div class="clear-15"></div>
 <div class="kxdh-box ntm">
-    <select id="company" style="width: 100%;">
+    @*<select id="company" style="width: 100%;">
         <option value="0">请选择快递公司</option>
         @foreach (var item in ViewData["data"] as List<System.Collections.Hashtable>)
         {
             <option value='@item["companycode"]'> @item["companytext"]</option>
         }
-    </select>
-    <input id="express_code" type="text" placeholder="请输入快递单号" />
-
+    </select>*@
+    <div class="chosthecomp" onclick="$('.chstcomp').show();">
+        <span class="ycbtxt">请选择快递公司</span>
+        <span class="iconfont icon-angleright"></span>
+    </div>
+    <div>
+        <input id="express_code" type="text" placeholder="请输入快递单号" />
+        <button id="seach_btn" style="position:absolute;height:30px;line-height:30px;padding:0 20px;right:10px;top:50%;margin-top:-15px;">扫描</button>
+    </div>
+    <input type="hidden" id="companycode" />
     <button class="fullbtn normal">查询</button>
-    <!--
-        点击查询后获取数据后出现
-    -->
-    <div class="kxdh-tra">
-        <div class="kxdh-fdtt">
-            <span class="hl"></span>
-            <span class="txt">物流跟踪记录</span>
-        </div>
-        <div >
-            @*<div class="autogetpushmsgwp">
-                <input type="checkbox" id="autogetpushmsg" />
-                <label for="autogetpushmsg">推送消息</label>
-            </div>*@
-            <div id="express_list">
-                <div class="kxdh-trackitm">
-                    <div class="kxdh-tracktt">
-                        <span class="express-code"></span>
-                        <i class="iconfont icon-angledown"></i>
+        <!--
+            点击查询后获取数据后出现
+        -->
+        @*<div class="kxdh-tra">
+                <div class="kxdh-fdtt">
+                    <span class="hl"></span>
+                    <span class="txt">物流跟踪记录</span>
+                </div>
+                <div >
+                    @*<div class="autogetpushmsgwp">
+                        <input type="checkbox" id="autogetpushmsg" />
+                        <label for="autogetpushmsg">推送消息</label>
                     </div>
-                    <div>
-                        <ul class="kxdh-trackul">
-                            
-                        </ul>
+                    <div id="express_list">
+                        <div class="kxdh-trackitm">
+                            <div class="kxdh-tracktt">
+                                <span class="express-code"></span>
+                                <i class="iconfont icon-angledown"></i>
+                            </div>
+                            <div>
+                                <ul class="kxdh-trackul">
+
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>*@
+        <div class="clear-50"></div>
     </div>
-    <div class="clear-50"></div>
+<div class="chstcomp">
+    <div class="ctt">
+        <span>请选择快递公司</span>
+        <span class="cls" onclick="$('.chstcomp').hide();">&times;</span>
+    </div>
+    <div class="fi_t1">
+        <input type="text" class="fi_t2" placeholder="请输入编码筛选公司" />
+    </div>
+    <div>
+        @foreach (var item in ViewData["data"] as List<System.Collections.Hashtable>)
+        {
+            <div class="itmr" code="@item["companycode"]">
+                <span>@item["companytext"]</span>
+                <i class="iconfont icon-10014"></i>
+            </div>
+        }
+    </div>
 </div>
 @*<i class="hdt iconfont icon-iconfontradioboxfill"></i>
 <span>2015年5月15日 15:23 收件</span>*@
+<script type="text/javascript" charset="UTF-8" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript">
+    //调用微信JS api 支付
+    wx.config({
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '@ViewData["appId"]', // 必填，公众号的唯一标识
+        timestamp: @ViewData["timestamp"],
+        nonceStr: '@ViewData["noncestr"]',
+        signature: '@ViewData["signature"]',
+        jsApiList: ['scanQRCode'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+   
+    wx.error(function (res) {
+        alert(res.errMsg);
+    });
+
     $(document).ready(function () {
         $(".fullbtn").click(function () {
-            getDetail();
+            addExpress();
         });
 
         $(".kxdh-trackitm").click(function () {
@@ -66,13 +107,50 @@
                 $(this).addClass("open");
             }
         })
+
+        $('.chstcomp .itmr .iconfont').click(function () {
+            var container = $(this).parent().closest('.itmr');
+            container.siblings('.selected').removeClass('selected');
+            container.addClass('selected');
+            var chos = $('.chstcomp .itmr.selected').length;
+            if (chos) {
+                $('.ycbtxt').text(container.find('span').text());
+                $('#companycode').val(container.attr('code'))
+                $('.chstcomp').hide();
+            } else {
+                $('.ycbtxt').text('请选择快递公司');
+            }
+        });
+
+        $(".fi_t2").keyup(function () {
+            filterCompany($(this).val());
+        })
+
+        $('#seach_btn').click(function() {
+            wx.ready(function () {
+                wx.scanQRCode({
+                    needResult: 1,
+                    desc: 'scanQRCode desc',
+                    success: function (res) {
+                        //alert(JSON.stringify(res));
+                        //alert("111");
+
+                        if (JSON.stringify(res).indexOf(':ok') > -1) {
+                            var code = res.resultStr.replace('CODE_128,', '');
+
+                            $("#express_code").val(code);
+                        }
+                    }
+                });
+            });
+        })
     });
 
     function getDetail() {
-        var company_code = $("#company").val();
+        var company_code = $("#companycode").val();
         var express_code = $("#express_code").val();
-        //alert(company_code);
-        //alert(express_code);
+        ////////alert(company_code);
+        ////////alert(express_code);
         if (!company_code) {
             return;
         }
@@ -80,19 +158,31 @@
         if (!express_code) {
             return;
         }
+
+
+        location.href = 'http://m.kuaidi100.com/index_all.html?type=' + company_code + '&postid=' + express_code + '&callbackurl='+ location.href;
+
         //return;
 
-        $(".express-code").html("单号" + express_code);
-        var params = {
-            url: 'http://api.kuaidi100.com/api?id=7f0eb2df88c9b87a&com=' + company_code + '&nu=' + express_code + '&show=0&muti=1&order=desc',
-            data: false,
-            type: 'get',
-            dataType: 'JSONP',
-            successFun: loadNode,
-            errorFun: returnError
-        }
-        console.log(params.url);
-        ajaxApi(params);
+        //var list = $("#express_list").find(".kxdh-trackul");
+
+        //list.html("");
+
+        //var li = $('<li class="iframe" style="overflow-x:scroll;"><iframe id="kuaidi100" name="kuaidi100" src="http://m.kuaidi100.com/index_all.html?type=' + company_code + '&postid=' + express_code + '&callbackurl='+ location.href +'" width="600px"  style="left:-100px" height="380" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe></li>');
+
+        //list.append(li);
+
+        //$(".express-code").html("单号" + express_code);
+        //var params = {
+        //    url: 'http://api.kuaidi100.com/api?id=7f0eb2df88c9b87a&com=' + company_code + '&nu=' + express_code + '&show=0&muti=1&order=desc',
+        //    data: false,
+        //    type: 'get',
+        //    dataType: 'JSONP',
+        //    successFun: loadNode,
+        //    errorFun: returnError
+        //}
+        //console.log(params.url);
+        //ajaxApi(params);
     }
 
     function loadNode(data) {
@@ -119,7 +209,7 @@
     }
 
     function getSpecialExpress() {
-        var company_code = $("#company").val();
+        var company_code = $("#companycode").val();
         var express_code = $("#express_code").val();
         //alert(company_code);
         //alert(express_code);
@@ -150,14 +240,16 @@
 
     function loadSpecialExpress(data) {
         console.log(data);
+        var company_code = $("#companycode").val();
+        var express_code = $("#express_code").val();
 
         var list = $("#express_list").find(".kxdh-trackul");
 
         list.html("");
 
         if (data.code == 200) {
-            var li = $('<li class="iframe" style="overflow-x:scroll;"><iframe id="kuaidi100" name="kuaidi100" src="' + data.data + '" width="600px"  style="left:-100px" height="380" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe></li>');
-            
+            var li = $('<li class="iframe" style="overflow-x:scroll;"><iframe id="kuaidi100" name="kuaidi100" src="http://m.kuaidi100.com/index_all.html?type=' + company_code + '&postid=' + express_code + '#result" width="600px"  style="left:-100px" height="380" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe></li>');
+
             list.append(li);
         }
     }
@@ -165,4 +257,47 @@
     function returnError(data, node) {
         alert(JSON.stringify(data));
     }
+
+    function filterCompany(s) {
+        var items = $(".itmr");
+
+        $.each(items, function () {
+            $(this).show();
+        });
+
+        $.each(items, function () {
+            var code = $(this).attr('code');
+
+            if (code.substr(0, s.length) != s) {
+                $(this).hide();
+            }
+        })
+    }
+
+    function addExpress() {
+        var company_code = $("#companycode").val();
+        var express_code = $("#express_code").val();
+        var user_id = $.cookie('user_id');
+
+        var data = { 'expresscode': express_code, 'companycode': company_code, 'userid': user_id };
+
+        var params = {
+            url: '/api/order/ExpressQuery',
+            data: data,
+            dataType: 'json',
+            successFun: successAddExpress,
+            errorFun: errorAddExpress
+        }
+        console.log(params.url);
+        ajaxTo(params);
+    }
+
+    function successAddExpress(data) {
+        getDetail();
+    }
+
+    function errorAddExpress(data, node) {
+        alert(JSON.stringify(data));
+    }
+
 </script>

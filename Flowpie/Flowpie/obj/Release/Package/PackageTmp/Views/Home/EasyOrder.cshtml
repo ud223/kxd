@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = ViewData["title"];
 }
-<form action="/order/save" method="post">
+<form action="/order/save" method="post" onsubmit="return isSubmit()">
     <div class="kxdh-topbk">
         <a href="/home" class="iconfont icon-angleleft"></a>
         <span>便捷下单</span>
@@ -18,7 +18,7 @@
         <input id="weight" name="weight" type="text" placeholder="包裹重量 kg" />
         <div style="display: table;">
             <div style="display:table-cell">
-                <input id="long" name="long" type="text" placeholder="长度 cm" />
+                <input id="long" name="long" type="tel" placeholder="长度 cm" />
             </div>
             <div style="display:table-cell">
                 <input id="width" name="width" type="text" placeholder="宽度 cm" />
@@ -65,20 +65,20 @@
             </div>
             <div class="h5 fee">
                 <div>运费</div>
-                <div><span class="amount"></span>元</div>
+                <div><span class="pay_amount"></span>元</div>
             </div>
             <i class="iconfont icon-squarecheckfill"></i>
         </div>
     </div>
-    <input type="text" id="userid" name="userid">
-    <input type="text" id="courierid" name="courierid">
-    <input type="text" id="address" name="address">
-    <input type="text" id="addressdetail" name="addressdetail">
-    <input type="text" id="runtime" name="runtime">
-    <input type="text" id="amount" name="amount">
-    <input type="text" id="lat" name="lat">
-    <input type="text" id="lng" name="lng">
-    <input type="text" id="orderTypeid" name="orderTypeid" value="1">
+    <input type="hidden" id="userid" name="userid">
+    <input type="hidden" id="courierid" name="courierid">
+    <input type="hidden" id="address" name="address">
+    <input type="hidden" id="addressdetail" name="addressdetail">
+    <input type="hidden" id="runtime" name="runtime">
+    <input type="hidden" id="pay_amount" name="pay_amount">
+    <input type="hidden" id="lat" name="lat">
+    <input type="hidden" id="lng" name="lng">
+    <input type="hidden" id="orderTypeid" name="orderTypeid" value="1">
     <button type="submit" id="submit_btn" href="javascript:void(0)" class="fullbtn xuanfubtn" style="display:none;">下单</button>
 </form>
 <script type="text/javascript">
@@ -120,6 +120,10 @@
 		$('#runtime').val(time);
 		$('#lat').val(lat);
 		$('#lng').val(lng);
+
+		getRelation();
+
+		getPrice();
 	});
 
 	function initPriceClick() {
@@ -133,7 +137,7 @@
 	        obj.addClass('selected');
 
 	        $('#courierid').val($(this).attr('courierid'));
-	        $('#amount').val($(this).find('.amount').html());
+	        $('#pay_amount').val($(this).find('.pay_amount').html());
 
 	        $('.xuanfubtn').show();
 	    });
@@ -145,16 +149,16 @@
 	    var lat = $('#lat').val();
 	    var lng = $('#lng').val();
 
-	    if (!local || !weight) {
-	        var opertion = {
-	            msg: "请输入目的地和发货重量!",
-	            exitText: "关闭!"
-	        };
+	    //if (!local || !weight) {
+	    //    var opertion = {
+	    //        msg: "请输入目的地和发货重量!",
+	    //        exitText: "关闭!"
+	    //    };
 
-	        $.alertbox(opertion)
+	    //    $.alertbox(opertion)
 
-	        return;
-	    }
+	    //    return;
+	    //}
 
 	    var params = {
 	        url: '/api/User/getRelationCourier',
@@ -184,7 +188,7 @@
 	        node.attr('courierid', this.courierid);
 	        node.find('.name').html(this.name);
 	        node.find('.company').html(this.companytext);
-	        node.find('.amount').html(this.amount);
+	        node.find('.pay_amount').html(this.amount);
 
 	        if (this.state != "1") {
 	            node.addClass("unuse");
@@ -207,7 +211,7 @@
 	        exitText: "关闭!"
 	    };
 
-	    $.alertbox(opertion)
+	    //$.alertbox(opertion)
 	}
 
 	function getPrice() {
@@ -216,18 +220,16 @@
 	    var lat = $('#lat').val();
 	    var lng = $('#lng').val();
 
-	    if (!local || !weight) {
-	        var opertion = {
-	            msg: "请输入目的地和发货重量!",
-	            exitText: "关闭!"
-	        };
+	    //if (!local || !weight) {
+	    //    var opertion = {
+	    //        msg: "请输入目的地和发货重量!",
+	    //        exitText: "关闭!"
+	    //    };
 
-	        $.alertbox(opertion)
+	    //    $.alertbox(opertion)
 
-	        return;
-	    }
-
-
+	    //    return;
+	    //}
 
 	    var params = {
 	        url: '/api/User/getPriceByLocal',
@@ -257,7 +259,7 @@
 	        node.attr('courierid', this.courierid);
 	        node.find('.name').html(this.name);
 	        node.find('.company').html(this.companytext);
-	        node.find('.amount').html(this.amount);
+	        node.find('.pay_amount').html(this.amount);
 
 	        if (this.state != "1") {
 	            node.addClass("unuse");
@@ -280,7 +282,7 @@
 	        exitText: "关闭!"
 	    };
 
-	    $.alertbox(opertion)
+	    //$.alertbox(opertion)
 	}
 
 	function getRegion() {
@@ -289,5 +291,17 @@
 	    for (var i = 0; i < p.length; i++) {
 	        $("#local").append("<option value='"+ p[i] +"'>"+ p[i] +"</option>");
 	    }
+	}
+
+	function isSubmit() {
+	    var cur_order_id = $.cookie('cur_order_id');
+
+	    if (cur_order_id) {
+	        alert("订单已推送 请不要连续一键下单!")
+
+	        return false;
+	    }
+
+	    return true;
 	}
 </script>

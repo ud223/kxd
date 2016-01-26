@@ -1,0 +1,12 @@
+G:\git_home\kxd\Flowpie\WxApiLib\bin\Debug\WxApiLib.dll
+G:\git_home\kxd\Flowpie\WxApiLib\bin\Debug\WxApiLib.pdb
+G:\git_home\kxd\Flowpie\WxApiLib\obj\Debug\WxApiLib.dll
+G:\git_home\kxd\Flowpie\WxApiLib\obj\Debug\WxApiLib.pdb
+G:\git_home\kxd\Flowpie\WxApiLib\obj\Debug\WxApiLib.csprojResolveAssemblyReference.cache
+G:\git_home\kxd\Flowpie\WxApiLib\bin\Debug\LitJson.dll
+E:\git_home\kxd\Flowpie\WxApiLib\bin\Debug\WxApiLib.dll
+E:\git_home\kxd\Flowpie\WxApiLib\bin\Debug\WxApiLib.pdb
+E:\git_home\kxd\Flowpie\WxApiLib\bin\Debug\LitJson.dll
+E:\git_home\kxd\Flowpie\WxApiLib\obj\Debug\WxApiLib.csprojResolveAssemblyReference.cache
+E:\git_home\kxd\Flowpie\WxApiLib\obj\Debug\WxApiLib.dll
+E:\git_home\kxd\Flowpie\WxApiLib\obj\Debug\WxApiLib.pdb

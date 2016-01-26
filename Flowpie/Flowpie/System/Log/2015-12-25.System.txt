@@ -1,0 +1,18 @@
+Time:    2015/12/25 17:46:41
+Action:  注册用户
+Message: insert into app_score(userid, score) values(00001, 1); select scoreid from app_score order by scoreid desc limit 1
+-----------------------------------------------------------
+
+
+Time:    2015/12/25 18:24:41
+Action:  更新主订单价格
+Message: update app_users set ModifyAt='2015-12-25 18:24:41' , phone='15927094025' , name='陆思浙'  where userid = '00001'
+-----------------------------------------------------------
+
+
+Time:    2015/12/25 18:25:48
+Action:  更新主订单价格
+Message: update app_users set address='aaaa' , phone='15927094025' , ModifyAt='2015-12-25 18:25:48' , name='陆思浙'  where userid = '00001'
+-----------------------------------------------------------
+
+

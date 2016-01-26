@@ -1,0 +1,54 @@
+Time:    2016/1/10 16:04:12
+Action:  注册用户
+Message: INSERT INTO app_orderdetail(orderdetailid, expressid, userid, companycode, CreateAt, ModifyAt) VALUES('null', '3100898080393', 00001, 'null', '2016-01-10 16:04:01', '2016-01-10 16:04:01');
+-----------------------------------------------------------
+
+
+Time:    2016/1/10 16:05:51
+Action:  注册用户
+Message: INSERT INTO app_sendorder(sendorderid, expresscode, userid, companycode, CreateAt, ModifyAt) VALUES('2016011000003', 'null', 00001, 'null', '2016-01-10 16:05:47', '2016-01-10 16:05:47');
+-----------------------------------------------------------
+
+
+Time:    2016/1/10 16:07:25
+Action:  注册用户
+Message: INSERT INTO app_sendorder(sendorderid, expresscode, userid, companycode, CreateAt, ModifyAt) VALUES('2016011000004', 'null', 00001, 'null', '2016-01-10 16:07:25', '2016-01-10 16:07:25'); select sendorderid from app_sendorder order by CreateAt desc limit 1
+-----------------------------------------------------------
+
+
+Time:    2016/1/10 16:07:54
+Action:  注册用户
+Message: INSERT INTO app_sendorder(sendorderid, expresscode, userid, companycode, CreateAt, ModifyAt) VALUES('2016011000005', 'null', 00001, 'null', '2016-01-10 16:07:54', '2016-01-10 16:07:54'); select sendorderid from app_sendorder order by CreateAt desc limit 1
+-----------------------------------------------------------
+
+
+Time:    2016/1/10 16:09:29
+Action:  注册用户
+Message: INSERT INTO app_sendorder(sendorderid, expresscode, userid, companycode, CreateAt, ModifyAt) VALUES('2016011000006', '3100898080393', 00001, 'yunda', '2016-01-10 16:09:29', '2016-01-10 16:09:29'); select sendorderid from app_sendorder order by CreateAt desc limit 1
+-----------------------------------------------------------
+
+
+Time:    2016/1/10 16:40:06
+Action:  注册用户
+Message: INSERT INTO app_order(orderid, userid, courierid, sendcouriername, sendcourierphone, weight, `long`, width, height, amount, pay_amount, fromname, fromcity, fromtel, orderTypeid, companyid, rundate, runtime, fromaddress, fromaddressdetail, lat, lng, state,  CreateAt, ModifyAt) VALUES('2016011000001', '00001', 'null', 'null', 'null', '0', null, 0, 0, 0, 0, '陆思浙', '武汉', '15927094025', null, null, '2016-01-10', '16:40:00.000', '新地盛世东方', '', '30.646706', '114.308615', 0, '2016-01-10 16:40:06', '2016-01-10 16:40:06'); SELECT orderid FROM app_order ORDER BY orderid DESC Limit 1
+-----------------------------------------------------------
+
+
+Time:    2016/1/10 16:40:11
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '其他原因', state = 9 where orderid = '2016011000001'
+-----------------------------------------------------------
+
+
+Time:    2016/1/10 16:41:14
+Action:  注册用户
+Message: INSERT INTO app_order(orderid, userid, courierid, sendcouriername, sendcourierphone, weight, `long`, width, height, amount, pay_amount, fromname, fromcity, fromtel, orderTypeid, companyid, rundate, runtime, fromaddress, fromaddressdetail, lat, lng, state,  CreateAt, ModifyAt) VALUES('2016011000002', '00001', 'null', 'null', 'null', '0', null, 0, 0, 0, 0, '陆思浙', '武汉', '15927094025', null, null, '2016-01-10', '16:41:00.000', '新地盛世东方', '', '30.646706', '114.308615', 0, '2016-01-10 16:41:14', '2016-01-10 16:41:14'); SELECT orderid FROM app_order ORDER BY orderid DESC Limit 1
+-----------------------------------------------------------
+
+
+Time:    2016/1/10 16:41:17
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '错误下单', state = 9 where orderid = '2016011000002'
+-----------------------------------------------------------
+
+

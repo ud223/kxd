@@ -18,3 +18,8 @@ E:\git_home\kxd\Flowpie\BaseLib\bin\Release\BaseLib.pdb
 E:\git_home\kxd\Flowpie\BaseLib\obj\Release\BaseLib.csprojResolveAssemblyReference.cache
 E:\git_home\kxd\Flowpie\BaseLib\obj\Release\BaseLib.dll
 E:\git_home\kxd\Flowpie\BaseLib\obj\Release\BaseLib.pdb
+G:\git_home\kxd\Flowpie\BaseLib\bin\Release\BaseLib.dll
+G:\git_home\kxd\Flowpie\BaseLib\bin\Release\BaseLib.pdb
+G:\git_home\kxd\Flowpie\BaseLib\obj\Release\BaseLib.csprojResolveAssemblyReference.cache
+G:\git_home\kxd\Flowpie\BaseLib\obj\Release\BaseLib.dll
+G:\git_home\kxd\Flowpie\BaseLib\obj\Release\BaseLib.pdb

@@ -53,7 +53,7 @@
             <i class="iconfont icon-angleright"></i>
         </div>
     </a>
-    <a href="#" class="row actbtn">
+    <a href="javascript:void(0)" id="sign" class="row actbtn">
         <span class="tt">每日签到得积分</span>
         <div class="holder arr">
             <i class="iconfont icon-angleright"></i>
@@ -71,7 +71,7 @@
             <i class="iconfont icon-angleright"></i>
         </div>
     </a>
-    <a href="#" class="row actbtn">
+    <a href="/home/myexpress" class="row actbtn">
         <span class="tt">收发统计</span>
         <div class="holder arr">
             <i class="iconfont icon-angleright"></i>
@@ -83,4 +83,50 @@
             <i class="iconfont icon-angleright"></i>
         </div>
     </a>
+    <a href="/home/myaddress" class="row actbtn">
+        <span class="tt">维护常用地址</span>
+        <div class="holder arr">
+            <i class="iconfont icon-angleright"></i>
+        </div>
+    </a>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#sign").click(function () {
+            sign();
+        });
+    })
+
+    function success(data) {
+        var opertion = {
+            msg: data.message,
+            exitText: "关闭!"
+        };
+
+        $.alertbox(opertion);
+    }
+
+    function error() {
+        var opertion = {
+            msg: "签到失败 请重试!",
+            exitText: "关闭!"
+        };
+
+        $.alertbox(opertion);
+    }
+
+    function sign() {
+        var userid = $.cookie('user_id');
+
+        var data = { 'userid': userid, 'score': 1 };
+
+        var params = {
+            url: '/api/user/Sign',
+            data: data,
+            successFun: success,
+            errorFun: error
+        }
+
+        ajaxTo(params);
+    }
+</script>

@@ -1,0 +1,66 @@
+Time:    2015/12/30 10:06:15
+Action:  注册用户
+Message: insert into app_score(userid, score, ModifyAt) values(00001, 1, '2015-12-30 10:06:01'); select scoreid from app_score order by scoreid desc limit 1
+-----------------------------------------------------------
+
+
+Time:    2015/12/30 12:56:16
+Action:  注册用户
+Message: INSERT INTO app_order(orderid, userid, courierid, sendcouriername, sendcourierphone, weight, `long`, width, height, amount, pay_amount, fromname, fromcity, fromtel, orderTypeid, companyid, rundate, runtime, fromaddress, fromaddressdetail, lat, lng, state,  CreateAt, ModifyAt) VALUES('2015123000001', '00001', '2015122200001', '郭秋棚', '18696120588', '1', NULL, NULL, NULL, 0, 6.00, '陆思浙', '武汉', '15927094025', 1, 1, '2015-12-30', '12:55:00.000', '新地盛世东方', null, '30.646706', '114.308615', 1, '2015-12-30 12:56:15', '2015-12-30 12:56:15'); SELECT orderid FROM app_order ORDER BY orderid DESC Limit 1
+-----------------------------------------------------------
+
+
+Time:    2015/12/30 12:56:16
+Action:  注册用户
+Message: INSERT INTO app_order(orderid, userid, courierid, sendcouriername, sendcourierphone, weight, `long`, width, height, amount, pay_amount, fromname, fromcity, fromtel, orderTypeid, companyid, rundate, runtime, fromaddress, fromaddressdetail, lat, lng, state,  CreateAt, ModifyAt) VALUES('2015123000002', '00001', '2015122200001', '郭秋棚', '18696120588', '1', NULL, NULL, NULL, 0, 6.00, '陆思浙', '武汉', '15927094025', 1, 1, '2015-12-30', '12:55:00.000', '新地盛世东方', null, '30.646706', '114.308615', 1, '2015-12-30 12:56:15', '2015-12-30 12:56:15'); SELECT orderid FROM app_order ORDER BY orderid DESC Limit 1
+-----------------------------------------------------------
+
+
+Time:    2015/12/30 13:12:09
+Action:  注册用户
+Message: INSERT INTO app_order(orderid, userid, courierid, sendcouriername, sendcourierphone, weight, `long`, width, height, amount, pay_amount, fromname, fromcity, fromtel, orderTypeid, companyid, rundate, runtime, fromaddress, fromaddressdetail, lat, lng, state,  CreateAt, ModifyAt) VALUES('2015123000003', '00001', '2015122200001', '郭秋棚', '18696120588', '2', NULL, NULL, NULL, 0, 6.80, '陆思浙', '武汉', '15927094025', 1, 1, '2015-12-30', '13:11:00.000', '新地盛世东方', null, '30.646706', '114.308615', 1, '2015-12-30 13:12:09', '2015-12-30 13:12:09'); SELECT orderid FROM app_order ORDER BY orderid DESC Limit 1
+-----------------------------------------------------------
+
+
+Time:    2015/12/30 13:14:54
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '用户自行取消', state = 9 where orderid = '2015123000003'
+-----------------------------------------------------------
+
+
+Time:    2015/12/30 13:14:59
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '用户自行取消', state = 9 where orderid = '2015123000002'
+-----------------------------------------------------------
+
+
+Time:    2015/12/30 13:14:59
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '用户自行取消', state = 9 where orderid = '2015123000002'
+-----------------------------------------------------------
+
+
+Time:    2015/12/30 13:15:04
+Action:  更新主订单价格
+Message: update app_order set rejectmessage = '用户自行取消', state = 9 where orderid = '2015122900010'
+-----------------------------------------------------------
+
+
+Time:    2015/12/30 13:15:27
+Action:  注册用户
+Message: INSERT INTO app_order(orderid, userid, courierid, sendcouriername, sendcourierphone, weight, `long`, width, height, amount, pay_amount, fromname, fromcity, fromtel, orderTypeid, companyid, rundate, runtime, fromaddress, fromaddressdetail, lat, lng, state,  CreateAt, ModifyAt) VALUES('2015123000004', '00001', '2015122200001', '郭秋棚', '18696120588', '1', NULL, NULL, NULL, 0, 6.00, '陆思浙', '武汉', '15927094025', 1, 1, '2015-12-30', '13:15:00.000', '新地盛世东方', null, '30.646706', '114.308615', 1, '2015-12-30 13:15:27', '2015-12-30 13:15:27'); SELECT orderid FROM app_order ORDER BY orderid DESC Limit 1
+-----------------------------------------------------------
+
+
+Time:    2015/12/30 13:23:38
+Action:  注册用户
+Message: INSERT INTO app_order(orderid, userid, courierid, sendcouriername, sendcourierphone, weight, `long`, width, height, amount, pay_amount, fromname, fromcity, fromtel, orderTypeid, companyid, rundate, runtime, fromaddress, fromaddressdetail, lat, lng, state,  CreateAt, ModifyAt) VALUES('2015123000005', '00001', '2015122200001', '郭秋棚', '18696120588', '6', NULL, NULL, NULL, 0, 10.00, '陆思浙', '武汉', '15927094025', 1, 1, '2015-12-30', '13:23:00.000', '新地盛世东方', null, '30.646706', '114.308615', 1, '2015-12-30 13:23:38', '2015-12-30 13:23:38'); SELECT orderid FROM app_order ORDER BY orderid DESC Limit 1
+-----------------------------------------------------------
+
+
+Time:    2015/12/30 13:27:58
+Action:  注册用户
+Message: INSERT INTO app_order(orderid, userid, courierid, sendcouriername, sendcourierphone, weight, `long`, width, height, amount, pay_amount, fromname, fromcity, fromtel, orderTypeid, companyid, rundate, runtime, fromaddress, fromaddressdetail, lat, lng, state,  CreateAt, ModifyAt) VALUES('2015123000006', '00001', '2015122200001', '郭秋棚', '18696120588', '4', NULL, NULL, NULL, 0, 8.40, '陆思浙', '武汉', '15927094025', 1, 1, '2015-12-30', '13:27:00.000', '新地盛世东方', null, '30.646706', '114.308615', 1, '2015-12-30 13:27:58', '2015-12-30 13:27:58'); SELECT orderid FROM app_order ORDER BY orderid DESC Limit 1
+-----------------------------------------------------------
+
+

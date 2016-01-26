@@ -1,27 +1,67 @@
 ﻿@{
-    Layout = "~/Views/Shared/mobile.cshtml";
+    Layout = "~/Views/Shared/tools.cshtml";
 }
 @{
     ViewBag.Title = ViewData["title"];
 }
-<script type="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+@*<script language="javascript" src="http://res.mail.qq.com/mmr/static/lib/js/jquery.js" type="text/javascript"></script>
+<script language="javascript" src="http://res.mail.qq.com/mmr/static/lib/js/lazyloadv3.js" type="text/javascript"></script>*@
+<script type="text/javascript" charset="UTF-8" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/javascript">
+    //调用微信JS api 支付
     wx.config({
-        debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-        appId: '', // 必填，公众号的唯一标识
-        timestamp: , // 必填，生成签名的时间戳
-        nonceStr: '', // 必填，生成签名的随机串
-        signature: '',// 必填，签名，见附录1
-        jsApiList: [] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+        appId: '@ViewData["appId"]', // 必填，公众号的唯一标识
+        timestamp: @ViewData["timestamp"],
+        nonceStr: '@ViewData["noncestr"]',
+        signature: '@ViewData["signature"]',
+        jsApiList: ['scanQRCode'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    });
+    wx.ready(function () {
+        wx.scanQRCode({
+            needResult: 1,
+            desc: 'scanQRCode desc',
+            success: function (res) {
+                alert(JSON.stringify(res));
+                //alert("111");
+
+                if (JSON.stringify(res).indexOf(':ok') > -1) {
+                    addcourier(res.resultStr);
+                }
+            }
+        });
     });
 
-    wx.scanQRCode({
-        needResult: 1,
-        desc: 'scanQRCode desc',
-        success: function (res) {
-            alert(JSON.stringify(res));
+    wx.error(function (res) {
+        alert(res.errMsg);
+    });
+
+    function addcourier(courierid) {
+        var user_id = localStorage.getItem('user_id');
+
+        var data = { 'userid': user_id, 'courierid':courierid };
+
+        //alert(JSON.stringify(data));
+
+        location.href = '/home/mycourier';
+
+
+        var params = {
+            url: '/api/user/addcourier',
+            data: data,
+            type: 'post',
+            success:success
         }
-    });
+
+        ajaxApi(params);
+    }
+
+    function success(data) {
+        //alert(JSON.stringify(data));
+        //if (data.code == '200') {
+            alert('添加成功!');
+
+            location.href = '/home/mycourier';
+        //}
+    }
 </script>
-
-
